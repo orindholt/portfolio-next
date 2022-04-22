@@ -38,6 +38,10 @@ textarea {
 	border: none;
 }
 
+textarea {
+	resize: none;
+}
+
 textarea:focus {
 	outline: none;
 }

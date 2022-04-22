@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 @import url("reset.css");
 
 @tailwind base;
@@ -7,50 +7,18 @@
 
 @layer base {
 	html {
-		@apply font-source;
+		@apply font-inter;
 	}
 	body {
-		@apply text-white text-base bg-black;
+		@apply dark:text-white text-black text-base dark:bg-black bg-white;
 	}
 }
 
 @layer components {
 	.nav-item {
-		@apply transition-colors hover:bg-darkGray hover:text-white flex items-center h-full select-none px-4;
+		@apply transition-colors hover:!text-orange select-none font-bold dark:text-white text-black;
 	}
-}
-
-.line {
-	fill: none;
-	stroke: inherit;
-	stroke-width: 6;
-	transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-		stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
-}
-.line1 {
-	stroke-dasharray: 60 207;
-	stroke-width: 6;
-}
-.line2 {
-	stroke-dasharray: 60 60;
-	stroke-width: 6;
-}
-.line3 {
-	stroke-dasharray: 60 207;
-	stroke-width: 6;
-}
-.opened .line1 {
-	stroke-dasharray: 90 207;
-	stroke-dashoffset: -134;
-	stroke-width: 6;
-}
-.opened .line2 {
-	stroke-dasharray: 1 60;
-	stroke-dashoffset: -30;
-	stroke-width: 6;
-}
-.opened .line3 {
-	stroke-dasharray: 90 207;
-	stroke-dashoffset: -134;
-	stroke-width: 6;
+	.form-item {
+		@apply p-2 rounded-sm transition-all border-l-8 border-red-500 border-solid border border-opacity-0 bg-black dark:bg-darkGray text-white placeholder:text-gray focus:!bg-opacity-0 focus:text-black focus:dark:text-white focus:placeholder:text-darkGray focus:scale-[1.02];
+	}
 }
