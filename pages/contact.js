@@ -3,17 +3,17 @@ import {useForm} from "react-hook-form";
 import ErrorMsg from "../components/ErrorMsg";
 
 const Contact = () => {
+	const maxTxtAreaLength = 400;
 	const emailRegEx =
 		/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/gi;
 	const {
 		register,
 		handleSubmit,
+		getValues,
 		watch,
 		formState: {errors},
 	} = useForm();
 	const onSubmit = data => console.log(data);
-
-	console.log(Object.values(errors)[0]?.type);
 
 	return (
 		<>
@@ -55,6 +55,7 @@ const Contact = () => {
 					className={`form-item col-span-2 ${errors.email && "border-red-500"}`}
 				/>
 				<input
+					{...register("conEmail", {required: true})}
 					type="text"
 					autoComplete="none"
 					placeholder="Confirm email"
@@ -62,15 +63,29 @@ const Contact = () => {
 						errors.firstName && "border-red-500"
 					}`}
 				/>
-				<textarea
-					className={`form-item col-span-2 !resize-none ${
-						errors.email && "border-red-500"
-					}`}
-					placeholder="Message"
-				></textarea>
+				<div className="col-span-2 w-full relative">
+					<textarea
+						{...register("msgArea", {
+							required: true,
+							maxLength: maxTxtAreaLength,
+						})}
+						className={`form-item !resize-none w-full h-32 ${
+							errors.email && "border-red-500"
+						}`}
+						id="msgArea"
+						maxLength={maxTxtAreaLength}
+						placeholder="Message"
+					></textarea>
+					<label
+						htmlFor="msgArea"
+						className="absolute bottom-3 right-2 font-light text-sm text-gray select-none"
+					>
+						{watch("msgArea")?.length || 0}/{maxTxtAreaLength}
+					</label>
+				</div>
 				<button
 					type="submit"
-					className="bg-orange rounded-sm mx-auto col-span-2 text-white py-1 max-w-xs w-full font-bold text-xl hover:scale-105 transition-transform"
+					className="bg-orange rounded-md mx-auto col-span-2 text-white py-1 max-w-[11.25rem] w-full font-bold text-xl transition-all border-3 border-orange border-solid hover:bg-opacity-0 hover:text-orange hover:scale-105"
 				>
 					Send
 				</button>

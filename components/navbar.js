@@ -4,6 +4,7 @@ import ThemeSwitch from "./ThemeSwitch";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import Link from "next/link";
 import {IoLogoGithub} from "react-icons/io5";
+import Dropdown from "./Dropdown";
 
 const variants = {
 	hidden: {
@@ -39,15 +40,16 @@ const Navbar = () => {
 				variants={variants}
 				initial="hidden"
 				animate={isOpened ? "shown" : "hidden"}
-				className="dark:bg-black bg-white !bg-opacity-80 backdrop-blur-md md:backdrop-blur-sm h-full py-10 md:py-0 w-64 md:w-full md:!translate-x-0 md:!opacity-100"
+				className="dark:bg-black bg-white !bg-opacity-80 backdrop-blur-md md:backdrop-blur-sm h-full py-8 md:py-0 w-64 md:w-full md:!translate-x-0 md:!opacity-100"
 			>
 				<ul className="flex flex-col text-2xl md:text-lg items-center h-full md:flex-row gap-10 md:px-6">
 					<li className="nav-item">
 						<Link href="/">Home</Link>
 					</li>
-					<li className="nav-item">
-						<Link href="/work">Work</Link>
-					</li>
+					<Dropdown
+						liText="Work"
+						list={["Web", "Programming", "Photography"]}
+					/>
 					<li className="nav-item">
 						<Link href="/about">About</Link>
 					</li>

@@ -20,7 +20,7 @@ export default function Home() {
 					`}
 				</Script>
 			</Head>
-			<h1 className="text-6xl font-normal text-left mt-6">
+			<h1 className="text-6xl font-light text-left mt-6">
 				Hi. <span className="font-medium">I'm Oliver.</span>
 			</h1>
 			<h2>Getting started</h2>
