@@ -7,7 +7,7 @@ const dropMenuVariants = {
 	hidden: {
 		opacity: 0,
 		height: "0px",
-		transition: {staggerChildren: 0.1, duration: 0.2},
+		transition: {staggerChildren: 0.1},
 	},
 	show: {
 		opacity: 1,
@@ -26,15 +26,15 @@ const Dropdown = ({liText = "Undefined", list}) => {
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full ${
+			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto ${
 				open ? "!text-orange" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
 		>
-			<div className="relative">
+			<div className="relative md:flex md:items-center md:gap-1">
 				{liText}
 				<m.button
-					className="absolute -right-7 md:-right-5 top-1"
+					className="absolute md:static -right-7 md:-right-5 top-1"
 					animate={open ? {rotate: 180} : {rotate: 0}}
 				>
 					<IoCaretUp />

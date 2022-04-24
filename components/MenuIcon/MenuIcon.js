@@ -17,7 +17,7 @@ const MenuIcon = ({state, setState}) => {
 			variants={buttonVariants}
 			whileTap="tap"
 			whileHover="hover"
-			className={`menu top-6 right-6 absolute dark:stroke-white stroke-black transition-colors md:hidden ${
+			className={`menu top-6 right-6 fixed dark:stroke-white stroke-black transition-colors md:hidden z-50 ${
 				state ? styles.opened : ""
 			}`}
 		>
