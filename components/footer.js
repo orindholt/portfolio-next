@@ -10,7 +10,9 @@ const Footer = () => {
 			</div>
 			<div className="w-full flex justify-evenly fixed bottom-0 text-5xl py-2 md:hidden dark:bg-black bg-white bg-opacity-80 backdrop-blur-sm">
 				<Link href="/">
-					<IoHome />
+					<div className="active:scale-90 transition-transform">
+						<IoHome />
+					</div>
 				</Link>
 			</div>
 		</footer>
