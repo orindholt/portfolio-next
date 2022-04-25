@@ -9,6 +9,8 @@ const Contact = () => {
 		register,
 		handleSubmit,
 		watch,
+		validate,
+		getValues,
 		formState: {errors},
 	} = useForm();
 	const onSubmit = data => console.log(data);
@@ -55,11 +57,15 @@ const Contact = () => {
 					className={`form-item col-span-2 ${errors.email && "border-red-500"}`}
 				/>
 				<input
+					{...register("conEmail", {
+						required: true,
+						validate: v => v === getValues("email"),
+					})}
 					type="text"
 					autoComplete="none"
 					placeholder="Confirm email"
 					className={`form-item col-span-2 ${
-						errors.firstName && "border-red-500"
+						errors.conEmail && "border-red-500"
 					}`}
 				/>
 				<textarea
