@@ -11,17 +11,15 @@ const MenuIcon = ({state, setState}) => {
 		<motion.button
 			onClick={e => {
 				setState(!state);
-				/* e.currentTarget.classList.toggle("opened"); */
 				e.currentTarget.setAttribute("aria-expanded", state);
 			}}
 			aria-label="Main Menu"
 			variants={buttonVariants}
 			whileTap="tap"
 			whileHover="hover"
-			className={`menu top-6 right-6 absolute stroke-white transition-colors md:hidden ${
+			className={`menu top-6 right-6 fixed dark:stroke-white stroke-black transition-colors md:hidden z-50 ${
 				state ? styles.opened : ""
 			}`}
-			/* style={{stroke: state ? "#252422" : "white"}} */
 		>
 			<svg width="50" height="50" viewBox="0 0 100 100">
 				<path
