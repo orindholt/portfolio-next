@@ -1,26 +1,63 @@
 import {useState} from "react";
 import {useForm} from "react-hook-form";
-import ErrorMsg from "../components/ErrorMsg";
+import {AnimatePresence, motion as m} from "framer-motion";
+import {yupResolver} from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import {IoCall, IoMail} from "react-icons/io5";
-import {motion as m} from "framer-motion";
+import ErrorMsg from "../components/ErrorMsg";
 import Head from "next/head";
+import Party from "../Utility/Party";
+import Link from "next/link";
+
+const maxTxtAreaLength = 400;
+const email = "oliver.rindholt@gmail.com";
+const phone = "25702404";
+const emailRegEx =
+	/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/gi;
+
+const schema = yup
+	.object({
+		firstName: yup.string().required("Your first name is required"),
+		lastName: yup.string().required("Your last name is required"),
+		email: yup
+			.string()
+			.email("Invaild email")
+			.matches(emailRegEx, "Invaild email")
+			.required(),
+		conEmail: yup
+			.string()
+			.required("You need to confirm your email")
+			.oneOf([yup.ref("email")], "This email doesn't match"),
+		msgArea: yup
+			.string()
+			.required("You need to write a message")
+			.max(
+				maxTxtAreaLength,
+				"Did you really think you could bypass the max? THE MAX IS 400!"
+			),
+	})
+	.required();
 
 const Contact = () => {
-	const maxTxtAreaLength = 400;
-	const email = "oliver.rindholt@gmail.com";
-	const phone = "25702404";
-	const emailRegEx =
-		/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/gi;
+	const [error, setError] = useState(true);
 	const {
 		register,
 		handleSubmit,
-		getValues,
 		watch,
-		validate,
-		getValues,
 		formState: {errors},
-	} = useForm();
-	const onSubmit = data => console.log(data);
+	} = useForm({
+		resolver: yupResolver(schema),
+	});
+
+	const onSubmit = data => {
+		console.log(data);
+		if (!Object.keys(errors).length) {
+			setError(false);
+			setTimeout(() => {
+				setError(true);
+			}, 4000);
+		}
+	};
 
 	return (
 		<>
@@ -36,9 +73,12 @@ const Contact = () => {
 					transition={{type: "tween", delay: 1, duration: 1}}
 					className="text-6xl font-bold text-center"
 				>
-					Contact me
+					Contact{" "}
+					<span className="hover:text-orange transition-colors">
+						<Link href="/about">me</Link>
+					</span>
 				</m.h2>
-				<m.p className="text-center font-light mb-14 dark:text-gray text-darkGray">
+				<m.p className="text-center font-light mb-14 dark:text-gray text-darkGray opacity-20 select-none">
 					(at your own risk..)
 				</m.p>
 				<form
@@ -47,28 +87,33 @@ const Contact = () => {
 				>
 					{Object.keys(errors).length ? (
 						<ErrorMsg
-							name={Object.keys(errors)[0]}
-							error={Object.values(errors)[0]?.type}
+							message={
+								errors.firstName?.message ||
+								errors.lastName?.message ||
+								errors.email?.message ||
+								errors.conEmail?.message ||
+								errors.msgArea?.message
+							}
 						/>
 					) : (
 						""
 					)}
 					<input
-						{...register("firstName", {required: true})}
+						{...register("firstName")}
 						autoComplete="given-name"
 						type="text"
 						placeholder="First name"
 						className={`form-item ${errors.firstName && "border-red-500"}`}
 					/>
 					<input
-						{...register("lastName", {required: true})}
+						{...register("lastName")}
 						autoComplete="family-name"
 						type="text"
 						placeholder="Last name"
 						className={`form-item ${errors.lastName && "border-red-500"}`}
 					/>
 					<input
-						{...register("email", {required: true, pattern: emailRegEx})}
+						{...register("email")}
 						type="text"
 						autoComplete="email"
 						placeholder="Email"
@@ -77,22 +122,19 @@ const Contact = () => {
 						}`}
 					/>
 					<input
-						{...register("conEmail", {required: true})}
+						{...register("conEmail")}
 						type="text"
 						autoComplete="none"
 						placeholder="Confirm email"
 						className={`form-item col-span-2 ${
-							errors.firstName && "border-red-500"
+							errors.conEmail && "border-red-500"
 						}`}
 					/>
 					<div className="col-span-2 w-full relative">
 						<textarea
-							{...register("msgArea", {
-								required: true,
-								maxLength: maxTxtAreaLength,
-							})}
+							{...register("msgArea")}
 							className={`form-item !resize-none w-full h-32 ${
-								errors.email && "border-red-500"
+								errors.msgArea && "border-red-500"
 							}`}
 							id="msgArea"
 							maxLength={maxTxtAreaLength}
@@ -107,7 +149,7 @@ const Contact = () => {
 					</div>
 					<button
 						type="submit"
-						className="bg-orange rounded-md mx-auto col-span-2 text-white py-1 max-w-[11.25rem] w-full font-bold text-xl transition-all border-3 border-orange border-solid hover:bg-opacity-0 hover:text-orange hover:scale-105"
+						className="bg-orange rounded-md mx-auto col-span-2 text-white py-1 max-w-[11.25rem] w-full font-bold text-xl transition-all border-3 border-orange border-solid hover:bg-opacity-0 hover:text-orange hover:scale-105 active:scale-100"
 					>
 						Send
 					</button>
@@ -130,6 +172,13 @@ const Contact = () => {
 					</a>
 				</div>
 			</m.div>
+			<AnimatePresence>
+				{!error && (
+					<m.div exit={{opacity: 0}} transition={{duration: 2}}>
+						<Party />
+					</m.div>
+				)}
+			</AnimatePresence>
 		</>
 	);
 };
