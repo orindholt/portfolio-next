@@ -1,10 +1,12 @@
 import {useState} from "react";
+import Link from "next/link";
 import {motion as m, AnimatePresence} from "framer-motion";
+import {IoLogoGithub} from "react-icons/io5";
 import ThemeSwitch from "./ThemeSwitch";
 import MenuIcon from "./MenuIcon/MenuIcon";
-import Link from "next/link";
-import {IoLogoGithub} from "react-icons/io5";
 import Dropdown from "./Dropdown";
+import {useMediaQuery} from "react-responsive";
+import tw from "../tailwind.config";
 
 const variants = {
 	hidden: {
@@ -31,11 +33,14 @@ const buttonVariants = {
 
 const Navbar = () => {
 	const [isOpened, setIsOpened] = useState(false);
+	const isDekstop = useMediaQuery({
+		query: `(min-width: ${tw.theme.extend.screens.md})`,
+	});
 
 	return (
 		<>
 			<AnimatePresence>
-				{isOpened && (
+				{(isOpened || isDekstop) && (
 					<m.nav
 						variants={variants}
 						initial="hidden"
