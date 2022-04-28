@@ -47,14 +47,14 @@ const Dropdown = ({liText = "Undefined", list}) => {
 						initial="hidden"
 						animate="show"
 						exit="hidden"
-						className="md:absolute static flex flex-col font-normal text-center md:text-left top-8 left-0"
+						className="md:absolute static flex flex-col font-medium text-center md:text-left top-8 left-0 p-1 rounded-sm"
 					>
 						{list.map((item, i) => {
 							return (
 								<m.li
 									key={i}
 									variants={dropItemVariants}
-									className="md:hover:text-orange dark:text-white text-black"
+									className="md:hover:text-orange dark:text-white text-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-80 md:backdrop-blur-md"
 								>
 									<Link href={`/work/${item.toLowerCase()}`}>{item}</Link>
 								</m.li>

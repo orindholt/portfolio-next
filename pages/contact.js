@@ -78,7 +78,7 @@ const Contact = () => {
 						<Link href="/about">me</Link>
 					</span>
 				</m.h2>
-				<m.p className="text-center font-light mb-14 dark:text-gray text-darkGray opacity-20 select-none">
+				<m.p className="text-center font-light mb-14 dark:text-gray text-black dark:opacity-20 opacity-50 select-none">
 					(at your own risk..)
 				</m.p>
 				<form
@@ -149,7 +149,7 @@ const Contact = () => {
 					</div>
 					<button
 						type="submit"
-						className="bg-orange rounded-md mx-auto col-span-2 text-white py-1 max-w-[11.25rem] w-full font-bold text-xl transition-all border-3 border-orange border-solid hover:bg-opacity-0 hover:text-orange hover:scale-105 active:scale-100"
+						className="bg-orange rounded-sm mx-auto col-span-2 text-white py-1 max-w-[8rem] w-full font-bold text-xl transition-all border-3 border-orange border-solid hover:bg-opacity-0 hover:text-orange hover:scale-105 active:scale-100"
 					>
 						Send
 					</button>
