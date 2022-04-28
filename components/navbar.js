@@ -33,14 +33,14 @@ const buttonVariants = {
 
 const Navbar = () => {
 	const [isOpened, setIsOpened] = useState(false);
-	const isDekstop = useMediaQuery({
+	const isDesktop = useMediaQuery({
 		query: `(min-width: ${tw.theme.extend.screens.md})`,
 	});
 
 	return (
 		<>
 			<AnimatePresence>
-				{(isOpened || isDekstop) && (
+				{(isOpened || isDesktop) && (
 					<m.nav
 						variants={variants}
 						initial="hidden"

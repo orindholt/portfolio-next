@@ -8,8 +8,8 @@ const CareerTree = () => {
 	return (
 		<>
 			<div>
-				{positions.map(position => {
-					return <CareerBranch position={position} />;
+				{positions.map((i, position) => {
+					return <CareerBranch key={i} position={position} />;
 				})}
 			</div>
 			<a

@@ -13,28 +13,31 @@ const maxTxtAreaLength = 400;
 const email = "oliver.rindholt@gmail.com";
 const phone = "25702404";
 const emailRegEx =
-	/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/gi;
-
+	/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/i;
+const nameRegEx = /^\p{L}+$/iu;
 const schema = yup
 	.object({
-		firstName: yup.string().required("Your first name is required"),
-		lastName: yup.string().required("Your last name is required"),
+		firstName: yup
+			.string()
+			.required("Please enter your first name")
+			.matches(nameRegEx, "Your first name can't include special characters"),
+		lastName: yup
+			.string()
+			.required("Please enter your last name")
+			.matches(nameRegEx, "Your last name can't include special characters"),
 		email: yup
 			.string()
 			.email("Invaild email")
-			.matches(emailRegEx, "Invaild email")
+			.matches(emailRegEx, "Please write a vaild email")
 			.required(),
 		conEmail: yup
 			.string()
-			.required("You need to confirm your email")
-			.oneOf([yup.ref("email")], "This email doesn't match"),
+			.required("Please repeat your email")
+			.oneOf([yup.ref("email")], "This email doesn't seem to match"),
 		msgArea: yup
 			.string()
-			.required("You need to write a message")
-			.max(
-				maxTxtAreaLength,
-				"Did you really think you could bypass the max? THE MAX IS 400!"
-			),
+			.required("Please write a message")
+			.max(maxTxtAreaLength, "How dare you try to bypass the max?!"),
 	})
 	.required();
 
@@ -44,6 +47,7 @@ const Contact = () => {
 		register,
 		handleSubmit,
 		watch,
+		reset,
 		formState: {errors},
 	} = useForm({
 		resolver: yupResolver(schema),
@@ -51,12 +55,11 @@ const Contact = () => {
 
 	const onSubmit = data => {
 		console.log(data);
-		if (!Object.keys(errors).length) {
-			setError(false);
-			setTimeout(() => {
-				setError(true);
-			}, 4000);
-		}
+		setError(false);
+		reset();
+		setTimeout(() => {
+			setError(true);
+		}, 4000);
 	};
 
 	return (
@@ -70,8 +73,8 @@ const Contact = () => {
 				<m.h2
 					initial={{opacity: 0, y: -20}}
 					animate={{opacity: 1, y: 0}}
-					transition={{type: "tween", delay: 1, duration: 1}}
-					className="text-6xl font-bold text-center"
+					transition={{type: "tween", duration: 1}}
+					className="text-6xl font-bold text-center transition-colors"
 				>
 					Contact{" "}
 					<span className="hover:text-orange transition-colors">
@@ -85,7 +88,18 @@ const Contact = () => {
 					className="grid grid-cols-2 gap-6 max-w-3xl mx-auto relative"
 					onSubmit={handleSubmit(onSubmit)}
 				>
-					{Object.keys(errors).length ? (
+					<AnimatePresence>
+						{!error && (
+							<m.p
+								exit={{opacity: 0, y: -10}}
+								transition={{duration: 1, delay: 1}}
+								className="text-green absolute -top-8 w-full text-center"
+							>
+								Sucess!
+							</m.p>
+						)}
+					</AnimatePresence>
+					{Boolean(Object.keys(errors).length) && (
 						<ErrorMsg
 							message={
 								errors.firstName?.message ||
@@ -95,31 +109,27 @@ const Contact = () => {
 								errors.msgArea?.message
 							}
 						/>
-					) : (
-						""
 					)}
 					<input
 						{...register("firstName")}
 						autoComplete="given-name"
 						type="text"
 						placeholder="First name"
-						className={`form-item ${errors.firstName && "border-red-500"}`}
+						className={`form-item ${errors.firstName && "border-red"}`}
 					/>
 					<input
 						{...register("lastName")}
 						autoComplete="family-name"
 						type="text"
 						placeholder="Last name"
-						className={`form-item ${errors.lastName && "border-red-500"}`}
+						className={`form-item ${errors.lastName && "border-red"}`}
 					/>
 					<input
 						{...register("email")}
 						type="text"
 						autoComplete="email"
 						placeholder="Email"
-						className={`form-item col-span-2 ${
-							errors.email && "border-red-500"
-						}`}
+						className={`form-item col-span-2 ${errors.email && "border-red"}`}
 					/>
 					<input
 						{...register("conEmail")}
@@ -127,14 +137,14 @@ const Contact = () => {
 						autoComplete="none"
 						placeholder="Confirm email"
 						className={`form-item col-span-2 ${
-							errors.conEmail && "border-red-500"
+							errors.conEmail && "border-red"
 						}`}
 					/>
 					<div className="col-span-2 w-full relative">
 						<textarea
 							{...register("msgArea")}
 							className={`form-item !resize-none w-full h-32 ${
-								errors.msgArea && "border-red-500"
+								errors.msgArea && "border-red"
 							}`}
 							id="msgArea"
 							maxLength={maxTxtAreaLength}
@@ -155,7 +165,7 @@ const Contact = () => {
 					</button>
 				</form>
 				<p className="my-4">Or</p>
-				<div className="flex flex-col items-center">
+				<div className="flex flex-col gap-2 items-center">
 					<a
 						href={`mailto:${email}`}
 						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange"
