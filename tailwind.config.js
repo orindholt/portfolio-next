@@ -20,6 +20,8 @@ module.exports = {
 				darkGray: "#403D39",
 				black: "#252422",
 				orange: "#EB5E28",
+				green: "#74c69d",
+				red: "#e63946",
 			},
 		},
 	},
