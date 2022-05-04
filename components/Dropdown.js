@@ -1,9 +1,8 @@
 import {useState} from "react";
 import {IoCaretUp} from "react-icons/io5";
 import {motion as m, AnimatePresence} from "framer-motion";
-import {useMediaQuery} from "react-responsive";
-import tw from "../tailwind.config";
 import Link from "next/link";
+import useMediaQuery from "../Utility/useMediaQuery";
 
 const dropMenuVariants = {
 	hidden: {
@@ -31,9 +30,8 @@ const dropItemVariants = {
 
 const Dropdown = ({liText = "Undefined", list}) => {
 	const [open, setOpen] = useState(false);
-	const isDesktop = useMediaQuery({
-		query: `(min-width: ${tw.theme.extend.screens.md})`,
-	});
+	const isDesktop = useMediaQuery("md");
+
 	return (
 		<li
 			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto ${
@@ -58,7 +56,7 @@ const Dropdown = ({liText = "Undefined", list}) => {
 						animate="show"
 						exit="exit"
 						className={`md:absolute w-full md:w-auto static flex flex-col font-normal text-center md:text-left top-8 left-0 border-white ${
-							isDesktop && "border-r-4"
+							!isDesktop && "border-r-4"
 						}`}
 					>
 						{list.map((item, i) => {
