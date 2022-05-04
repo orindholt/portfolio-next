@@ -15,6 +15,7 @@ const CareerTree = () => {
 			<a
 				className="gap-1 items-center md:hover:text-orange text-xl inline-flex mr-auto"
 				target="_blank"
+				rel="noreferrer"
 				href="https://www.linkedin.com/in/oliver-rindholt-55707b217"
 			>
 				<span>

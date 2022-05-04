@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Post from "../components/post";
+import Post from "../components/Post";
 
 const posts = [{name: "journey", caption: "Start of my web journey"}];
 
@@ -13,8 +13,8 @@ export default function Blog() {
 			</Head>
 			<h2>Blog</h2>
 			<div className="grid grid-cols-2">
-				{posts.map(({name, caption}) => {
-					return <Post name={name} caption={caption} />;
+				{posts.map((i, {name, caption}) => {
+					return <Post key={i} name={name} caption={caption} />;
 				})}
 			</div>
 		</>

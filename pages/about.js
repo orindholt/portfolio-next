@@ -9,6 +9,7 @@ const About = () => {
 				width="2805"
 				height="4986"
 				quality="70"
+				alt="me"
 			/>
 		</div>
 	);

@@ -14,6 +14,7 @@ const ThemeSwitch = () => {
 	useEffect(() => {
 		themeStorage = darkMode ? "true" : "false";
 		setTheme(darkMode ? "dark" : "light");
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [darkMode]);
 	return (
 		<m.button

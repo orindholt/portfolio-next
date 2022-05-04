@@ -69,7 +69,11 @@ const Navbar = () => {
 									whileHover="hover"
 									whileTap="tap"
 								>
-									<a target="_blank" href="https://github.com/orindholt">
+									<a
+										target="_blank"
+										rel="noreferrer"
+										href="https://github.com/orindholt"
+									>
 										<IoLogoGithub />
 									</a>
 								</m.li>
