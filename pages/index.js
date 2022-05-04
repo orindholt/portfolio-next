@@ -1,10 +1,29 @@
+import {formContext} from "../Utility/Context";
+import {useContext, useEffect, useState} from "react";
 import {motion as m} from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
-import Script from "next/script";
 import CareerTree from "../components/CareerTree/Tree";
 
 export default function Home() {
+	const {formData} = useContext(formContext);
+	const [formSubmitted, setFormSubmitted] = useState(false);
+	const [username, setUsername] = useState("");
+
+	const capitalizeString = text => {
+		if (typeof text === "string" && text.length >= 1) {
+			return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
+		} else return null;
+	};
+
+	useEffect(() => {
+		if (Object.keys(formData).length) {
+			const {firstName} = formData;
+			setFormSubmitted(true);
+			setUsername(firstName);
+		}
+	}, [formData]);
+
 	return (
 		<>
 			<Head>
@@ -19,7 +38,10 @@ export default function Home() {
 					transition={{type: "tween", ease: "easeInOut", duration: 1}}
 					className="text-6xl font-light text-left"
 				>
-					Hi. <span className="font-medium">I'm Oliver.</span>
+					{formSubmitted ? "What's up " : "Hi, "}
+					<span className="font-medium">
+						{formSubmitted ? `${capitalizeString(username)}` : "I'm Oliver"}.
+					</span>
 				</m.h1>
 				<m.h2
 					className="text-left"

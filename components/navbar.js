@@ -5,8 +5,7 @@ import {IoLogoGithub} from "react-icons/io5";
 import ThemeSwitch from "./ThemeSwitch";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import Dropdown from "./Dropdown";
-import {useMediaQuery} from "react-responsive";
-import tw from "../tailwind.config";
+import useMediaQuery from "../Utility/useMediaQuery";
 
 const variants = {
 	hidden: {
@@ -33,9 +32,7 @@ const buttonVariants = {
 
 const Navbar = () => {
 	const [isOpened, setIsOpened] = useState(false);
-	const isDesktop = useMediaQuery({
-		query: `(min-width: ${tw.theme.extend.screens.md})`,
-	});
+	const isDesktop = useMediaQuery("md");
 
 	return (
 		<>
