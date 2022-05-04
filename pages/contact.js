@@ -1,13 +1,13 @@
-import {useState} from "react";
+import {useState, useContext} from "react";
 import {useForm} from "react-hook-form";
 import {AnimatePresence, motion as m} from "framer-motion";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import {IoCall, IoMail} from "react-icons/io5";
-import ErrorMsg from "../components/ErrorMsg";
 import Head from "next/head";
 import Party from "../Utility/Party";
 import Link from "next/link";
+import {formContext} from "../Utility/Context";
 
 const maxTxtAreaLength = 400;
 const email = "oliver.rindholt@gmail.com";
@@ -42,7 +42,16 @@ const schema = yup
 	.required();
 
 const Contact = () => {
+	const {setFormData} = useContext(formContext);
+	const [name, setName] = useState("");
+	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(true);
+	const capitalizeString = text => {
+		if (typeof text === "string" && text.length >= 1) {
+			return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
+		} else return undefined;
+	};
+
 	const {
 		register,
 		handleSubmit,
@@ -54,7 +63,10 @@ const Contact = () => {
 	});
 
 	const onSubmit = data => {
-		console.log(data);
+		if (data.conEmail) delete data?.conEmail;
+		setFormData(data);
+		setName(data.firstName);
+		setSubmitted(true);
 		setError(false);
 		reset();
 		setTimeout(() => {
@@ -95,26 +107,29 @@ const Contact = () => {
 								transition={{duration: 1, delay: 1}}
 								className="text-green absolute -top-8 w-full text-center"
 							>
-								Sucess!
+								Thanks{submitted && `${" "}${capitalizeString(name)}`}, your
+								message was sent!
 							</m.p>
 						)}
 					</AnimatePresence>
 					{Boolean(Object.keys(errors).length) && (
-						<ErrorMsg
-							message={
-								errors.firstName?.message ||
+						<p
+							role="alert"
+							className="text-red absolute -top-8 w-full text-center"
+						>
+							{errors.firstName?.message ||
 								errors.lastName?.message ||
 								errors.email?.message ||
 								errors.conEmail?.message ||
-								errors.msgArea?.message
-							}
-						/>
+								errors.msgArea?.message}
+						</p>
 					)}
 					<input
 						{...register("firstName")}
 						autoComplete="given-name"
 						type="text"
 						placeholder="First name"
+						aria-invalid={errors.firstName ? true : false}
 						className={`form-item ${errors.firstName && "border-red"}`}
 					/>
 					<input
@@ -122,6 +137,7 @@ const Contact = () => {
 						autoComplete="family-name"
 						type="text"
 						placeholder="Last name"
+						aria-invalid={errors.lastName ? true : false}
 						className={`form-item ${errors.lastName && "border-red"}`}
 					/>
 					<input
@@ -129,6 +145,7 @@ const Contact = () => {
 						type="text"
 						autoComplete="email"
 						placeholder="Email"
+						aria-invalid={errors.email ? true : false}
 						className={`form-item col-span-2 ${errors.email && "border-red"}`}
 					/>
 					<input
@@ -136,6 +153,7 @@ const Contact = () => {
 						type="text"
 						autoComplete="none"
 						placeholder="Confirm email"
+						aria-invalid={errors.conEmail ? true : false}
 						className={`form-item col-span-2 ${
 							errors.conEmail && "border-red"
 						}`}
