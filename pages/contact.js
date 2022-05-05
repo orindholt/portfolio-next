@@ -15,6 +15,13 @@ const phone = "25702404";
 const emailRegEx =
 	/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/i;
 const nameRegEx = /^\p{L}+$/iu;
+
+const encode = data => {
+	return Object.keys(data)
+		.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+		.join("&");
+};
+
 const schema = yup
 	.object({
 		firstName: yup
@@ -64,6 +71,13 @@ const Contact = () => {
 
 	const onSubmit = data => {
 		if (data.conEmail) delete data?.conEmail;
+		fetch("/", {
+			method: "POST",
+			headers: {"Content-Type": "application/x-www-form-urlencoded"},
+			body: encode({"form-name": "contact", data}),
+		})
+			.then(() => console.log("Message has been sent."))
+			.catch(error => console.error(error));
 		setFormData(data);
 		setName(data.firstName);
 		setSubmitted(true);

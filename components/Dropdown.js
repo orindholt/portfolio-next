@@ -1,7 +1,6 @@
 import {useState} from "react";
 import {IoCaretUp} from "react-icons/io5";
 import {motion as m, AnimatePresence} from "framer-motion";
-import Link from "next/link";
 import useMediaQuery from "../Utility/useMediaQuery";
 
 const dropMenuVariants = {
@@ -22,25 +21,19 @@ const dropMenuVariants = {
 	},
 };
 
-const dropItemVariants = {
-	hidden: {opacity: 0, x: -20},
-	show: {opacity: 1, x: 0},
-	exit: {opacity: 0, x: 20},
-};
-
-const Dropdown = ({liText = "Undefined", list}) => {
+const Dropdown = ({subject, children}) => {
 	const [open, setOpen] = useState(false);
 	const isDesktop = useMediaQuery("md");
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto ${
+			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold hover:text-orange ${
 				open ? "!text-orange" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
 		>
 			<div className="relative md:flex md:items-center md:gap-1">
-				{liText}
+				{subject}
 				<m.button
 					className="absolute md:static -right-7 md:-right-5 top-1"
 					animate={open ? {rotate: 180} : {rotate: 0}}
@@ -55,21 +48,11 @@ const Dropdown = ({liText = "Undefined", list}) => {
 						initial="hidden"
 						animate="show"
 						exit="exit"
-						className={`md:absolute w-full md:w-auto static flex flex-col font-normal text-center md:text-left top-8 left-0 border-white ${
-							!isDesktop && "border-r-4"
+						className={`md:absolute w-full md:w-auto static flex flex-col font-medium text-center md:text-left top-8 left-0 border-white dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-95 ${
+							!isDesktop ? "border-r-4 pl-1" : "border-l-4"
 						}`}
 					>
-						{list.map((item, i) => {
-							return (
-								<m.li
-									key={i}
-									variants={dropItemVariants}
-									className="md:hover:text-orange dark:text-white text-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-80 md:backdrop-blur-md"
-								>
-									<Link href={`/work/${item.toLowerCase()}`}>{item}</Link>
-								</m.li>
-							);
-						})}
+						{children}
 					</m.ul>
 				)}
 			</AnimatePresence>

@@ -15,9 +15,6 @@
 }
 
 @layer components {
-	.nav-item {
-		@apply transition-colors md:hover:!text-orange select-none font-bold dark:text-white text-black;
-	}
 	.form-item {
 		@apply p-2 rounded-sm transition-all border-l-8 border-red border-solid border border-opacity-0 bg-black dark:bg-darkGray text-white placeholder:text-gray focus:!bg-opacity-0 focus:text-black focus:dark:text-white focus:placeholder:text-darkGray focus:scale-[1.02];
 	}

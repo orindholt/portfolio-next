@@ -19,6 +19,7 @@ const ThemeSwitch = () => {
 	return (
 		<m.button
 			onClick={() => setDarkMode(!darkMode)}
+			className="flex"
 			animate={darkMode ? {rotate: 360} : {rotate: 0}}
 		>
 			{darkMode ? <IoMoon /> : <IoSunny />}
