@@ -196,7 +196,7 @@ const Contact = () => {
 						Send
 					</button>
 				</form>
-				<p className="my-4">Or</p>
+				<p className="my-2 dark:opacity-10 opacity-40">Or</p>
 				<div className="flex flex-col gap-2 items-center">
 					<a
 						href={`mailto:${email}`}

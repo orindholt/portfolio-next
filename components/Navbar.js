@@ -1,6 +1,6 @@
-import {useState} from "react";
-import {motion as m, AnimatePresence} from "framer-motion";
-import {IoLogoGithub} from "react-icons/io5";
+import { useState } from "react";
+import { motion as m, AnimatePresence } from "framer-motion";
+import { IoLogoGithub } from "react-icons/io5";
 import ThemeSwitch from "./ThemeSwitch";
 import MenuIcon from "./MenuIcon/MenuIcon";
 import Dropdown from "./Dropdown";
@@ -27,14 +27,14 @@ const variants = {
 };
 
 const dropItemVariants = {
-	hidden: {opacity: 0, x: -20},
-	show: {opacity: 1, x: 0},
-	exit: {opacity: 0, x: 20},
+	hidden: { opacity: 0, x: -20 },
+	show: { opacity: 1, x: 0 },
+	exit: { opacity: 0, x: 20 },
 };
 
 const buttonVariants = {
-	hover: {scale: 1.1},
-	tap: {scale: 0.9},
+	hover: { scale: 1.1 },
+	tap: { scale: 0.9 },
 };
 
 const Navbar = () => {
@@ -52,24 +52,24 @@ const Navbar = () => {
 						exit="hidden"
 						className="fixed right-0 top-0 z-50 md:h-12 dark:bg-black bg-white !bg-opacity-80 backdrop-blur-md md:backdrop-blur-sm h-full py-8 md:py-0 w-64 md:w-full md:!translate-x-0 md:!opacity-100"
 					>
-						<ul className="flex flex-col text-2xl md:text-lg items-center h-full md:flex-row md:justify-center gap-10 md:px-6 font-bold">
+						<ul className="flex flex-col text-2xl md:text-lg items-center h-full md:flex-row gap-10 md:px-6 font-bold">
 							<NavItem to="/" text="Home" />
 							<Dropdown subject="Work">
 								<m.div
 									variants={dropItemVariants}
-									className={isDesktop ? "px-2 py-1" : ""}
+									className="md:px-2 md:py-1 text-black"
 								>
 									<NavItem to="/web" text="Web" />
 								</m.div>
 								<m.div
 									variants={dropItemVariants}
-									className={isDesktop ? "px-2 py-1" : ""}
+									className="md:px-2 md:py-1 text-black"
 								>
 									<NavItem to="/programming" text="Programming" />
 								</m.div>
 								<m.div
 									variants={dropItemVariants}
-									className={isDesktop ? "px-2 py-1" : ""}
+									className="md:px-2 md:py-1 text-black"
 								>
 									<NavItem to="/photography" text="Photography" />
 								</m.div>
@@ -77,7 +77,7 @@ const Navbar = () => {
 							<NavItem to="/about" text="About" />
 							<NavItem to="/blog" text="Blog" />
 							<NavItem to="/contact" text="Contact" />
-							<div className="flex gap-4 h-full md:h-auto md:items-center md:ml-0 text-4xl md:text-2xl md:flex-row flex-col">
+							<div className="flex gap-5 h-full md:h-auto md:items-center text-4xl md:text-2xl md:flex-row flex-col md:ml-auto">
 								<Searchbar />
 								<div className="flex gap-5 justify-center md:gap-4 mt-auto md:mt-0">
 									<ThemeSwitch />
