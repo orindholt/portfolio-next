@@ -1,6 +1,6 @@
-import {formContext} from "../Utility/Context";
-import {useContext, useEffect, useState, useRef} from "react";
-import {motion as m} from "framer-motion";
+import { formContext } from "../Utility/Context";
+import { useContext, useEffect, useState, useRef } from "react";
+import { motion as m } from "framer-motion";
 import Head from "next/head";
 import Link from "next/link";
 import CareerTree from "../components/CareerTree/Tree";
@@ -26,13 +26,13 @@ const randomNum = (min, max) => {
 };
 
 export default function Home() {
-	const {formData} = useContext(formContext);
+	const { formData } = useContext(formContext);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [username, setUsername] = useState("");
 
 	useEffect(() => {
 		if (Object.keys(formData).length) {
-			const {firstName} = formData;
+			const { firstName } = formData;
 			setFormSubmitted(true);
 			setUsername(firstName);
 		}
@@ -47,9 +47,9 @@ export default function Home() {
 			</Head>
 			<>
 				<m.h1
-					initial={{x: -20, opacity: 0}}
-					animate={{x: 0, opacity: 1}}
-					transition={{type: "tween", ease: "easeInOut", duration: 1}}
+					initial={{ x: -20, opacity: 0 }}
+					animate={{ x: 0, opacity: 1 }}
+					transition={{ type: "tween", ease: "easeInOut", duration: 1 }}
 					className="text-6xl font-light text-left"
 				>
 					{formSubmitted
