@@ -77,7 +77,7 @@ const Navbar = () => {
 							<NavItem to="/about" text="About" />
 							<NavItem to="/blog" text="Blog" />
 							<NavItem to="/contact" text="Contact" />
-							<div className="flex gap-5 h-full md:h-auto md:items-center text-4xl md:text-2xl md:flex-row flex-col md:ml-auto">
+							<div className="flex gap-4 h-full md:h-auto md:items-center text-4xl md:text-2xl md:flex-row flex-col md:ml-auto">
 								<Searchbar />
 								<div className="flex gap-5 justify-center md:gap-4 mt-auto md:mt-0">
 									<ThemeSwitch />
