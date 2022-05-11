@@ -4,11 +4,11 @@ const Custom404 = () => {
 	return (
 		<div className="mt-20 flex flex-col items-center">
 			<h1 className="text-4xl font-bold">Whoops!</h1>
-			<p className="dark:text-gray text-darkGray">
+			<p className="dark:text-gray-normal text-gray-dark">
 				Seems that you have stumbled onto a{" "}
 				<span className="font-semibold">404</span>
 			</p>
-			<p className="dark:text-gray text-darkGray">
+			<p className="dark:text-gray-normal text-gray-dark">
 				That means I messed up somewhere.
 			</p>
 			<Link href="/" passHref>

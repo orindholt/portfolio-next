@@ -6,7 +6,7 @@ import MenuIcon from "./MenuIcon/MenuIcon";
 import Dropdown from "./Dropdown";
 import NavItem from "./NavItem";
 import Searchbar from "./Searchbar";
-import useMediaQuery from "../Utility/useMediaQuery";
+import useMediaQuery from "../utility/useMediaQuery";
 
 const variants = {
 	hidden: {
