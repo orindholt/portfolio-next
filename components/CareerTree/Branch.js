@@ -8,7 +8,7 @@ const CareerBranch = ({
 	},
 }) => {
 	return (
-		<li className="text-left flex items-center gap-3 text-4xl">
+		<li className="text-left flex items-center gap-3 text-4xl odd:ml-auto">
 			<IoCaretForward />
 			<div>
 				<div className="flex gap-2 items-center">

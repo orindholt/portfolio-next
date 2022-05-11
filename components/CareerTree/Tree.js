@@ -42,12 +42,14 @@ const positions = [
 const CareerTree = () => {
 	return (
 		<div className="my-6 flex flex-col">
-			<h2 className="font-light text-3xl text-left my-4">Where have I been?</h2>
-			<ul className="flex flex-col gap-4">
-				{positions.map((position, i) => {
-					return <CareerBranch key={i} position={position} />;
-				})}
-			</ul>
+			<h2 className="font-light text-3xl text-center my-4">Experience?</h2>
+			<div className="flex">
+				<ul className="flex flex-col gap-4 w-full">
+					{positions.map((position, i) => {
+						return <CareerBranch key={i} position={position} />;
+					})}
+				</ul>
+			</div>
 			<a
 				className="gap-1 items-center md:hover:text-orange text-xl inline-flex mr-auto mt-4 font-medium"
 				target="_blank"
