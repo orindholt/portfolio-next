@@ -16,10 +16,20 @@ module.exports = {
 				inter: "'Inter'",
 			},
 			colors: {
-				gray: "#CCC5B9",
-				darkGray: "#403D39",
+				gray: {
+					normal: "#B6B5B6",
+					dark: "#403D39",
+				},
+				silver: "#b7b7c7",
+				blue: {
+					normal: "#575766",
+					dark: "#35333D",
+				},
 				black: "#252422",
-				orange: "#EB5E28",
+				orange: {
+					normal: "#f85032",
+					dark: "#e73827",
+				},
 				green: "#74c69d",
 				red: "#e63946",
 			},
