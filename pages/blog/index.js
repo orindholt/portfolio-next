@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Post from "../../components/Post";
-import { useEffect } from "react";
 import axios from "axios";
 
 const Blog = ({ posts }) => {
