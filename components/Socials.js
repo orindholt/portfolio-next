@@ -1,4 +1,3 @@
-import {motion} from "framer-motion";
 import {
 	IoLogoGithub,
 	IoLogoLinkedin,
@@ -7,19 +6,19 @@ import {
 } from "react-icons/io5";
 
 const buttonVariants = {
-	hover: {scale: 1.1},
-	tap: {scale: 0.9},
+	hover: { scale: 1.1 },
+	tap: { scale: 0.9 },
 };
 
 const Socials = () => {
 	return (
 		<ul className="flex gap-4 text-xl">
-			<motion.li variants={buttonVariants} whileHover="hover" whileTap="tap">
+			<li className="md:hover:scale-110 transition-transform">
 				<a target="_blank" rel="noreferrer" href="https://github.com/orindholt">
 					<IoLogoGithub />
 				</a>
-			</motion.li>
-			<motion.li variants={buttonVariants} whileHover="hover" whileTap="tap">
+			</li>
+			<li className="md:hover:scale-110 transition-transform">
 				<a
 					target="_blank"
 					rel="noreferrer"
@@ -27,8 +26,8 @@ const Socials = () => {
 				>
 					<IoLogoLinkedin />
 				</a>
-			</motion.li>
-			<motion.li variants={buttonVariants} whileHover="hover" whileTap="tap">
+			</li>
+			<li className="md:hover:scale-110 transition-transform">
 				<a
 					target="_blank"
 					rel="noreferrer"
@@ -36,8 +35,8 @@ const Socials = () => {
 				>
 					<IoLogoStackoverflow />
 				</a>
-			</motion.li>
-			<motion.li variants={buttonVariants} whileHover="hover" whileTap="tap">
+			</li>
+			<li className="md:hover:scale-110 transition-transform">
 				<a
 					target="_blank"
 					rel="noreferrer"
@@ -45,7 +44,7 @@ const Socials = () => {
 				>
 					<IoLogoInstagram />
 				</a>
-			</motion.li>
+			</li>
 		</ul>
 	);
 };

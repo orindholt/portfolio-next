@@ -2,16 +2,9 @@ import Image from "next/image";
 
 const About = () => {
 	return (
-		<div className="overflow-hidden rounded-md">
-			<Image
-				src="/assets/me.jpg"
-				layout="responsive"
-				width="2805"
-				height="4986"
-				quality="70"
-				alt="me"
-			/>
-		</div>
+		<section className="overflow-hidden rounded-md">
+			<h2 className="text-4xl font-bold">What do I do?</h2>
+		</section>
 	);
 };
 

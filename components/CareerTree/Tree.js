@@ -1,19 +1,68 @@
-import {motion as m} from "framer-motion";
-import {IoLogoLinkedin} from "react-icons/io5";
+import { motion as m } from "framer-motion";
+import { IoLogoLinkedin } from "react-icons/io5";
 import CareerBranch from "./Branch";
 
-const positions = [{name: "", date: "", desc: ""}];
+const date = new Date();
+const months = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+];
+
+const positions = [
+	{
+		name: "3 Wise Monkeys",
+		status: "Junior Frontend Developer",
+		date: {
+			from: { year: "2022", month: "April" },
+			to: { year: date.getFullYear(), month: months[date.getMonth()] },
+		},
+		desc: "",
+	},
+	{
+		name: "3 Wise Monkeys",
+		status: "Frontend Developer Intern",
+		date: {
+			from: { year: "2022", month: "March" },
+			to: { year: "2022", month: "April" },
+		},
+		desc: "",
+	},
+	{
+		name: "Roskilde Technical School",
+		status: "Web Development Student",
+		date: {
+			from: { year: "2021", month: "March" },
+			to: { year: "2022", month: "April" },
+		},
+		desc: "",
+	},
+];
 
 const CareerTree = () => {
 	return (
-		<>
-			<div>
-				{positions.map((i, position) => {
-					return <CareerBranch key={i} position={position} />;
-				})}
+		<div className="my-6 flex flex-col">
+			<h2 className="font-light text-3xl text-center my-4">
+				What experience do I have?
+			</h2>
+			<div className="flex">
+				<ul className="flex flex-col gap-4 w-full">
+					{positions.map((position, i) => {
+						return <CareerBranch key={i} position={position} />;
+					})}
+				</ul>
 			</div>
 			<a
-				className="gap-1 items-center md:hover:text-orange text-xl inline-flex mr-auto"
+				className="gap-1 items-center md:hover:text-orange-normal text-xl inline-flex mr-auto mt-4 font-medium"
 				target="_blank"
 				rel="noreferrer"
 				href="https://www.linkedin.com/in/oliver-rindholt-55707b217"
@@ -21,9 +70,9 @@ const CareerTree = () => {
 				<span>
 					<IoLogoLinkedin />
 				</span>
-				See more
+				LinkedIn
 			</a>
-		</>
+		</div>
 	);
 };
 

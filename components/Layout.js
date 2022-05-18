@@ -1,11 +1,11 @@
 import Navbar from "./Navbar";
 import Footerbar from "./Footer";
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
 	return (
 		<div id="app-wrap" className="flex flex-col min-h-screen">
 			<Navbar />
-			<main className="pb-16 pt-24 px-[5%] text-center max-w-7xl mx-auto w-full">
+			<main className="pb-10 pt-16 md:pt-20 px-[5%] text-center max-w-7xl mx-auto w-full">
 				{children}
 			</main>
 			<Footerbar />

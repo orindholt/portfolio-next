@@ -1,49 +1,42 @@
-import {useState} from "react";
-import {IoCaretUp} from "react-icons/io5";
-import {motion as m, AnimatePresence} from "framer-motion";
-import Link from "next/link";
-import useMediaQuery from "../Utility/useMediaQuery";
+import { useState } from "react";
+import { IoCaretUp } from "react-icons/io5";
+import { motion as m, AnimatePresence } from "framer-motion";
+import useMediaQuery from "../utils/useMediaQuery";
 
 const dropMenuVariants = {
 	hidden: {
 		opacity: 0,
 		height: "0px",
-		transition: {staggerChildren: 0.1, delay: 0.4},
+		transition: { staggerChildren: 0.1, delay: 0.4 },
 	},
 	show: {
 		opacity: 1,
 		height: "fit-content",
-		transition: {staggerChildren: 0.1},
+		transition: { staggerChildren: 0.1 },
 	},
 	exit: {
 		opacity: 0,
 		height: "0px",
-		transition: {staggerChildren: 0.1, delay: 0.4},
+		transition: { staggerChildren: 0.1, delay: 0.4 },
 	},
 };
 
-const dropItemVariants = {
-	hidden: {opacity: 0, x: -20},
-	show: {opacity: 1, x: 0},
-	exit: {opacity: 0, x: 20},
-};
-
-const Dropdown = ({liText = "Undefined", list}) => {
+const Dropdown = ({ subject, children }) => {
 	const [open, setOpen] = useState(false);
 	const isDesktop = useMediaQuery("md");
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto ${
-				open ? "!text-orange" : "text-inherit"
+			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold hover:text-orange-normal ${
+				open ? "!text-orange-normal" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
 		>
 			<div className="relative md:flex md:items-center md:gap-1">
-				{liText}
+				{subject}
 				<m.button
 					className="absolute md:static -right-7 md:-right-5 top-1"
-					animate={open ? {rotate: 180} : {rotate: 0}}
+					animate={open ? { rotate: 180 } : { rotate: 0 }}
 				>
 					<IoCaretUp />
 				</m.button>
@@ -55,21 +48,11 @@ const Dropdown = ({liText = "Undefined", list}) => {
 						initial="hidden"
 						animate="show"
 						exit="exit"
-						className={`md:absolute w-full md:w-auto static flex flex-col font-normal text-center md:text-left top-8 left-0 border-white ${
-							!isDesktop && "border-r-4"
+						className={`md:absolute w-full md:w-auto static flex flex-col font-medium text-center md:text-left top-8 left-0 dark:border-white border-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-95 ${
+							!isDesktop ? "border-r-4 pl-1" : "border-l-4"
 						}`}
 					>
-						{list.map((item, i) => {
-							return (
-								<m.li
-									key={i}
-									variants={dropItemVariants}
-									className="md:hover:text-orange dark:text-white text-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-80 md:backdrop-blur-md"
-								>
-									<Link href={`/work/${item.toLowerCase()}`}>{item}</Link>
-								</m.li>
-							);
-						})}
+						{children}
 					</m.ul>
 				)}
 			</AnimatePresence>
