@@ -180,15 +180,23 @@ export default function Home() {
 									<StartLink key={i} anchor={page.name} icon={page.icon} />
 								);
 							})}
-							<Link
-								href={`/${pages[randomNum(0, pages.length)].name}`}
-								passHref
-							>
-								<a className="font-semibold flex items-center text-xl">
-									<IoDice />
-								</a>
-							</Link>
 						</ul>
+						<Link href={`/${pages[randomNum(0, pages.length)].name}`} passHref>
+							<m.a
+								className="font-medium flex items-center text-3xl gap-1"
+								whileHover={{
+									rotate: [0, -45, 45],
+									transition: {
+										repeat: Infinity,
+										repeatType: "mirror",
+										repeatDelay: 0,
+										duration: 0.5,
+									},
+								}}
+							>
+								<IoDice />
+							</m.a>
+						</Link>
 					</nav>
 				</section>
 			</div>
