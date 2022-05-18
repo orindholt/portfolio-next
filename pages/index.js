@@ -1,12 +1,23 @@
 import { formContext } from "../utility/Context";
 import { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { IoRemove, IoAdd } from "react-icons/io5";
+import {
+	IoRemove,
+	IoAdd,
+	IoLogoReact,
+	IoCodeSlash,
+	IoCamera,
+	IoSend,
+	IoAccessibility,
+	IoBook,
+	IoDice,
+} from "react-icons/io5";
 import Head from "next/head";
 import Link from "next/link";
 import CareerTree from "../components/CareerTree/Tree";
 import GenericButton from "../components/GenericButton";
 import MapLoaction from "../components/MapLocation";
+import StartLink from "../components/StartLink";
 
 const welcomeMessages = [
 	"Welcome back",
@@ -16,6 +27,33 @@ const welcomeMessages = [
 	"Thanks for visiting",
 	"Greetings",
 	"Good, you're back",
+];
+
+const pages = [
+	{
+		icon: <IoLogoReact />,
+		name: "web",
+	},
+	{
+		icon: <IoCodeSlash />,
+		name: "programming",
+	},
+	{
+		icon: <IoCamera />,
+		name: "photography",
+	},
+	{
+		icon: <IoAccessibility />,
+		name: "about",
+	},
+	{
+		icon: <IoBook />,
+		name: "blog",
+	},
+	{
+		icon: <IoSend />,
+		name: "contact",
+	},
 ];
 
 const capitalizeString = text => {
@@ -69,7 +107,19 @@ export default function Home() {
 						{formSubmitted ? capitalizeString(username) : "I'm Oliver"}.
 					</span>
 				</m.h1>
-				<h2 className="text-3xl text-blue-normal">Frontend Developer</h2>
+				<m.h2
+					initial={{ opacity: 0, y: "50%" }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{
+						type: "tween",
+						ease: "easeInOut",
+						duration: 1,
+						delay: 0.75,
+					}}
+					className="text-3xl bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip"
+				>
+					Frontend Developer
+				</m.h2>
 				{mapView && <MapLoaction />}
 				<div className="dark:text-silver text-lg flex flex-col px-24">
 					<p className="pt-4">
@@ -116,7 +166,31 @@ export default function Home() {
 						</GenericButton>
 					</div>
 				</div>
-				<CareerTree />
+				{/* <CareerTree /> */}
+				<section className="my-6">
+					<h2 className="font-bold text-2xl">Get Started</h2>
+					<p className="text-silver text-base">
+						Where to{" "}
+						{Boolean(Object.keys(formData).length) ? "this time" : "first"}?
+					</p>
+					<nav className="flex flex-col gap-2 items-center">
+						<ul className="flex gap-3 mt-4 justify-center">
+							{pages.map((page, i) => {
+								return (
+									<StartLink key={i} anchor={page.name} icon={page.icon} />
+								);
+							})}
+							<Link
+								href={`/${pages[randomNum(0, pages.length)].name}`}
+								passHref
+							>
+								<a className="font-semibold flex items-center text-xl">
+									<IoDice />
+								</a>
+							</Link>
+						</ul>
+					</nav>
+				</section>
 			</div>
 		</>
 	);

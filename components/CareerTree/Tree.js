@@ -30,10 +30,19 @@ const positions = [
 	},
 	{
 		name: "3 Wise Monkeys",
-		status: "Junior Frontend Developer",
+		status: "Frontend Developer Intern",
 		date: {
-			from: { year: "2022", month: "April" },
-			to: { year: date.getFullYear(), month: months[date.getMonth()] },
+			from: { year: "2022", month: "March" },
+			to: { year: "2022", month: "April" },
+		},
+		desc: "",
+	},
+	{
+		name: "Roskilde Technical School",
+		status: "Web Development Student",
+		date: {
+			from: { year: "2021", month: "March" },
+			to: { year: "2022", month: "April" },
 		},
 		desc: "",
 	},
@@ -42,7 +51,9 @@ const positions = [
 const CareerTree = () => {
 	return (
 		<div className="my-6 flex flex-col">
-			<h2 className="font-light text-3xl text-center my-4">Experience?</h2>
+			<h2 className="font-light text-3xl text-center my-4">
+				What experience do I have?
+			</h2>
 			<div className="flex">
 				<ul className="flex flex-col gap-4 w-full">
 					{positions.map((position, i) => {
@@ -51,7 +62,7 @@ const CareerTree = () => {
 				</ul>
 			</div>
 			<a
-				className="gap-1 items-center md:hover:text-orange text-xl inline-flex mr-auto mt-4 font-medium"
+				className="gap-1 items-center md:hover:text-orange-normal text-xl inline-flex mr-auto mt-4 font-medium"
 				target="_blank"
 				rel="noreferrer"
 				href="https://www.linkedin.com/in/oliver-rindholt-55707b217"

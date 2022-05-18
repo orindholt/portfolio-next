@@ -27,8 +27,8 @@ const Dropdown = ({ subject, children }) => {
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold hover:text-orange ${
-				open ? "!text-orange" : "text-inherit"
+			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold hover:text-orange-normal ${
+				open ? "!text-orange-normal" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
 		>

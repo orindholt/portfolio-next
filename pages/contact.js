@@ -104,7 +104,7 @@ const Contact = () => {
 					className="text-6xl font-bold text-center transition-colors"
 				>
 					Contact{" "}
-					<span className="hover:text-orange transition-colors">
+					<span className="hover:text-orange-normal transition-colors">
 						<Link href="/about">me</Link>
 					</span>
 				</m.h2>
@@ -201,14 +201,14 @@ const Contact = () => {
 				<div className="flex flex-col gap-2 items-center">
 					<a
 						href={`mailto:${email}`}
-						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange"
+						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange-normal"
 					>
 						<IoMail />
 						<p>{email}</p>
 					</a>
 					<a
 						href={`tel:+45${phone}`}
-						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange"
+						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange-normal"
 					>
 						<IoCall />
 						<p>+45 {phone}</p>
