@@ -2,7 +2,7 @@ import db from "../../../utils/db";
 
 const collectionId = "blogs";
 
-export default async (req, res) => {
+const entry = async (req, res) => {
 	try {
 		const { slug } = req.body;
 		const entries = await db.collection(collectionId).get();
@@ -21,3 +21,5 @@ export default async (req, res) => {
 		res.status(400).end();
 	}
 };
+
+export default entry;

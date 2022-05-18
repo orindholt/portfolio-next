@@ -1,5 +1,5 @@
 import { ThemeProvider } from "next-themes";
-import FormContextProvider from "../utility/Context";
+import FormContextProvider from "../utils/Context";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 

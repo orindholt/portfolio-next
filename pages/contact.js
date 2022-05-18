@@ -5,9 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { IoCall, IoMail } from "react-icons/io5";
 import Head from "next/head";
-import Party from "../utility/Party";
+import Party from "../utils/Party";
 import Link from "next/link";
-import { formContext } from "../utility/Context";
+import { formContext } from "../utils/Context";
 import GenericButton from "../components/GenericButton";
 
 const maxTxtAreaLength = 400;

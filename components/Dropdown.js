@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IoCaretUp } from "react-icons/io5";
 import { motion as m, AnimatePresence } from "framer-motion";
-import useMediaQuery from "../utility/useMediaQuery";
+import useMediaQuery from "../utils/useMediaQuery";
 
 const dropMenuVariants = {
 	hidden: {

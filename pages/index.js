@@ -1,4 +1,4 @@
-import { formContext } from "../utility/Context";
+import { formContext } from "../utils/Context";
 import { useContext, useEffect, useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
 import {
@@ -124,7 +124,7 @@ export default function Home() {
 				<div className="dark:text-silver text-lg flex flex-col px-24">
 					<p className="pt-4">
 						<br />
-						I'm a Junior Frontend Developer, based in{" "}
+						I&apos;m a Junior Frontend Developer, based in{" "}
 						<span className="font-semibold dark:text-white text-black">
 							Copenhagen.
 						</span>

@@ -2,7 +2,7 @@ import db from "../../../utils/db";
 
 const collectionId = "blogs";
 
-export default async (req, res) => {
+const entries = async (req, res) => {
 	try {
 		const entries = await db.collection(collectionId).orderBy("created").get();
 		const entriesData = entries.docs.map(entry => ({
@@ -14,3 +14,5 @@ export default async (req, res) => {
 		res.status(400).end();
 	}
 };
+
+export default entries;

@@ -2,7 +2,7 @@ import db from "../../../utils/db";
 
 const collectionId = "blogs";
 
-export default async (req, res) => {
+const slugEntry = async (req, res) => {
 	const { id } = req.query;
 
 	try {
@@ -29,3 +29,5 @@ export default async (req, res) => {
 		res.status(400).end();
 	}
 };
+
+export default slugEntry;
