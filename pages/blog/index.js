@@ -3,9 +3,7 @@ import Post from "../../components/Post";
 import { useEffect } from "react";
 import axios from "axios";
 
-const Blog = ({ posts }) => {
-	console.log(posts);
-
+const Blog = () => {
 	return (
 		<>
 			<Head>
@@ -16,16 +14,16 @@ const Blog = ({ posts }) => {
 			<h2 className="text-4xl font-bold">Welcome to my blog</h2>
 			<p className="text-blue-normal">Please pick a post to get started!</p>
 			<div className="grid grid-cols-2">
-				{posts &&
+				{/* posts &&
 					posts.entriesData.map((i, { name, caption }) => {
 						return <Post key={i} name={name} caption={caption} />;
-					})}
+					}) */}
 			</div>
 		</>
 	);
 };
 
-export const getStaticProps = async () => {
+/* export const getStaticProps = async () => {
 	const res = await axios.get("http://localhost:3000/api/entry/entries");
 	const posts = await res.data;
 
@@ -35,6 +33,6 @@ export const getStaticProps = async () => {
 		},
 		revalidate: 10,
 	};
-};
+}; */
 
 export default Blog;
