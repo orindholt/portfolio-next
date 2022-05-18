@@ -14,7 +14,6 @@
 
 # production
 /docs
-/utils/**/serviceAccountKey.json
 
 # misc
 .DS_Store
