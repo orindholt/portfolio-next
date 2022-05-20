@@ -1,10 +1,16 @@
+import Head from "next/head";
 import Image from "next/image";
 
 const About = () => {
 	return (
-		<section className="overflow-hidden rounded-md">
-			<h2 className="text-4xl font-bold">What do I do?</h2>
-		</section>
+		<>
+			<Head>
+				<title>Oliver - About</title>
+			</Head>
+			<section className="overflow-hidden rounded-md">
+				<h2 className="text-4xl font-bold">What do I do?</h2>
+			</section>
+		</>
 	);
 };
 
