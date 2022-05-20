@@ -3,14 +3,21 @@ import { IoSync } from "react-icons/io5";
 
 const Loader = () => {
 	return (
-		<m.div
-			className="text-4xl text-silver inline-block"
-			initial={{ rotate: 0 }}
-			animate={{ rotate: 360 }}
-			transition={{ repeat: Infinity, duration: 1 }}
+		<m.aside
+			className="z-50 fixed top-0 bottom-0 right-0 left-0"
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			exit={{ opacity: 0 }}
 		>
-			<IoSync />
-		</m.div>
+			<m.div
+				className="text-4xl text-silver"
+				initial={{ rotate: 0 }}
+				animate={{ rotate: 360 }}
+				transition={{ repeat: Infinity, duration: 1 }}
+			>
+				<IoSync />
+			</m.div>
+		</m.aside>
 	);
 };
 

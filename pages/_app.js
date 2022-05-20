@@ -3,7 +3,7 @@ import FormContextProvider from "../utils/Context";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 
-const MyApp = ({ Component, pageProps }) => {
+const MyApp = ({ Component, pageProps, router }) => {
 	return (
 		<FormContextProvider>
 			<ThemeProvider
@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
 				enableSystem="true"
 				themes={["dark", "light"]}
 			>
-				<Layout>
+				<Layout router={router}>
 					<Component {...pageProps} />
 				</Layout>
 			</ThemeProvider>

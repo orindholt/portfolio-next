@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, Children, cloneElement } from "react";
 import { IoCaretUp } from "react-icons/io5";
 import { motion as m, AnimatePresence } from "framer-motion";
 import useMediaQuery from "../utils/useMediaQuery";
@@ -21,13 +21,20 @@ const dropMenuVariants = {
 	},
 };
 
-const Dropdown = ({ subject, children }) => {
+const dropItemVariants = {
+	hidden: { opacity: 0, x: -20 },
+	show: { opacity: 1, x: 0 },
+	exit: { opacity: 0, x: 20 },
+};
+
+const Dropdown = ({ children, subject }) => {
 	const [open, setOpen] = useState(false);
 	const isDesktop = useMediaQuery("md");
+	Children.map(el => console.log(el));
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold hover:text-orange-normal ${
+			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold select-none hover:text-orange-normal ${
 				open ? "!text-orange-normal" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
@@ -52,7 +59,10 @@ const Dropdown = ({ subject, children }) => {
 							!isDesktop ? "border-r-4 pl-1" : "border-l-4"
 						}`}
 					>
-						{children}
+						{children &&
+							Children.map(children, child => (
+								<m.div variants={dropItemVariants}>{cloneElement(child)}</m.div>
+							))}
 					</m.ul>
 				)}
 			</AnimatePresence>

@@ -28,6 +28,7 @@ const Searchbar = () => {
 						initial={{ width: 0 }}
 						animate={{ width: 140, paddingLeft: 4, paddingRight: 4 }}
 						exit={{ width: 0, paddingLeft: 0, paddingRight: 0 }}
+						transition={{ type: "tween" }}
 						className="bg-transparent font-normal text-base md:w-auto w-full"
 						value={searchValue}
 						ref={searchEl}

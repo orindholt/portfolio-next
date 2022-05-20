@@ -3,13 +3,17 @@ import { useRouter } from "next/router";
 
 const NavItem = ({ to, text }) => {
 	const router = useRouter();
+
+	if (router.pathname === to) console.log(to);
 	return (
 		<li
-			className={`transition-colors md:hover:!text-orange-normal select-none dark:text-white ${
-				router.pathname === to ? "!text-orange-normal" : "text-inherit"
+			className={`md:hover:!text-orange-normal select-none dark:text-white text-black ${
+				Boolean(router.pathname === to) && "!text-orange-normal"
 			}`}
 		>
-			<Link href={to}>{text}</Link>
+			<Link href={to} passHref>
+				<a className="w-full h-full block md:px-2 md:py-1">{text}</a>
+			</Link>
 		</li>
 	);
 };
