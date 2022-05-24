@@ -97,9 +97,11 @@ export default function Home() {
 					transition={{ type: "tween", ease: "easeInOut", duration: 1 }}
 					className="md:text-7xl text-5xl font-extralight"
 				>
-					{formSubmitted
-						? welcomeMessages[randomNum(0, welcomeMessages.length)] + " "
-						: "Hey, "}
+					<span className="md:inline hidden">
+						{formSubmitted
+							? welcomeMessages[randomNum(0, welcomeMessages.length)] + " "
+							: "Hey, "}
+					</span>
 					<span className="font-semibold md:text-8xl text-6xl">
 						{formSubmitted ? capitalizeString(username) : "I'm Oliver"}.
 					</span>
