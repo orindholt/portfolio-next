@@ -101,10 +101,10 @@ const Contact = () => {
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ type: "tween", duration: 1 }}
-					className="text-6xl font-bold text-center transition-colors"
+					className="text-6xl font-bold text-center"
 				>
 					Contact{" "}
-					<span className="hover:text-orange-normal transition-colors">
+					<span className="hover:text-orange-normal">
 						<Link href="/about">me</Link>
 					</span>
 				</m.h2>

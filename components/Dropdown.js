@@ -30,7 +30,6 @@ const dropItemVariants = {
 const Dropdown = ({ children, subject }) => {
 	const [open, setOpen] = useState(false);
 	const isDesktop = useMediaQuery("md");
-	Children.map(el => console.log(el));
 
 	return (
 		<li

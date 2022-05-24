@@ -4,7 +4,7 @@ import { IoSync } from "react-icons/io5";
 const Loader = () => {
 	return (
 		<m.aside
-			className="z-50 fixed top-0 bottom-0 right-0 left-0"
+			className="z-50 fixed top-0 bottom-0 right-0 left-0 grid place-content-center pointer-events-none"
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			exit={{ opacity: 0 }}

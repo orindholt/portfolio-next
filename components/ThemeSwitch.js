@@ -6,7 +6,7 @@ import Loader from "./Loader";
 
 const ThemeSwitch = () => {
 	const [mounted, setMounted] = useState(false);
-	const { theme, setTheme } = useTheme();
+	const { resolvedTheme, setTheme } = useTheme();
 
 	useEffect(() => {
 		setMounted(true);
@@ -18,11 +18,11 @@ const ThemeSwitch = () => {
 
 	return (
 		<m.button
-			onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+			onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
 			className="flex"
-			animate={theme === "dark" ? { rotate: 360 } : { rotate: 0 }}
+			animate={resolvedTheme === "dark" ? { rotate: 360 } : { rotate: 0 }}
 		>
-			{theme !== "dark" ? <IoMoon /> : <IoSunny />}
+			{resolvedTheme !== "dark" ? <IoMoon /> : <IoSunny />}
 		</m.button>
 	);
 };
