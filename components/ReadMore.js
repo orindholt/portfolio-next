@@ -11,7 +11,7 @@ const extendVariant = {
 const ReadMore = ({ text, more }) => {
 	const [extendText, setExtendText] = useState(false);
 	return (
-		<div className="dark:text-silver text-lg flex flex-col md:px-24">
+		<div className="dark:text-silver text-base md:text-lg flex flex-col md:px-24">
 			<p className="pt-4">
 				{text}
 				<AnimatePresence>

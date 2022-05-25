@@ -115,7 +115,7 @@ export default function Home() {
 						duration: 1,
 						delay: 0.75,
 					}}
-					className="md:text-3xl text-xl bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip"
+					className="md:text-3xl text-2xl bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip"
 				>
 					Frontend Developer
 				</m.h2>
@@ -126,8 +126,7 @@ export default function Home() {
 							I&apos;m a Junior Frontend Developer, based in{" "}
 							<span className="font-semibold dark:text-white text-black">
 								Copenhagen.
-							</span>
-							<br />
+							</span>{" "}
 							Currently studying web development at{" "}
 							<span
 								type="button"

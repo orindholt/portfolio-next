@@ -25,8 +25,8 @@ const dateToRealtime = date => {
 };
 
 const postVariant = {
-	hidden: { height: [100, 100, 0], opacity: [1, 0, 0] },
-	shown: { height: [0, 100, 100], opacity: [0, 0, 1] },
+	hidden: { height: [125, 125, 0], opacity: [1, 0, 0] },
+	shown: { height: [0, 125, 125], opacity: [0, 0, 1] },
 };
 
 const post = ({
@@ -43,7 +43,6 @@ const post = ({
 		slug: { current: slug },
 		caption,
 	} = content;
-	console.log(caption);
 	return (
 		<m.li
 			variants={postVariant}
@@ -51,13 +50,19 @@ const post = ({
 			animate="shown"
 			exit="hidden"
 			transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-			className="text-center max-w-lg"
+			className="text-center max-w-xl h-fit dark:md:hover:bg-gray-dark md:hover:bg-gray-light transition-colors rounded-sm overflow-y-hidden w-full"
 		>
 			<Link href={`/blog/${slug}`} passHref>
-				<a>
-					<h4 className="text-silver text-lg">{dateToRealtime(created)}</h4>
-					<h3 className="font-bold text-4xl">{title}</h3>
-					<h4 className="text-silver">{caption}</h4>
+				<a className="w-full h-full px-3 py-1 flex flex-col justify-center">
+					<h4 className="dark:text-silver text-blue-dark text-base font-light leading-4">
+						{dateToRealtime(created)}
+					</h4>
+					<h3 className="font-bold text-3xl md:text-4xl bg-gradient-to-br from-orange-light to-orange-normal text-clip">
+						{title}
+					</h3>
+					<h4 className="dark:text-silver text-blue-dark font-semibold text-sm sm:text-base">
+						{caption}
+					</h4>
 					{/* <Image src={`http://${_ref}`} width="1000" height="650" /> */}
 				</a>
 			</Link>
