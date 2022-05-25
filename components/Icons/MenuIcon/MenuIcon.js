@@ -1,12 +1,12 @@
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import styles from "./MenuIcon.module.css";
 
 const buttonVariants = {
-	hover: {scale: 1.1},
-	tap: {scale: 0.9},
+	hover: { scale: 1.1 },
+	tap: { scale: 0.9 },
 };
 
-const MenuIcon = ({state, setState}) => {
+const MenuIcon = ({ state, setState }) => {
 	return (
 		<motion.button
 			onClick={e => {
