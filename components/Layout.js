@@ -29,7 +29,7 @@ const Layout = ({ children, router }) => {
 						animate="enter"
 						exit="exit"
 						transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-						className="pb-10 pt-16 md:pt-20 px-[5%] text-center max-w-7xl mx-auto w-full relative"
+						className="pb-12 pt-16 md:pt-20 px-[5%] text-center max-w-7xl mx-auto w-full relative"
 					>
 						{children}
 					</m.main>
