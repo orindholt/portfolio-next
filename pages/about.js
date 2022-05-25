@@ -120,6 +120,7 @@ const About = () => {
 						src="/assets/me.jpg"
 						width="320"
 						height="320"
+						placeholder="blur"
 					/>
 				</div>
 				<p className="text-lg font-light mt-4 md:mt-0">What are my skills?</p>
