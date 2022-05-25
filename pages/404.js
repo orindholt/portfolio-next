@@ -33,7 +33,7 @@ const Custom404 = () => {
 				<div className="flex flex-col gap-2 mt-4">
 					<button
 						type="button"
-						className="flex items-center gap-1 hover:scale-110 transition-all"
+						className="flex items-center gap-1 md:hover:scale-110 transition-all"
 						onClick={() => router.back()}
 					>
 						Go Back
@@ -43,7 +43,7 @@ const Custom404 = () => {
 					</button>
 					<p className="text-silver">Or</p>
 					<Link href="/" passHref>
-						<a className="bg-gradient-to-tr from-orange-light to-orange-normal text-white font-bold py-1 px-3 rounded-sm hover:scale-105 transition-transform">
+						<a className="bg-gradient-to-tr from-orange-light to-orange-normal text-white font-bold py-1 px-3 rounded-sm md:hover:scale-105 transition-transform">
 							Home
 						</a>
 					</Link>

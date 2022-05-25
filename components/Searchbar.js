@@ -13,9 +13,9 @@ const Searchbar = () => {
 
 	return (
 		<li
-			className={`flex transition-all rounded-sm md:justify-start justify-center ${
+			className={`flex transition-all rounded-sm md:justify-start justify-center p-1 ${
 				searchActive
-					? "dark:bg-gray-dark bg-black text-white p-1 md:mr-2"
+					? "dark:bg-gray-dark bg-black text-white"
 					: "bg-transparent"
 			}`}
 		>
@@ -26,8 +26,8 @@ const Searchbar = () => {
 				{searchActive && (
 					<m.input
 						initial={{ width: 0 }}
-						animate={{ width: 140, paddingLeft: 4, paddingRight: 4 }}
-						exit={{ width: 0, paddingLeft: 0, paddingRight: 0 }}
+						animate={{ width: 140 }}
+						exit={{ width: 0 }}
 						transition={{ type: "tween" }}
 						className="bg-transparent font-normal text-base md:w-auto w-full"
 						value={searchValue}

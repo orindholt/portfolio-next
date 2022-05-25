@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion as m, AnimatePresence } from "framer-motion";
 import { IoLogoGithub } from "react-icons/io5";
 import ThemeSwitch from "../ThemeSwitch";
-import MenuIcon from "../MenuIcon/MenuIcon";
+import MenuIcon from "../Icons/MenuIcon/MenuIcon";
 import Dropdown from "../Dropdown";
 import NavItem from "./NavItem";
 import Searchbar from "../Searchbar";

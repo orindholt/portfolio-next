@@ -17,7 +17,7 @@ const Footer = () => {
 				<span className="font-bold">Curious on the code?</span> Feel free to
 				check out the{" "}
 				<a
-					className="text-orange-normal hover:underline"
+					className="text-orange-normal md:hover:underline"
 					target="_blank"
 					href="https://github.com/orindholt/portfolio-next"
 					rel="noreferrer"
