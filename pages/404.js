@@ -18,7 +18,7 @@ const Custom404 = () => {
 					</span>
 				</h1>
 				<p className="dark:text-gray-normal text-gray-dark">
-					Seems that you have stumbled onto a page that doesn't exist.
+					Seems that you have stumbled onto a page that doesn&apos;t exist.
 					<br />
 					<span className="font-semibold">
 						That means I messed up somewhere.
