@@ -6,6 +6,10 @@ const nextConfig = {
 		locales: ["en"],
 		defaultLocale: "en",
 	},
+	env: {
+		email: process.env.EMAIL,
+		password: process.env.PASSWORD,
+	},
 };
 
 module.exports = nextConfig;
