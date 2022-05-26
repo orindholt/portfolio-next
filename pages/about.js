@@ -20,7 +20,7 @@ const About = () => {
 										Who am I?
 									</h2>
 									<p className="dark:text-silver text-blue-normal my-3">
-										You might say that I'm a dev of many <br />
+										You might say that I&apos;m a dev of many <br />
 										<span className="underline dark:text-white text-black font-bold">
 											traits
 										</span>
@@ -33,7 +33,8 @@ const About = () => {
 									<p>
 										You name it, I can do it, or atleast google it.
 										<br />
-										I'm a quick learner, and really enjoy spending time coding.
+										I&apos;m a quick learner, and really enjoy spending time
+										coding.
 									</p>
 								</>
 							}
@@ -47,6 +48,7 @@ const About = () => {
 						quality={60}
 						placeholder="blur"
 						blurDataURL="/assets/placeholder.jpg"
+						alt="Me"
 					/>
 				</div>
 				<p className="text-2xl md:text-lg font-bold md:font-extralight mt-4 md:mt-0 mb-2 md:mb-0">
