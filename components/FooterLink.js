@@ -7,7 +7,7 @@ const FooterLink = ({ to, children }) => {
 		<Link href={to} passHref>
 			<a>
 				<li
-					className={`py-1 px-2 rounded-md text-xl font-semibold cursor-pointer bg-transparent dark:text-white text-black transition-colors ${
+					className={`py-1 px-2 rounded-md text-4xl font-semibold cursor-pointer bg-transparent dark:text-white text-black transition-colors ${
 						router.pathname === to
 							? "!bg-orange-normal !text-white !border-transparent"
 							: ""
