@@ -54,7 +54,7 @@ const Dropdown = ({ children, subject }) => {
 						initial="hidden"
 						animate="show"
 						exit="exit"
-						className={`md:absolute w-full md:w-auto static flex flex-col font-medium text-center md:text-left top-8 left-0 dark:border-white border-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-95 ${
+						className={`md:absolute w-full md:w-auto static flex flex-col font-medium text-center md:text-left top-[38px] left-0 dark:border-white border-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-90 ${
 							!isDesktop ? "border-r-4 pl-1" : "border-l-4"
 						}`}
 					>

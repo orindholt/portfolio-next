@@ -28,7 +28,7 @@ const TechCard = ({ tech }) => {
 
 	return (
 		<li
-			className="md:grid md:grid-rows-2 flex rounded-sm overflow-hidden border-4 border-solid"
+			className="md:grid md:grid-rows-2 flex rounded-sm overflow-hidden border-4 border-solid shadow-md"
 			style={{ borderColor: outlined ? "black" : bg }}
 			onClick={() => setActive(!active)}
 		>
