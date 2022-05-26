@@ -13,10 +13,11 @@ module.exports = {
 				l: "-10px 0px 10px 1px #252422",
 			},
 			fontFamily: {
-				inter: "'Inter'",
+				inter: "'Inter', sans-serif",
 			},
 			colors: {
 				gray: {
+					light: "#dedede",
 					normal: "#B6B5B6",
 					dark: "#403D39",
 				},

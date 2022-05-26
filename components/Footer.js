@@ -3,8 +3,6 @@ import Socials from "./Socials";
 import {
 	IoHome,
 	IoPlanet,
-	IoCodeSlash,
-	IoCamera,
 	IoInformationCircle,
 	IoBook,
 	IoCall,
@@ -12,12 +10,12 @@ import {
 
 const Footer = () => {
 	return (
-		<footer className="mt-auto flex fixed bottom-0 md:static bg-white dark:bg-black md:bg-black md:dark:bg-white w-full py-2 !bg-opacity-80 md:!bg-opacity-100 backdrop-blur-sm dark:text-black text-white text-center md:flex-col md:gap-1">
+		<footer className="mt-auto flex fixed bottom-0 md:static bg-white dark:bg-black md:bg-black md:dark:bg-white w-full py-2 !bg-opacity-70 dark:!bg-opacity-90 md:!bg-opacity-100 backdrop-blur-sm dark:text-black text-white text-center md:flex-col md:gap-1">
 			<p className="hidden md:block">
 				<span className="font-bold">Curious on the code?</span> Feel free to
 				check out the{" "}
 				<a
-					className="text-orange-normal hover:underline"
+					className="text-orange-normal md:hover:underline"
 					target="_blank"
 					href="https://github.com/orindholt/portfolio-next"
 					rel="noreferrer"
@@ -29,14 +27,8 @@ const Footer = () => {
 				<FooterLink to="/">
 					<IoHome />
 				</FooterLink>
-				<FooterLink to="/web">
+				<FooterLink to="/work">
 					<IoPlanet />
-				</FooterLink>
-				<FooterLink to="/programming">
-					<IoCodeSlash />
-				</FooterLink>
-				<FooterLink to="/photography">
-					<IoCamera />
 				</FooterLink>
 				<FooterLink to="/about">
 					<IoInformationCircle />

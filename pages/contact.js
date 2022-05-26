@@ -3,24 +3,22 @@ import { useForm } from "react-hook-form";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { IoCall, IoMail } from "react-icons/io5";
 import Head from "next/head";
 import Party from "../utils/Party";
 import Link from "next/link";
 import { formContext } from "../utils/Context";
 import GenericButton from "../components/GenericButton";
+import axios from "axios";
 
 const maxTxtAreaLength = 400;
-const email = "oliver.rindholt@gmail.com";
-const phone = "25702404";
 const emailRegEx =
 	/^([^.][a-z,0-9,!#$%&'*+\-/=?^_`{|}~.]{1,64})([^.,\s]@)([a-z\-]{1,255})(\.[a-z0-9]{2,})$/i;
 const nameRegEx = /^\p{L}+$/iu;
 
-const encode = data => {
-	return Object.keys(data)
-		.map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-		.join("&");
+const capitalizeString = text => {
+	if (typeof text === "string" && text.length >= 1) {
+		return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
+	} else return undefined;
 };
 
 const schema = yup
@@ -38,14 +36,11 @@ const schema = yup
 			.email("Invaild email")
 			.matches(emailRegEx, "Please write a vaild email")
 			.required(),
-		conEmail: yup
-			.string()
-			.required("Please repeat your email")
-			.oneOf([yup.ref("email")], "This email doesn't seem to match"),
-		msgArea: yup
+		msg: yup
 			.string()
 			.required("Please write a message")
 			.max(maxTxtAreaLength, "How dare you try to bypass the max?!"),
+		subject: yup.string().required("Please write a subject"),
 	})
 	.required();
 
@@ -54,11 +49,6 @@ const Contact = () => {
 	const [name, setName] = useState("");
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(true);
-	const capitalizeString = text => {
-		if (typeof text === "string" && text.length >= 1) {
-			return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
-		} else return undefined;
-	};
 
 	const {
 		register,
@@ -71,14 +61,14 @@ const Contact = () => {
 	});
 
 	const onSubmit = data => {
-		if (data.conEmail) delete data?.conEmail;
-		fetch("/", {
-			method: "POST",
-			headers: { "Content-Type": "application/x-www-form-urlencoded" },
-			body: encode({ "form-name": "contact", data }),
-		})
-			.then(() => console.log("Message has been sent."))
-			.catch(error => console.error(error));
+		const config = {
+			headers: {
+				Accept: "application/json, text/plain, */*",
+				"Content-Type": "application/json",
+			},
+		};
+		axios.post("api/submit", JSON.stringify(data), config);
+
 		setFormData(data);
 		setName(data.firstName);
 		setSubmitted(true);
@@ -101,10 +91,10 @@ const Contact = () => {
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ type: "tween", duration: 1 }}
-					className="text-6xl font-bold text-center transition-colors"
+					className="text-6xl font-bold text-center"
 				>
 					Contact{" "}
-					<span className="hover:text-orange-normal transition-colors">
+					<span className="md:hover:text-orange-normal">
 						<Link href="/about">me</Link>
 					</span>
 				</m.h2>
@@ -136,7 +126,7 @@ const Contact = () => {
 								errors.lastName?.message ||
 								errors.email?.message ||
 								errors.conEmail?.message ||
-								errors.msgArea?.message}
+								errors.msg?.message}
 						</p>
 					)}
 					<input
@@ -164,30 +154,30 @@ const Contact = () => {
 						className={`form-item col-span-2 ${errors.email && "border-red"}`}
 					/>
 					<input
-						{...register("conEmail")}
+						{...register("subject")}
 						type="text"
 						autoComplete="none"
-						placeholder="Confirm email"
-						aria-invalid={errors.conEmail ? true : false}
+						placeholder="Subject"
+						aria-invalid={errors.subject ? true : false}
 						className={`form-item col-span-2 ${
 							errors.conEmail && "border-red"
 						}`}
 					/>
 					<div className="col-span-2 w-full relative">
 						<textarea
-							{...register("msgArea")}
+							{...register("msg")}
 							className={`form-item !resize-none w-full h-32 ${
-								errors.msgArea && "border-red"
+								errors.msg && "border-red"
 							}`}
-							id="msgArea"
+							id="msg"
 							maxLength={maxTxtAreaLength}
 							placeholder="Message"
 						></textarea>
 						<label
-							htmlFor="msgArea"
+							htmlFor="msg"
 							className="absolute bottom-3 right-2 font-light text-sm text-gray-normal select-none"
 						>
-							{watch("msgArea")?.length || 0}/{maxTxtAreaLength}
+							{watch("msg")?.length || 0}/{maxTxtAreaLength}
 						</label>
 					</div>
 					<GenericButton
@@ -197,23 +187,6 @@ const Contact = () => {
 						Send
 					</GenericButton>
 				</form>
-				<p className="my-2 dark:opacity-10 opacity-40">Or</p>
-				<div className="flex flex-col gap-2 items-center">
-					<a
-						href={`mailto:${email}`}
-						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange-normal"
-					>
-						<IoMail />
-						<p>{email}</p>
-					</a>
-					<a
-						href={`tel:+45${phone}`}
-						className="flex items-center justify-center gap-1 font-medium hover:scale-105 transition-transform hover:text-orange-normal"
-					>
-						<IoCall />
-						<p>+45 {phone}</p>
-					</a>
-				</div>
 			</>
 			<AnimatePresence>
 				{!error && (
