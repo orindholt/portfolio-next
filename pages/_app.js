@@ -26,6 +26,12 @@ const MyApp = ({ Component, pageProps, router }) => {
 					href="/favicon-16x16.png"
 				/>
 				<link rel="manifest" href="/site.webmanifest" />
+				<meta
+					name="description"
+					content="Web Developer Portfolio of Oliver Rindholt."
+				/>
+				<meta name="author" content="Oliver Rindholt" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
 			<FormContextProvider>
 				<ThemeProvider
