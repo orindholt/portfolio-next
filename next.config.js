@@ -6,8 +6,8 @@ const nextConfig = {
 		defaultLocale: "en",
 	},
 	env: {
-		email: process.env.EMAIL,
-		password: process.env.PASSWORD,
+		EMAIL: process.env.EMAIL,
+		PASSWORD: process.env.PASSWORD,
 	},
 };
 
