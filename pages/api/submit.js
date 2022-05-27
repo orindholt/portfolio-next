@@ -5,15 +5,15 @@ export default function handler(req, res) {
 		port: 465,
 		host: "smtp.gmail.com",
 		auth: {
-			user: process.env.email,
-			pass: process.env.password,
+			user: process.env.EMAIL,
+			pass: process.env.PASSWORD,
 		},
 		secure: true,
 	});
 
 	const mailData = {
 		from: req.body.email,
-		to: process.env.email,
+		to: process.env.EMAIL,
 		subject: req.body.subject,
 		text: `${req.body.firstName} ${req.body.lastName}:\r\n ${req.body.msg}`,
 		html: `
