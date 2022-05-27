@@ -146,7 +146,7 @@ export default function Home() {
 					<p className="mb-4 font-bold text-xl border-b-2 border-white border-solid">
 						This page is still heavily under construction!
 						<br />
-						This means some pages aren't available.
+						This means some pages aren&apos;t available.
 					</p>
 					<h2 className="font-bold text-2xl">Get Started</h2>
 					<p className="text-silver text-base">
