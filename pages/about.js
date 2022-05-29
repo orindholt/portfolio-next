@@ -40,16 +40,17 @@ const About = () => {
 							}
 						/>
 					</div>
-					<Image
-						className="rounded-full shadow-lg"
-						src="/assets/me.jpg"
-						width="400"
-						height="400"
-						quality={60}
-						placeholder="blur"
-						blurDataURL="/assets/placeholder.jpg"
-						alt="Me"
-					/>
+					<div className="rounded-full overflow-hidden shadow-lg flex">
+						<Image
+							src="/assets/me.jpg"
+							width="400"
+							height="400"
+							quality={60}
+							placeholder="blur"
+							blurDataURL="/assets/placeholder.jpg"
+							alt="Me"
+						/>
+					</div>
 				</div>
 				<p className="text-2xl md:text-lg font-bold md:font-extralight mt-4 md:mt-0 mb-2 md:mb-0">
 					What are my skills?
