@@ -3,9 +3,7 @@ import { formContext } from "../utils/Context";
 import { useContext, useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
 import {
-	IoLogoReact,
 	IoCodeSlash,
-	IoCamera,
 	IoSend,
 	IoAccessibility,
 	IoBook,
@@ -13,7 +11,6 @@ import {
 } from "react-icons/io5";
 import Head from "next/head";
 import Link from "next/link";
-import CareerTree from "../components/CareerTree/Tree";
 import MapLoaction from "../components/MapLocation";
 import StartLink from "../components/StartLink";
 
@@ -28,16 +25,8 @@ const welcomeMessages = [
 
 const pages = [
 	{
-		icon: <IoLogoReact />,
-		name: "web",
-	},
-	{
 		icon: <IoCodeSlash />,
-		name: "programming",
-	},
-	{
-		icon: <IoCamera />,
-		name: "photography",
+		name: "work",
 	},
 	{
 		icon: <IoAccessibility />,
@@ -141,20 +130,14 @@ export default function Home() {
 							massa."
 					/>
 				</div>
-				{/* <CareerTree /> */}
 				<section className="my-6 flex flex-col items-center">
-					<p className="mb-4 font-bold text-xl border-b-2 border-white border-solid">
-						This page is still heavily under construction!
-						<br />
-						This means some pages aren&apos;t available.
-					</p>
 					<h2 className="font-bold text-2xl">Get Started</h2>
 					<p className="text-silver text-base">
 						Where to{" "}
 						{Boolean(Object.keys(formData).length) ? "this time" : "first"}?
 					</p>
-					<nav className="flex flex-col gap-2 items-center">
-						<ul className="flex gap-3 mt-4 justify-center flex-wrap">
+					<nav className="flex flex-col gap-4 items-center">
+						<ul className="sm:flex grid grid-cols-2 gap-3 mt-4 justify-center items-center">
 							{pages.map((page, i) => {
 								return (
 									<StartLink key={i} anchor={page.name} icon={page.icon} />

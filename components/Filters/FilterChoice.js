@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { IoCloseSharp } from "react-icons/io5";
 import Choice from "./Choice";
@@ -34,7 +34,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 				</button>
 				<AnimatePresence>
 					{active && (
-						<div className="dark:bg-black bg-white backdrop-blur-sm !bg-opacity-50 md:bg-transparent rounded-sm fixed sm:absolute sm:w-auto sm:h-full w-full h-full sm:top-auto sm:left-auto top-0 left-0 z-20 sm:p-0 px-16 pb-20 flex flex-col justify-center">
+						<div className="dark:bg-black bg-white backdrop-blur-sm !bg-opacity-50 md:bg-transparent rounded-sm fixed sm:absolute sm:w-auto w-full h-full sm:top-auto sm:left-auto top-0 left-0 z-20 sm:p-0 px-16 pb-20 flex flex-col justify-center">
 							<m.ul
 								variants={listVariant}
 								initial="hidden"

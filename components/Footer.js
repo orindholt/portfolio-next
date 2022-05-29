@@ -2,7 +2,7 @@ import FooterLink from "./FooterLink";
 import Socials from "./Socials";
 import {
 	IoHome,
-	IoPlanet,
+	IoCodeSlash,
 	IoInformationCircle,
 	IoBook,
 	IoCall,
@@ -28,7 +28,7 @@ const Footer = () => {
 					<IoHome />
 				</FooterLink>
 				<FooterLink to="/work">
-					<IoPlanet />
+					<IoCodeSlash />
 				</FooterLink>
 				<FooterLink to="/about">
 					<IoInformationCircle />
