@@ -8,12 +8,14 @@ const extendVariant = {
 	shown: { height: "fit-content", opacity: 1, transition: { type: "tween" } },
 };
 
-const ReadMore = ({ text, more }) => {
+const ReadMore = ({ children, more, className = "" }) => {
 	const [extendText, setExtendText] = useState(false);
 	return (
-		<div className="dark:text-silver text-base md:text-lg flex flex-col">
-			<div className="pt-4">
-				{text}
+		<div
+			className={`dark:text-silver text-base md:text-lg flex flex-col ${className}`}
+		>
+			<div>
+				{children}
 				<AnimatePresence>
 					{extendText && (
 						<m.span
@@ -30,7 +32,7 @@ const ReadMore = ({ text, more }) => {
 			</div>
 			<div className="text-white text-base flex justify-center">
 				<GenericButton
-					classes="my-2"
+					className="my-2"
 					click={() => {
 						setExtendText(!extendText);
 					}}

@@ -1,7 +1,7 @@
 import { useState, Children, cloneElement } from "react";
 import { IoCaretUp } from "react-icons/io5";
 import { motion as m, AnimatePresence } from "framer-motion";
-import useMediaQuery from "../utils/useMediaQuery";
+import useMediaQuery from "../hooks/useMediaQuery";
 
 const dropMenuVariants = {
 	hidden: {
@@ -38,10 +38,10 @@ const Dropdown = ({ children, subject }) => {
 			}`}
 			onClick={() => setOpen(!open)}
 		>
-			<div className="relative md:flex md:items-center md:gap-1">
+			<div className="relative md:flex md:items-center md:gap-1 mb-2 md:mb-0">
 				{subject}
 				<m.button
-					className="absolute md:static -right-7 md:-right-5 top-1"
+					className="absolute md:static -right-8 md:-right-5 top-1"
 					animate={open ? { rotate: 180 } : { rotate: 0 }}
 				>
 					<IoCaretUp />
@@ -54,7 +54,7 @@ const Dropdown = ({ children, subject }) => {
 						initial="hidden"
 						animate="show"
 						exit="exit"
-						className={`md:absolute w-full md:w-auto static flex flex-col font-medium text-center md:text-left top-[38px] left-0 dark:border-white border-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-90 ${
+						className={`md:absolute w-full md:w-auto static flex flex-col gap-1 md:gap-0 font-medium text-center md:text-left top-[38px] left-0 dark:border-white border-black dark:bg-black bg-white !bg-opacity-0 md:!bg-opacity-90 ${
 							!isDesktop ? "border-r-4 pl-1" : "border-l-4"
 						}`}
 					>

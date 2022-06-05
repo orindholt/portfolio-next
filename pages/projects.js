@@ -6,7 +6,7 @@ import {
 } from "react-icons/io5";
 import WorkCategory from "../components/WorkCategory";
 
-const Work = () => {
+const Projects = () => {
 	return (
 		<>
 			<section>
@@ -24,7 +24,7 @@ const Work = () => {
 					<WorkCategory
 						icon={<IoCamera />}
 						category="Photography"
-						anchor="/work/photography"
+						anchor="/work/gallery"
 					/>
 					<WorkCategory
 						icon={<IoMusicalNotes />}
@@ -38,4 +38,4 @@ const Work = () => {
 	);
 };
 
-export default Work;
+export default Projects;

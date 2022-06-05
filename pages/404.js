@@ -10,7 +10,7 @@ const Custom404 = () => {
 			<Head>
 				<title>Oliver - 404</title>
 			</Head>
-			<div className="mt-20 flex flex-col items-center">
+			<div className="flex flex-col items-center my-auto pb-16">
 				<h1 className="text-6xl font-bold mb-2">
 					Whoops!{" "}
 					<span className="font-extrabold bg-gradient-to-r from-orange-light to-orange-normal text-clip">

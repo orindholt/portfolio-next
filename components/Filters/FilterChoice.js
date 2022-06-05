@@ -21,7 +21,12 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 	};
 
 	return (
-		<aside className="static sm:fixed sm:top-1/4 z-10">
+		<m.aside
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ delay: 1 }}
+			className="static sm:fixed sm:top-1/4 z-10"
+		>
 			<div className="relative flex justify-center sm:block sm:justify-start mt-4 sm:mt-0">
 				<button
 					type="button"
@@ -55,7 +60,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 								})}
 							</m.ul>
 							<GenericButton
-								classes="mx-auto mt-10 font-normal sm:hidden"
+								className="mx-auto mt-10 font-normal sm:hidden"
 								click={() => setActive(false)}
 							>
 								Close <IoCloseSharp />
@@ -64,7 +69,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 					)}
 				</AnimatePresence>
 			</div>
-		</aside>
+		</m.aside>
 	);
 };
 

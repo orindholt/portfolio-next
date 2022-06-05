@@ -1,7 +1,5 @@
-import Head from "next/head";
 import Post from "../components/Post";
-import { createClient } from "next-sanity";
-import Searchbar from "../components/Searchbar";
+import { client } from "../utils/sanityClient";
 import FilterChoice from "../components/Filters/FilterChoice";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
@@ -26,9 +24,6 @@ const Blog = ({ posts }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Oliver - Blog</title>
-			</Head>
 			<h2 className="text-4xl font-bold">Welcome to my blog</h2>
 			<p className="dark:text-silver text-blue-normal py-2">
 				This is where I keep all of the newest updates about me.
@@ -61,15 +56,8 @@ const Blog = ({ posts }) => {
 	);
 };
 
-const client = createClient({
-	projectId: "94ov5h9s",
-	dataset: "production",
-	apiVersion: "2022-05-23",
-	useCdn: false,
-});
-
 export const getStaticProps = async () => {
-	const posts = await client.fetch(`*[_type == "blog-post"]`);
+	const posts = await client.fetch(`*[_type == "blog"]`);
 
 	return {
 		props: {

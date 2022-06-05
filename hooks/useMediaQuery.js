@@ -1,6 +1,6 @@
 import tw from "../tailwind.config";
 import useWindowSize from "./useWindowSize";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 const useMediaQuery = size => {
 	// size = tailwind config screens - md = 768px
@@ -8,8 +8,10 @@ const useMediaQuery = size => {
 	const window = useWindowSize();
 
 	useEffect(() => {
-		let windowWidth = Number(window.width);
-		let mdBreakPoint = Number(tw.theme.extend.screens[size].replace("px", ""));
+		let windowWidth = parseInt(window.width);
+		let mdBreakPoint = parseInt(
+			tw.theme.extend.screens[size].replace("px", "")
+		);
 		setIsDesktop(windowWidth >= mdBreakPoint ? true : false);
 	}, [window]);
 	return isDesktop;
