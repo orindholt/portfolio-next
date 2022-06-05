@@ -1,11 +1,23 @@
 import { useState } from "react";
 import { IoAlert } from "react-icons/io5";
-import { motion as m } from "framer-motion";
+import { AnimatePresence, motion as m } from "framer-motion";
 import { shadeColor } from "../utils/shadeColor";
+
+const cardVariant = {
+	visible: i => ({
+		y: 0,
+		opacity: 1,
+		transition: {
+			delay: i * 0.1,
+			duration: 0.4,
+		},
+	}),
+	hidden: { y: -20, opacity: 0 },
+};
 
 const barLightenPercent = 20;
 
-const TechCard = ({ tech }) => {
+const TechCard = ({ tech, index }) => {
 	const {
 		bg = "blue",
 		icon = <IoAlert />,
@@ -19,18 +31,24 @@ const TechCard = ({ tech }) => {
 	} = tech;
 	const barVariant = {
 		hidden: { width: "0%" },
-		shown: {
+		shown: i => ({
 			width: `${levelPercent}%`,
-			transition: { duration: 1, delay: 0.5, type: "tween" },
-		},
+			transition: {
+				duration: 1,
+				delay: 0.1 * i,
+				type: "tween",
+			},
+		}),
 	};
-	const [active, setActive] = useState(false);
 
 	return (
-		<li
-			className="md:grid md:grid-rows-2 flex rounded-sm overflow-hidden border-4 border-solid shadow-md"
+		<m.li
+			variants={cardVariant}
+			custom={index}
+			initial="hidden"
+			animate="visible"
+			className="md:grid md:grid-rows-2 flex rounded-sm overflow-hidden border-4 border-solid shadow-md relative"
 			style={{ borderColor: outlined ? "black" : bg }}
-			onClick={() => setActive(!active)}
 		>
 			<div
 				className={`max-w-[200px] md:max-w-none w-full h-10 text-xl flex gap-1 items-center justify-center md:pt-0.5`}
@@ -50,6 +68,7 @@ const TechCard = ({ tech }) => {
 			>
 				<m.div
 					variants={barVariant}
+					custom={index}
 					inital="hidden"
 					animate="shown"
 					className="h-full"
@@ -62,7 +81,7 @@ const TechCard = ({ tech }) => {
 					}}
 				></m.div>
 			</div>
-		</li>
+		</m.li>
 	);
 };
 

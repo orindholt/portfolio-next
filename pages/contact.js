@@ -9,6 +9,7 @@ import Link from "next/link";
 import { formContext } from "../utils/Context";
 import GenericButton from "../components/GenericButton";
 import axios from "axios";
+import ContactInput from "../components/ContactInput";
 
 const maxTxtAreaLength = 400;
 const emailRegEx =
@@ -84,7 +85,7 @@ const Contact = () => {
 			<Head>
 				<title>Oliver - Contact</title>
 			</Head>
-			<>
+			<div className="my-auto pb-16">
 				<m.h2
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
@@ -100,7 +101,7 @@ const Contact = () => {
 					(at your own risk..)
 				</m.p>
 				<form
-					className="grid grid-cols-2 gap-6 max-w-3xl mx-auto relative"
+					className="grid grid-cols-2 gap-6 max-w-4xl relative w-full mx-auto"
 					onSubmit={handleSubmit(onSubmit)}
 				>
 					<AnimatePresence>
@@ -127,39 +128,31 @@ const Contact = () => {
 								errors.msg?.message}
 						</p>
 					)}
-					<input
-						{...register("firstName")}
+					<ContactInput
+						register={{ ...register("firstName") }}
 						autoComplete="given-name"
-						type="text"
-						placeholder="First name"
-						aria-invalid={errors.firstName ? true : false}
-						className={`form-item ${errors.firstName && "border-red"}`}
+						placeholder="First Name"
+						error={errors.firstName}
 					/>
-					<input
-						{...register("lastName")}
+					<ContactInput
+						register={{ ...register("lastName") }}
 						autoComplete="family-name"
-						type="text"
 						placeholder="Last name"
-						aria-invalid={errors.lastName ? true : false}
-						className={`form-item ${errors.lastName && "border-red"}`}
+						error={errors.lastName}
 					/>
-					<input
-						{...register("email")}
-						type="text"
+					<ContactInput
+						register={{ ...register("email") }}
 						autoComplete="email"
 						placeholder="Email"
-						aria-invalid={errors.email ? true : false}
-						className={`form-item col-span-2 ${errors.email && "border-red"}`}
+						error={errors.email}
+						className="col-span-2"
 					/>
-					<input
-						{...register("subject")}
-						type="text"
+					<ContactInput
+						register={{ ...register("subject") }}
 						autoComplete="none"
 						placeholder="Subject"
-						aria-invalid={errors.subject ? true : false}
-						className={`form-item col-span-2 ${
-							errors.conEmail && "border-red"
-						}`}
+						className="col-span-2"
+						error={errors.subject}
 					/>
 					<div className="col-span-2 w-full relative">
 						<textarea
@@ -180,12 +173,12 @@ const Contact = () => {
 					</div>
 					<GenericButton
 						type="submit"
-						classes="col-span-2 mx-auto text-xl !px-6"
+						className="col-span-2 mx-auto text-xl !px-6"
 					>
 						Send
 					</GenericButton>
 				</form>
-			</>
+			</div>
 			<AnimatePresence>
 				{!error && (
 					<m.div exit={{ opacity: 0 }} transition={{ duration: 2 }}>

@@ -14,31 +14,28 @@ const About = () => {
 				<div className="flex items-center flex-col lg:flex-row md:px-24">
 					<div className="w-full mb-4">
 						<ReadMore
-							text={
-								<>
-									<h2 className="text-4xl font-bold leading-7 dark:text-white text-black">
-										Who am I?
-									</h2>
-									<p className="dark:text-silver text-blue-normal my-3">
-										You might say that I&apos;m a dev of many <br />
-										<span className="underline dark:text-white text-black font-bold">
-											traits
-										</span>
-										. I do what the people need me to do!
-									</p>
-								</>
-							}
 							more={
-								<>
-									<p>
-										You name it, I can do it, or atleast google it.
-										<br />
-										I&apos;m a quick learner, and really enjoy spending time
-										coding.
-									</p>
-								</>
+								<p>
+									You name it, I can do it, or atleast google it.
+									<br />
+									I&apos;m a quick learner, and really enjoy spending time
+									coding.
+								</p>
 							}
-						/>
+						>
+							<div>
+								<h2 className="text-4xl font-bold leading-7 dark:text-white text-black">
+									Who am I?
+								</h2>
+								<p className="dark:text-silver text-blue-normal my-3">
+									You might say that I&apos;m a dev of many <br />
+									<span className="underline dark:text-white text-black font-bold">
+										traits
+									</span>
+									. I do what the people need me to do!
+								</p>
+							</div>
+						</ReadMore>
 					</div>
 					<div className="rounded-full overflow-hidden shadow-lg flex">
 						<Image
@@ -52,26 +49,15 @@ const About = () => {
 						/>
 					</div>
 				</div>
-				<p className="text-2xl md:text-lg font-bold md:font-extralight mt-4 md:mt-0 mb-2 md:mb-0">
+				<p className="text-2xl md:text-lg font-bold md:font-extralight mt-4 md:mt-0 mb-2">
 					What are my skills?
 				</p>
-				<div className="flex flex-col gap-4 md:gap-6">
-					{skills.map(({ title, data }, i) => {
-						return (
-							<section key={i}>
-								<h3 className="font-semibold text-2xl mb-2 hidden md:block">
-									{title}:
-								</h3>
-								<div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-									{data.map((skill, i) => {
-										return <TechCard key={i} tech={skill} />;
-									})}
-								</div>
-							</section>
-						);
+				<ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+					{skills.map((skill, i) => {
+						return <TechCard key={i} index={i} tech={skill} />;
 					})}
-					<p>and much more to come!</p>
-				</div>
+				</ul>
+				<p className="mt-2 text-silver">with much more to come!</p>
 			</section>
 		</>
 	);

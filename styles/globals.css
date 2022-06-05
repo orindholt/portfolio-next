@@ -7,7 +7,7 @@
 
 @layer base {
 	html {
-		@apply font-inter;
+		@apply font-inter scroll-smooth;
 	}
 	body {
 		@apply dark:text-white text-black text-base dark:bg-black bg-white;

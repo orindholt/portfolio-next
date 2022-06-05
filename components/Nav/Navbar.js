@@ -6,7 +6,7 @@ import MenuIcon from "../Icons/MenuIcon/MenuIcon";
 import Dropdown from "../Dropdown";
 import NavItem from "./NavItem";
 import Searchbar from "../Searchbar";
-import useMediaQuery from "../../utils/useMediaQuery";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const variants = {
 	hidden: {
@@ -46,12 +46,11 @@ const Navbar = () => {
 						exit="hidden"
 						className="fixed right-0 top-0 z-50 md:h-12 dark:bg-black bg-white !bg-opacity-90 backdrop-blur-md md:backdrop-blur-sm h-full py-8 md:py-0 w-full sm:w-64 md:w-full md:!translate-x-0 md:!opacity-100"
 					>
-						<ul className="flex flex-col text-2xl md:text-lg items-center h-full md:flex-row gap-10 md:px-10 font-bold">
+						<ul className="flex flex-col text-3xl md:text-lg items-center h-full md:flex-row gap-9 md:px-10 font-bold">
 							<NavItem to="/" text="Home" />
-							<Dropdown subject="Work">
-								<NavItem to="/web" text="Web" />
-								<NavItem to="/programming" text="Programming" />
-								<NavItem to="/photography" text="Photography" />
+							<Dropdown subject="Projects">
+								<NavItem to="/projects/web" text="Web" />
+								<NavItem to="/projects/gallery" text="Photography" />
 							</Dropdown>
 							<NavItem to="/about" text="About" />
 							<NavItem to="/blog" text="Blog" />

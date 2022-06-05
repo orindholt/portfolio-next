@@ -17,16 +17,16 @@ module.exports = {
 			},
 			colors: {
 				gray: {
-					light: "#dedede",
-					normal: "#B6B5B6",
-					dark: "#403D39",
+					light: "#bfbfbf",
+					normal: "#8c8c8c",
+					dark: "#363330",
 				},
 				silver: "#b7b7c7",
 				blue: {
 					normal: "#575766",
 					dark: "#35333D",
 				},
-				black: "#252422",
+				black: "#1c1b1a",
 				orange: {
 					light: "#f48c06",
 					normal: "#f85032",

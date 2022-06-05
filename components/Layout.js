@@ -3,6 +3,8 @@ import Footerbar from "./Footer";
 import { AnimatePresence, motion as m } from "framer-motion";
 import Head from "next/head";
 import PageLoader from "./PageLoader";
+import { useRouter } from "next/router";
+import pathTitle from "../utils/pathTitle";
 
 const variants = {
 	hidden: { opacity: 0, x: -200 },
@@ -11,15 +13,19 @@ const variants = {
 };
 
 const Layout = ({ children, router }) => {
+	const { asPath } = useRouter();
+
 	return (
 		<>
 			<Head>
 				<title>Oliver Rindholt</title>
 			</Head>
-			<div
-				id="app-wrap"
-				className="flex flex-col min-h-screen relative overflow-x-hidden"
-			>
+			<div id="app-wrap" className="relative overflow-x-hidden">
+				{router && (
+					<Head>
+						<title>Oliver - {pathTitle(asPath)}</title>
+					</Head>
+				)}
 				<Navbar />
 				<AnimatePresence exitBeforeEnter>
 					<m.main
@@ -29,7 +35,7 @@ const Layout = ({ children, router }) => {
 						animate="enter"
 						exit="exit"
 						transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-						className="pb-16 md:pb-12 pt-16 md:pt-20 px-[5%] text-center max-w-7xl mx-auto w-full relative"
+						className="py-16 md:py-20 px-[5%] text-center max-w-7xl mx-auto w-full relative flex flex-col min-h-screen"
 					>
 						{children}
 					</m.main>

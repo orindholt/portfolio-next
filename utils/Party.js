@@ -1,5 +1,5 @@
 import Confetti from "react-confetti";
-import useWindowSize from "./useWindowSize";
+import useWindowSize from "../hooks/useWindowSize";
 
 const Party = () => {
 	const window = useWindowSize();
