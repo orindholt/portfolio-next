@@ -7,7 +7,7 @@ const LightBox = ({ children }) => {
 			onClick={() => setActive(!active)}
 			className={
 				active
-					? `fixed top-0 left-0 right-0 bottom-0 z-50 dark:bg-black bg-white !bg-opacity-70 backdrop-blur-sm flex`
+					? `fixed top-0 left-0 right-0 bottom-0 z-50 bg-[#000] !bg-opacity-70 backdrop-blur-sm flex`
 					: undefined
 			}
 		>

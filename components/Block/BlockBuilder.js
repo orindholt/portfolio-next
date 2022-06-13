@@ -2,10 +2,10 @@ import Block from "./Block";
 
 const BlockBuilder = ({ block }) => {
 	return (
-		<div>
+		<div className="inline">
 			{block.map((block, i) => {
 				return (
-					<p key={i}>
+					<p key={i} className="inline">
 						{block.children.map((child, i) => {
 							return <Block child={child} key={i} />;
 						})}

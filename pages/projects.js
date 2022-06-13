@@ -1,9 +1,4 @@
-import {
-	IoCamera,
-	IoCodeSlash,
-	IoPlanet,
-	IoMusicalNotes,
-} from "react-icons/io5";
+import { IoCamera, IoPlanet, IoMusicalNotes } from "react-icons/io5";
 import WorkCategory from "../components/WorkCategory";
 
 const Projects = () => {
@@ -15,16 +10,15 @@ const Projects = () => {
 					Please pick a category to start!
 				</p>
 				<div className="flex flex-col gap-6 py-4">
-					<WorkCategory icon={<IoPlanet />} category="Web" anchor="/work/web" />
 					<WorkCategory
-						icon={<IoCodeSlash />}
-						category="Programming"
-						anchor="/work/programming"
+						icon={<IoPlanet />}
+						category="Web"
+						anchor="/projects/web"
 					/>
 					<WorkCategory
 						icon={<IoCamera />}
 						category="Photography"
-						anchor="/work/gallery"
+						anchor="/projects/gallery"
 					/>
 					<WorkCategory
 						icon={<IoMusicalNotes />}

@@ -2,6 +2,8 @@ import Picture from "../../../components/Gallery/Picture";
 import { client } from "../../../utils/sanityClient";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from "next/router";
+import ReadMore from "../../../components/ReadMore";
+import BlockBuilder from "../../../components/Block/BlockBuilder";
 
 export async function getStaticPaths() {
 	const data = await client.fetch(`*[_type == "gallery"]`);
@@ -28,7 +30,7 @@ export async function getStaticProps(context) {
 
 const Category = ({ data }) => {
 	const router = useRouter();
-	const { images, title } = data[0];
+	const { images, title, description, readmore } = data[0];
 	return (
 		<div>
 			<div className="flex justify-between">
@@ -40,6 +42,9 @@ const Category = ({ data }) => {
 					<IoArrowBack />
 				</button>
 				<h1 className="text-4xl font-bold">{title}</h1>
+			</div>
+			<div className="pt-1 pb-3 text-lg dark:text-silver text-blue-normal">
+				<BlockBuilder block={readmore} /> <BlockBuilder block={description} />
 			</div>
 			<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 				{images.map((image, i) => {
