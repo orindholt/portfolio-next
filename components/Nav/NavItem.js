@@ -7,7 +7,7 @@ const NavItem = ({ to, text }) => {
 	return (
 		<li
 			className={`md:hover:!text-orange-normal select-none dark:text-white text-black ${
-				Boolean(router.pathname === to) && "!text-orange-normal"
+				Boolean(router.pathname === to) ? "!text-orange-normal" : undefined
 			}`}
 		>
 			<Link href={to} passHref>

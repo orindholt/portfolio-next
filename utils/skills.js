@@ -28,8 +28,6 @@ export default [
 		bg: "#FF5733",
 		icon: <IoLogoHtml5 />,
 		iconColor: "white",
-		gradientFrom: "#FF5733",
-		levelPercent: 100,
 	},
 	{
 		name: "CSS3",
@@ -37,8 +35,6 @@ export default [
 		bg: "#2196f3",
 		icon: <IoLogoCss3 />,
 		iconColor: "white",
-		gradientFrom: "#2196f3",
-		levelPercent: 90,
 	},
 	{
 		name: "Tailwind",
@@ -46,9 +42,6 @@ export default [
 		bg: "#0bb6d4",
 		icon: <SiTailwindcss />,
 		iconColor: "white",
-		gradientFrom: "#0bb6d4",
-		gradientTo: "#1dc9b9",
-		levelPercent: 100,
 	},
 	{
 		name: "Sass",
@@ -56,8 +49,6 @@ export default [
 		bg: "#cf649a",
 		icon: <IoLogoSass />,
 		iconColor: "white",
-		gradientFrom: "#cf649a",
-		levelPercent: 80,
 	},
 	{
 		name: "Javascript",
@@ -65,8 +56,6 @@ export default [
 		bg: "#ebc917",
 		icon: <IoLogoJavascript />,
 		iconColor: "white",
-		gradientFrom: "#ebc917",
-		levelPercent: 85,
 	},
 	{
 		name: "React",
@@ -74,8 +63,6 @@ export default [
 		bg: "#222222",
 		icon: <IoLogoReact />,
 		iconColor: "#03d9fe",
-		gradientFrom: "#03d9fe",
-		levelPercent: 80,
 	},
 	{
 		name: "Next.js",
@@ -83,8 +70,6 @@ export default [
 		bg: "#ffffff",
 		icon: <SiNextdotjs />,
 		iconColor: "black",
-		gradientFrom: "#ffffff",
-		levelPercent: 70,
 		outlined: true,
 	},
 	{
@@ -93,8 +78,6 @@ export default [
 		bg: "#3178c6",
 		icon: <SiTypescript />,
 		iconColor: "white",
-		gradientFrom: "#3178c6",
-		levelPercent: 65,
 	},
 	{
 		name: "Github",
@@ -102,8 +85,6 @@ export default [
 		bg: "#000000",
 		icon: <IoLogoGithub />,
 		iconColor: "white",
-		gradientFrom: "#000000",
-		levelPercent: 80,
 	},
 	{
 		name: "Vue",
@@ -111,8 +92,6 @@ export default [
 		bg: "#34495e",
 		icon: <IoLogoVue />,
 		iconColor: "#41b783",
-		gradientFrom: "#41b783",
-		levelPercent: 50,
 	},
 	{
 		name: "Express",
@@ -120,8 +99,6 @@ export default [
 		bg: "#353535",
 		icon: <SiExpress />,
 		iconColor: "white",
-		gradientFrom: "#353535",
-		levelPercent: 30,
 	},
 	{
 		name: "Node",
@@ -129,8 +106,6 @@ export default [
 		bg: "#689f63",
 		icon: <IoLogoNodejs />,
 		iconColor: "#333333",
-		gradientFrom: "#689f63",
-		levelPercent: 35,
 	},
 	{
 		name: "Php",
@@ -138,8 +113,6 @@ export default [
 		bg: "#9867d3",
 		icon: <SiPhp />,
 		iconColor: "white",
-		gradientFrom: "#9867d3",
-		levelPercent: 60,
 	},
 	{
 		name: "Python",
@@ -147,8 +120,6 @@ export default [
 		bg: "#3674a5",
 		icon: <IoLogoPython />,
 		iconColor: "#ffd241",
-		gradientFrom: "#ffd241",
-		levelPercent: 30,
 	},
 	{
 		name: "Angular",
@@ -156,9 +127,6 @@ export default [
 		bg: "#de0031",
 		icon: <IoLogoAngular />,
 		iconColor: "white",
-		gradientFrom: "#c40030",
-		gradientTo: "#de0031",
-		levelPercent: 50,
 	},
 	{
 		name: "C Sharp",
@@ -166,9 +134,6 @@ export default [
 		bg: "#380191",
 		icon: <SiCsharp />,
 		iconColor: "white",
-		gradientFrom: "#280065",
-		gradientTo: "#380191",
-		levelPercent: 40,
 	},
 	{
 		name: "Wordpress",
@@ -176,8 +141,6 @@ export default [
 		bg: "#00769c",
 		icon: <IoLogoWordpress />,
 		iconColor: "white",
-		gradientFrom: "#00769c",
-		levelPercent: 60,
 	},
 	{
 		name: "LitElement",
@@ -185,7 +148,5 @@ export default [
 		bg: "#00e8ff",
 		icon: <SiLit />,
 		iconColor: "#2a2f9b",
-		gradientFrom: "#00e8ff",
-		levelPercent: 70,
 	},
 ];

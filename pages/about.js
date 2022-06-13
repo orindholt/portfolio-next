@@ -49,8 +49,8 @@ const About = () => {
 						/>
 					</div>
 				</div>
-				<p className="text-2xl md:text-lg font-bold md:font-extralight mt-4 md:mt-0 mb-2">
-					What are my skills?
+				<p className="text-2xl md:text-lg font-bold md:font-light mt-4 md:mt-0 mb-2">
+					What are some of my skills?
 				</p>
 				<ul className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
 					{skills.map((skill, i) => {
