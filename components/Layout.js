@@ -17,13 +17,15 @@ const Layout = ({ children, router }) => {
 
 	return (
 		<>
-			<Head>
-				<title>Oliver Rindholt</title>
-			</Head>
 			<div id="app-wrap" className="relative overflow-x-hidden">
 				{router && (
 					<Head>
-						<title>Oliver - {pathTitle(asPath)}</title>
+						<title>
+							Oliver{" "}
+							{pathTitle(asPath)
+								? `- ${pathTitle(asPath).toString()}`
+								: "Rindholt"}
+						</title>
 					</Head>
 				)}
 				<Navbar />

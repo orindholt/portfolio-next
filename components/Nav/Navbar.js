@@ -5,7 +5,7 @@ import ThemeSwitch from "../ThemeSwitch";
 import MenuIcon from "../Icons/MenuIcon/MenuIcon";
 import Dropdown from "../Dropdown";
 import NavItem from "./NavItem";
-import Searchbar from "../Searchbar";
+import Searchbar from "../Search/Searchbar";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const variants = {

@@ -82,9 +82,6 @@ const Contact = () => {
 
 	return (
 		<>
-			<Head>
-				<title>Oliver - Contact</title>
-			</Head>
 			<div className="my-auto pb-16">
 				<m.h2
 					initial={{ opacity: 0, y: -20 }}
