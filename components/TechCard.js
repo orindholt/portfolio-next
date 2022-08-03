@@ -29,7 +29,7 @@ const TechCard = ({ tech, index }) => {
 			custom={index}
 			initial="hidden"
 			animate="visible"
-			className="flex rounded-sm overflow-hidden shadow-md h-16 justify-center items-center gap-2 text-2xl border-4 border-solid"
+			className="flex rounded-sm overflow-hidden shadow-md h-14 justify-center items-center gap-2 text-2xl border-4 border-solid"
 			style={{
 				backgroundColor: bg,
 				color: iconColor,

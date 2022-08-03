@@ -19,6 +19,9 @@ import {
 	SiPhp,
 	SiCsharp,
 	SiLit,
+	SiMongodb,
+	SiAdobephotoshop,
+	SiUnity,
 } from "react-icons/si";
 
 export default [
@@ -148,5 +151,27 @@ export default [
 		bg: "#00e8ff",
 		icon: <SiLit />,
 		iconColor: "#2a2f9b",
+	},
+	{
+		name: "MongoDB",
+		nameColor: "#01ed66",
+		bg: "#011e2c",
+		icon: <SiMongodb />,
+		iconColor: "#01ed66",
+	},
+	{
+		name: "Photoshop",
+		nameColor: "#2fa8ff",
+		bg: "#001e36",
+		icon: <SiAdobephotoshop />,
+		iconColor: "#2fa8ff",
+	},
+	{
+		name: "Unity",
+		nameColor: "#000000",
+		bg: "#ffffff",
+		icon: <SiUnity />,
+		iconColor: "#000000",
+		outlined: true,
 	},
 ];
