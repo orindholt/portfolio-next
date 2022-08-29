@@ -11,7 +11,7 @@ const Gallery = ({ data }) => {
 		<>
 			<h1 className="text-6xl font-bold">Gallery</h1>
 			<p className="pb-10 pt-1.5 text-xl dark:text-silver text-blue-normal">
-				Welcome to my gallery of my best photographs, I've taken over the years.
+				Collection of my photography work.
 			</p>
 			<ul className="grid grid-cols-1 md:grid-cols-2 gap-12">
 				{data.map(({ slug, title, description, images, taken }, i) => {

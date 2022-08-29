@@ -15,17 +15,16 @@ const variants = {
 const Layout = ({ children, router }) => {
 	const { asPath } = useRouter();
 
+	let titleString = `Oliver ${
+		pathTitle(asPath) ? `- ${pathTitle(asPath)}` : "Rindholt"
+	}`;
+
 	return (
 		<>
 			<div id="app-wrap" className="relative overflow-x-hidden">
 				{router && (
 					<Head>
-						<title>
-							Oliver{" "}
-							{pathTitle(asPath)
-								? `- ${pathTitle(asPath).toString()}`
-								: "Rindholt"}
-						</title>
+						<title>{titleString}</title>
 					</Head>
 				)}
 				<Navbar />

@@ -7,9 +7,6 @@ import ReadMore from "../components/ReadMore";
 const About = () => {
 	return (
 		<>
-			<Head>
-				<title>Oliver - About</title>
-			</Head>
 			<section>
 				<div className="flex items-center flex-col lg:flex-row md:px-24">
 					<div className="w-full mb-4">

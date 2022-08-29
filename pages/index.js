@@ -38,8 +38,14 @@ export default function Home() {
 		}
 	}, [formData]);
 
+	const options = {
+		enableHighAccuracy: true,
+		timeout: 5000,
+		maximumAge: 0,
+	};
+
 	return (
-		<div className="my-auto pb-16 md:text-4xl text-2xl">
+		<div className="my-auto pb-16 md:text-4xl text-2xl justify-self-stretch">
 			<h1 className="font-semibold text-8xl" ref={typewriterRef}>
 				<Typewriter
 					options={{
