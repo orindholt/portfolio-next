@@ -4,6 +4,7 @@ import { formContext } from "../utils/Context";
 import { useContext, useEffect, useRef, useState } from "react";
 import { motion as m } from "framer-motion";
 import Typewriter from "typewriter-effect";
+import GenericButton from "../components/GenericButton";
 
 const welcomeMessages = [
 	"Welcome back",
@@ -38,15 +39,12 @@ export default function Home() {
 		}
 	}, [formData]);
 
-	const options = {
-		enableHighAccuracy: true,
-		timeout: 5000,
-		maximumAge: 0,
-	};
-
 	return (
-		<div className="my-auto pb-16 md:text-4xl text-2xl justify-self-stretch">
-			<h1 className="font-semibold text-8xl" ref={typewriterRef}>
+		<div className="my-auto md:text-4xl text-2xl justify-self-stretch flex flex-col gap-2">
+			<h1
+				className="font-semibold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2"
+				ref={typewriterRef}
+			>
 				<Typewriter
 					options={{
 						strings: `${
@@ -78,27 +76,19 @@ export default function Home() {
 				transition={{ delay: 3, duration: 1.5 }}
 				className="md:px-24"
 			>
-				<ReadMore
-					className="pt-4"
-					more="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut risus
-							erat, porttitor vitae leo sit amet, iaculis aliquet elit. Etiam
-							sollicitudin egestas imperdiet. In sed blandit neque, ut dignissim
-							massa."
+				<p className="text-lg">
+					I&apos;m a Junior Frontend Developer and,{" "}
+					<span className="font-semibold dark:text-white text-black">
+						🪄 CSS <span className="animate-magic">magician</span>
+					</span>{" "}
+					based in the outskirts of Copenhagen.
+				</p>
+				<GenericButton
+					anchor="/projects/web"
+					className="max-w-fit text-base mx-auto mt-4"
 				>
-					<div>
-						I&apos;m a Junior Frontend Developer, based in{" "}
-						<span className="font-semibold dark:text-white text-black">
-							Copenhagen.
-						</span>{" "}
-						Currently studying web development at{" "}
-						<span
-							type="button"
-							className="font-semibold dark:text-white text-black"
-						>
-							Roskilde Technical School.
-						</span>
-					</div>
-				</ReadMore>
+					My Work
+				</GenericButton>
 			</m.div>
 		</div>
 	);

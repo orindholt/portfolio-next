@@ -24,7 +24,7 @@ import {
 	SiUnity,
 } from "react-icons/si";
 
-export default [
+const skills = [
 	{
 		name: "HTML5",
 		nameColor: "white",
@@ -68,7 +68,7 @@ export default [
 		iconColor: "#03d9fe",
 	},
 	{
-		name: "Next.js",
+		name: "Next",
 		nameColor: "black",
 		bg: "#ffffff",
 		icon: <SiNextdotjs />,
@@ -175,3 +175,5 @@ export default [
 		outlined: true,
 	},
 ];
+
+export default skills;

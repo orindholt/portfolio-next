@@ -16,12 +16,14 @@ module.exports = {
 				inter: "'Inter', sans-serif",
 			},
 			animation: {
-				gradient: "gradient 6s ease infinite",
+				magic: "magic 6s ease-out infinite",
 			},
 			keyframes: {
-				gradient: {
-					"0%, 100%": { "background-position": "0% 50%" },
-					"50%": { "background-position": "100% 50%" },
+				magic: {
+					"0%, 100%": { color: "#C7305D" },
+					"25%": { color: "#DF5446" },
+					"50%": { color: "#642D87" },
+					"75%": { color: "#A94CAA" },
 				},
 			},
 			colors: {
@@ -43,6 +45,13 @@ module.exports = {
 				},
 				green: "#74c69d",
 				red: "#e63946",
+			},
+			flex: {
+				2: "2 2 0%",
+				3: "3 3 0%",
+				4: "4 4 0%",
+				5: "5 5 0%",
+				6: "6 6 0%",
 			},
 		},
 	},

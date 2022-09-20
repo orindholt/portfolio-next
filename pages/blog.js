@@ -62,7 +62,7 @@ const Blog = ({ posts }) => {
 						Whoops!
 					</span>
 					<br />
-					There doesn't seem to be any posts yet
+					There doesn&apos;t seem to be any posts yet
 				</p>
 			)}
 		</>

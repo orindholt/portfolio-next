@@ -33,17 +33,18 @@ const navElements = [
 	},
 	{
 		text: "Projects",
+		to: "/projects",
 		dropdown: [
 			{
-				to: "/projects/web",
+				to: "/web",
 				text: "Web",
 			},
 			{
-				to: "/projects/gallery",
+				to: "/gallery",
 				text: "Photography",
 			},
 			{
-				to: "/projects/programming",
+				to: "/programming",
 				text: "Programming",
 			},
 		],
@@ -90,7 +91,13 @@ const Navbar = () => {
 											{obj.dropdown
 												.sort((a, b) => a.text.length - b.text.length)
 												.map((el, i) => {
-													return <NavItem to={el.to} text={el.text} key={i} />;
+													return (
+														<NavItem
+															to={`${obj.to}${el.to}`}
+															text={el.text}
+															key={i}
+														/>
+													);
 												})}
 										</Dropdown>
 									);
@@ -98,24 +105,23 @@ const Navbar = () => {
 									return <NavItem to={obj.to} text={obj.text} key={i} />;
 								}
 							})}
-							<div className="flex gap-4 h-full md:h-auto md:items-center text-4xl md:text-2xl md:flex-row flex-col md:ml-auto">
-								<Searchbar />
-								<div className="flex gap-5 justify-center md:gap-4 mt-auto md:mt-0">
-									<ThemeSwitch />
-									<m.li
-										variants={buttonVariants}
-										whileHover="hover"
-										whileTap="tap"
+
+							<Searchbar />
+							<div className="flex gap-5 justify-center md:gap-9 mt-auto md:mt-0 text-2xl">
+								<ThemeSwitch />
+								<m.li
+									variants={buttonVariants}
+									whileHover="hover"
+									whileTap="tap"
+								>
+									<a
+										target="_blank"
+										rel="noreferrer"
+										href="https://github.com/orindholt"
 									>
-										<a
-											target="_blank"
-											rel="noreferrer"
-											href="https://github.com/orindholt"
-										>
-											<IoLogoGithub />
-										</a>
-									</m.li>
-								</div>
+										<IoLogoGithub />
+									</a>
+								</m.li>
 							</div>
 						</ul>
 					</m.nav>

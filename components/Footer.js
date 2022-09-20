@@ -23,7 +23,7 @@ const Footer = () => {
 					source code
 				</a>
 			</p>
-			<ul className="gap-3 md:justify-center flex md:hidden md:mx-0 mx-auto px-2 md:px-0">
+			{/* <ul className="gap-3 md:justify-center flex md:hidden md:mx-0 mx-auto px-2 md:px-0">
 				<FooterLink to="/">
 					<IoHome />
 				</FooterLink>
@@ -39,7 +39,7 @@ const Footer = () => {
 				<FooterLink to="/contact">
 					<IoCall />
 				</FooterLink>
-			</ul>
+			</ul> */}
 			<div className="md:flex hidden md:justify-center">
 				<Socials />
 			</div>

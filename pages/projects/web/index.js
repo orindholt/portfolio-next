@@ -6,7 +6,7 @@ const Web = ({ data }) => {
 		<>
 			<h1 className="text-6xl font-bold">Web</h1>
 			<p className="pb-10 pt-1.5 text-xl dark:text-silver text-blue-normal"></p>
-			<ul className="grid grid-cols-1 md:grid-cols-2 gap-12">
+			<ul className="grid grid-cols-2 md:grid-cols-3 gap-12">
 				{data &&
 					data.map((project, i) => {
 						return <Project data={project} key={i} />;

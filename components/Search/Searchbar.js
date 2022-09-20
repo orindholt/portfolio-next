@@ -17,7 +17,7 @@ const Searchbar = () => {
 	return (
 		<>
 			<li
-				className={`flex transition-all rounded-sm md:justify-start justify-center p-1 ${
+				className={`flex transition-all rounded-sm md:justify-start justify-center md:ml-auto text-2xl ${
 					searchActive
 						? "dark:bg-gray-dark bg-black text-white fixed top-0 left-0 right-0 md:static border-x-[6px] border-b-4 border-t-[6px] border-solid border-black md:border-0"
 						: "bg-transparent"
