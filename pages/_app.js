@@ -11,26 +11,27 @@ const MyApp = ({ Component, pageProps, router }) => {
 				<link
 					rel="apple-touch-icon"
 					sizes="180x180"
-					href="/apple-touch-icon.png"
+					href="/assets/icons/apple-touch-icon.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
-					sizes="32x32"
-					href="/favicon-32x32.png"
+					sizes="48x48"
+					href="/assets/icons/icon-48x48.png"
 				/>
 				<link
 					rel="icon"
 					type="image/png"
-					sizes="16x16"
-					href="/favicon-16x16.png"
+					sizes="72x72"
+					href="/assets/icons/icon-72x72.png"
 				/>
-				<link rel="manifest" href="/site.webmanifest" />
+				<link rel="manifest" href="/manifest.webmanifest" />
 				<meta
 					name="description"
 					content="Web Developer Portfolio of Oliver Rindholt."
 				/>
 				<meta name="author" content="Oliver Rindholt" />
+				<meta name="theme-color" content="#f85032" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
 			<FormContextProvider>
