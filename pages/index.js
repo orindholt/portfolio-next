@@ -1,5 +1,3 @@
-import Head from "next/head";
-import ReadMore from "../components/ReadMore";
 import { formContext } from "../utils/Context";
 import { useContext, useEffect, useRef, useState } from "react";
 import { motion as m } from "framer-motion";

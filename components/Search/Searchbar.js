@@ -17,7 +17,7 @@ const Searchbar = () => {
 	return (
 		<>
 			<li
-				className={`flex transition-all rounded-sm md:justify-start justify-center md:ml-auto text-2xl ${
+				className={`flex transition-all rounded-sm md:justify-start justify-center md:ml-auto md:text-2xl text-4xl z-50 ${
 					searchActive
 						? "dark:bg-gray-dark bg-black text-white fixed top-0 left-0 right-0 md:static border-x-[6px] border-b-4 border-t-[6px] border-solid border-black md:border-0"
 						: "bg-transparent"
@@ -33,7 +33,7 @@ const Searchbar = () => {
 							animate={
 								isDesktop
 									? { width: 140, opacity: 1 }
-									: { width: "100%", opacity: 0 }
+									: { width: "100%", opacity: 1 }
 							}
 							exit={{ width: 0, opacity: 0 }}
 							transition={{ type: "tween" }}

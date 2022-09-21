@@ -5,15 +5,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-	html {
-		@apply font-inter scroll-smooth;
-	}
-	body {
-		@apply dark:text-white text-black text-base dark:bg-black bg-white;
-	}
-}
-
 @layer components {
 	.form-item {
 		@apply p-2 rounded-sm transition-all border-l-8 border-red border-solid border border-opacity-0 bg-black dark:bg-gray-dark text-white placeholder:text-gray-normal focus:!bg-opacity-0 focus:text-black focus:dark:text-white focus:placeholder:text-gray-dark focus:scale-[1.02];

@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import TechCard from "../components/TechCard";
 import skills from "../utils/skills";

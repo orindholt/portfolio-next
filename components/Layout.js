@@ -5,6 +5,7 @@ import Head from "next/head";
 import PageLoader from "./PageLoader";
 import { useRouter } from "next/router";
 import pathTitle from "../utils/pathTitle";
+import PWAPrompt from "./PWAPrompt";
 
 const variants = {
 	hidden: { opacity: 0, x: -200 },
@@ -43,6 +44,7 @@ const Layout = ({ children, router }) => {
 				</AnimatePresence>
 				<Footerbar />
 				<PageLoader />
+				<PWAPrompt />
 			</div>
 		</>
 	);
