@@ -5,13 +5,14 @@ const Web = ({ data }) => {
 	return (
 		<>
 			<h1 className="text-6xl font-bold">Web</h1>
-			<p className="pb-10 pt-1.5 text-xl dark:text-silver text-blue-normal"></p>
-			<ul className="grid grid-cols-2 md:grid-cols-3 gap-12">
-				{data &&
-					data.map((project, i) => {
-						return <Project data={project} key={i} />;
-					})}
-			</ul>
+			<div className="bg-gray-dark p-2">
+				<ul className="grid grid-cols-2 md:grid-cols-3 gap-12">
+					{data &&
+						data.map((project, i) => {
+							return <Project data={project} key={i} />;
+						})}
+				</ul>
+			</div>
 		</>
 	);
 };

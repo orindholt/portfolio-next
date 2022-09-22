@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import sanityImage from "../../utils/sanityImage";
 import { motion as m } from "framer-motion";
-import GenericButton from "../GenericButton";
 import skills from "../../utils/skills";
 
 const Project = ({ data }) => {
@@ -18,20 +17,20 @@ const Project = ({ data }) => {
 	const includedTags = skills.filter(a => tags.includes(a.name));
 	return (
 		<m.li className="flex flex-col gap-2">
-			<div className="relative">
-				<div className="relative group aspect-[4/5] rounded-xl overflow-hidden">
+			<Link href={slug}>
+				<div className="relative group aspect-square overflow-hidden cursor-pointer">
 					<Image
 						src={sanityImage(header).url()}
 						quality={100}
 						alt={title}
 						layout="fill"
-						className="rounded-sm object-cover brightness-50"
+						className="rounded-sm object-cover group-hover:brightness-50 transition-all"
 					/>
+					<h2 className="absolute top-0 bottom-0 left-0 right-0 m-auto bg-white h-32 w-32 opacity-0 group-hover:opacity-100 transition-opacity grid place-content-center text-black uppercase font-bold">
+						{title}
+					</h2>
 				</div>
-				<h2 className="absolute top-0 bottom-0 left-0 right-0 m-auto hexagon bg-white h-32 w-32 grid place-content-center text-black uppercase font-bold">
-					{title}
-				</h2>
-			</div>
+			</Link>
 			<ul className="flex gap-2 text-2xl overflow-auto">
 				{includedTags.map((skill, i) => {
 					return (

@@ -5,6 +5,27 @@ module.exports = {
 		"./components/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
+		colors: {
+			gray: {
+				light: "#bfbfbf",
+				normal: "#8c8c8c",
+				dark: "#363330",
+			},
+			silver: "#b7b7c7",
+			blue: {
+				normal: "#575766",
+				dark: "#35333D",
+			},
+			white: "#ffffff",
+			black: "#1c1b1a",
+			orange: {
+				light: "#f48c06",
+				normal: "#f85032",
+				dark: "#e73827",
+			},
+			green: "#74c69d",
+			red: "#e63946",
+		},
 		extend: {
 			screens: {
 				md: "768px",
@@ -26,26 +47,7 @@ module.exports = {
 					"75%": { color: "#A94CAA" },
 				},
 			},
-			colors: {
-				gray: {
-					light: "#bfbfbf",
-					normal: "#8c8c8c",
-					dark: "#363330",
-				},
-				silver: "#b7b7c7",
-				blue: {
-					normal: "#575766",
-					dark: "#35333D",
-				},
-				black: "#1c1b1a",
-				orange: {
-					light: "#f48c06",
-					normal: "#f85032",
-					dark: "#e73827",
-				},
-				green: "#74c69d",
-				red: "#e63946",
-			},
+
 			flex: {
 				2: "2 2 0%",
 				3: "3 3 0%",

@@ -18,9 +18,19 @@ const popupVariants = {
 
 const PWAPrompt = () => {
 	const [deferredPrompt, setDeferredPrompt] = useState(null);
-	const [dismissed, setDismissed] = useState(false);
+	const [dismissed, setDismissed] = useState(true);
 
 	useEffect(() => {
+		const dismissedBoolean =
+			(localStorage.getItem("pwa-dismissed") &&
+				JSON.parse(localStorage.getItem("pwa-dismissed")) === true) ||
+			false;
+
+		// If user has not previously dismissed set active
+		if (!dismissedBoolean) {
+			setDismissed(false);
+		} else return;
+
 		window.addEventListener("beforeinstallprompt", e => {
 			e.preventDefault();
 			console.log(e);
@@ -28,20 +38,23 @@ const PWAPrompt = () => {
 		});
 	}, []);
 
+	const dismiss = () => {
+		setDismissed(true);
+		localStorage.setItem("pwa-dismissed", JSON.stringify(true));
+	};
+
 	const installHandler = async () => {
 		deferredPrompt.prompt();
 		const { outcome } = await deferredPrompt.userChoice;
 		setDeferredPrompt(null);
 		if (outcome === "accepted") {
 			console.log("Accepted");
-			setDismissed(true);
+			dismiss();
 		} else if (outcome === "dismissed") {
 			console.log("Dismissed");
-			setDismissed(true);
+			dismiss();
 		}
 	};
-
-	const dismiss = () => setDismissed(true);
 
 	return (
 		<AnimatePresence>
