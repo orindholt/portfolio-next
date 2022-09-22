@@ -3,7 +3,7 @@ import { motion as m, AnimatePresence } from "framer-motion";
 import { IoLogoGithub } from "react-icons/io5";
 import ThemeSwitch from "../ThemeSwitch";
 import MenuIcon from "../Icons/MenuIcon/MenuIcon";
-import Dropdown from "../Dropdown";
+import Dropdown from "./Dropdown";
 import NavItem from "./NavItem";
 import Searchbar from "../Search/Searchbar";
 import useMediaQuery from "../../hooks/useMediaQuery";

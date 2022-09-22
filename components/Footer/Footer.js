@@ -1,14 +1,6 @@
-import FooterLink from "./FooterLink";
-import Socials from "./Socials";
-import {
-	IoHome,
-	IoCodeSlash,
-	IoInformationCircle,
-	IoBook,
-	IoCall,
-} from "react-icons/io5";
+import Socials from "../Socials";
 
-const Footer = () => {
+const Footerbar = () => {
 	return (
 		<footer className="mt-auto hidden md:flex fixed bottom-0 md:static bg-white dark:bg-black md:bg-black md:dark:bg-white w-full py-2 !bg-opacity-70 dark:!bg-opacity-90 md:!bg-opacity-100 backdrop-blur-sm dark:text-black text-white text-center md:flex-col md:gap-1">
 			<p className="hidden md:block">
@@ -30,4 +22,4 @@ const Footer = () => {
 	);
 };
 
-export default Footer;
+export default Footerbar;

@@ -1,5 +1,5 @@
 import Navbar from "./Nav/Navbar";
-import Footerbar from "./Footer";
+import Footerbar from ".//Footer/Footer";
 import { AnimatePresence, motion as m } from "framer-motion";
 import Head from "next/head";
 import PageLoader from "./PageLoader";

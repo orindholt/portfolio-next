@@ -5,7 +5,7 @@ const Web = ({ data }) => {
 	return (
 		<>
 			<h1 className="text-6xl font-bold">Web</h1>
-			<div className="bg-gray-dark p-2">
+			<div className="bg-gray-dark p-2 mt-2">
 				<ul className="grid grid-cols-2 md:grid-cols-3 gap-12">
 					{data &&
 						data.map((project, i) => {

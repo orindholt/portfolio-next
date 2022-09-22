@@ -11,12 +11,12 @@ const Custom404 = () => {
 				<title>Oliver - 404</title>
 			</Head>
 			<div className="flex flex-col items-center my-auto pb-16">
-				<h1 className="text-6xl font-bold mb-2">
+				<p className="text-6xl font-bold mb-2">
 					Whoops!{" "}
 					<span className="font-extrabold bg-gradient-to-r from-orange-light to-orange-normal text-clip">
 						404
 					</span>
-				</h1>
+				</p>
 				<p className="dark:text-gray-normal text-gray-dark">
 					Seems that you have stumbled onto a page that doesn&apos;t exist.
 					<br />
