@@ -1,24 +1,22 @@
 import Project from "../../../components/Web/Project";
-import { client } from "../../../utils/sanityClient";
+import supabase from "../../../utils/supabaseClient";
 
 const Web = ({ data }) => {
 	return (
 		<>
 			<h1 className="text-6xl font-bold">Web</h1>
-			<div className="bg-gray-dark p-2 mt-2">
-				<ul className="grid grid-cols-2 md:grid-cols-3 gap-12">
-					{data &&
-						data.map((project, i) => {
-							return <Project data={project} key={i} />;
-						})}
-				</ul>
-			</div>
+			<ul className="grid grid-cols-2 md:grid-cols-3 gap-12 mt-6">
+				{data &&
+					data.map((project, i) => {
+						return <Project data={project} key={i} />;
+					})}
+			</ul>
 		</>
 	);
 };
 
 export async function getStaticProps() {
-	const data = await client.fetch(`*[_type == "web"]`);
+	const { data } = await supabase.from("web").select("*");
 	return {
 		props: { data },
 	};

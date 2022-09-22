@@ -24,6 +24,7 @@
 		"react-dom": "^18.2.0",
 		"react-hook-form": "^7.30.0",
 		"react-icons": "^4.3.1",
+		"swiper": "^8.4.2",
 		"typewriter-effect": "^2.18.2",
 		"yup": "^0.32.11"
 	},
