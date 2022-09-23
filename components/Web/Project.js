@@ -36,6 +36,7 @@ const Project = ({ data }) => {
 					href={repo}
 					className="hover:scale-110 transition-transform ml-auto"
 					target="_blank"
+					rel="noreferrer"
 				>
 					{skills.find(a => a.name.toLowerCase() === "github").icon}
 				</a>
