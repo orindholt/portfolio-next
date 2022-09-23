@@ -82,6 +82,7 @@ const Category = ({
 						<a
 							href={website}
 							target="_blank"
+							rel="noreferrer"
 							className="text-xl font-bold hover:dark:text-silver hover:text-gray-normal"
 						>
 							Try it now
@@ -91,6 +92,7 @@ const Category = ({
 						<a
 							href={repo}
 							target="_blank"
+							rel="noreferrer"
 							className="text-xl font-bold hover:dark:text-silver hover:text-gray-normal"
 						>
 							Source code

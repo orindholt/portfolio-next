@@ -5,6 +5,7 @@ import ReadMore from "../../../components/ReadMore";
 import dateToRealtime from "../../../utils/dateToRealtime";
 import Link from "next/link";
 import sanityImage from "../../../utils/sanityImage";
+import supabase from "../../../utils/supabaseClient";
 
 const Gallery = ({ data }) => {
 	return (

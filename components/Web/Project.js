@@ -28,8 +28,8 @@ const Project = ({ data }) => {
 			</Link>
 			<div className="flex gap-2 items-center text-2xl absolute bottom-0 right-0 left-0 p-2">
 				<ul className="flex gap-2 overflow-auto">
-					{includedTags.map((skill, i) => {
-						return <Skill skill={skill} key={i} />;
+					{includedTags.map((tag, i) => {
+						return <Skill skill={tag} key={i} />;
 					})}
 				</ul>
 				<a
