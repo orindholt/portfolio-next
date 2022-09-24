@@ -2,12 +2,22 @@ import Image from "next/image";
 import TechCard from "../components/TechCard";
 import skills from "../utils/skills";
 import ReadMore from "../components/ReadMore";
+import supabase from "../utils/supabaseClient";
 
-const About = () => {
+export async function getStaticProps() {
+	const { data, error } = supabase.storage
+		.from("project-assets")
+		.getPublicUrl("me.jpg");
+	return {
+		props: { data, error },
+	};
+}
+
+const About = ({ data: { publicURL: imageURL }, error }) => {
 	return (
 		<>
 			<section>
-				<div className="flex items-center flex-col lg:flex-row md:px-24">
+				<div className="flex items-center flex-col lg:flex-row md:px-24 py-4">
 					<div className="w-full mb-4">
 						<ReadMore
 							more={
@@ -35,12 +45,12 @@ const About = () => {
 					</div>
 					<div className="rounded-full overflow-hidden shadow-lg flex">
 						<Image
-							src="/assets/me.jpg"
+							src={imageURL}
 							width="400"
 							height="400"
 							quality={60}
 							placeholder="blur"
-							blurDataURL="/assets/placeholder.jpg"
+							blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO0+gMAAXYBOMjqGikAAAAASUVORK5CYII="
 							alt="Me"
 						/>
 					</div>

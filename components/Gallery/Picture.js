@@ -4,6 +4,7 @@ import Image from "next/image";
 import sanityImage from "../../utils/sanityImage";
 import Loader from "../Loader";
 import LightBox from "./LightBox";
+import PageLoader from "../PageLoader";
 
 const imageVariant = {
 	hidden: { opacity: 0, y: -20 },
@@ -33,7 +34,7 @@ const Picture = ({ image }) => {
 						onLoadingComplete={() => setComplete(true)}
 					/>
 				</LightBox>
-				{!complete && <Loader />}
+				{!complete && <PageLoader />}
 			</m.div>
 		</li>
 	);

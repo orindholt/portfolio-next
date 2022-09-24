@@ -23,7 +23,7 @@ const randomNum = (min, max) => {
 	return Math.floor(Math.random() * (max - min) + min);
 };
 
-export default function Home() {
+const Home = () => {
 	const { formData } = useContext(formContext);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [username, setUsername] = useState("");
@@ -38,7 +38,7 @@ export default function Home() {
 	}, [formData]);
 
 	return (
-		<div className="my-auto md:text-4xl text-2xl justify-self-stretch flex flex-col gap-2">
+		<div className="my-auto md:text-4xl text-2xl justify-self-stretch flex flex-col gap-4">
 			<h1
 				className="font-semibold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2"
 				ref={typewriterRef}
@@ -90,4 +90,6 @@ export default function Home() {
 			</m.div>
 		</div>
 	);
-}
+};
+
+export default Home;

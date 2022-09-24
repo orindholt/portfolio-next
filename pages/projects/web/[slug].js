@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
 import Skill from "../../../components/Web/Skill";
+import leadingZero from "../../../utils/leadingZero";
 
 export async function getStaticPaths() {
 	const { data } = await supabase.from("web").select("slug");
@@ -40,9 +41,9 @@ const Category = ({
 	const includedTags = skills.filter(a => tags.includes(a.name));
 
 	return (
-		<div className="flex gap-10 justify-center">
+		<div className="flex gap-10 justify-center ">
 			{screenshots && (
-				<div className="w-[376px]">
+				<div className="cursor-grab active:cursor-grabbing max-w-xs lg:max-w-sm">
 					<Swiper
 						autoplay={{
 							delay: 3000,
@@ -57,9 +58,11 @@ const Category = ({
 								<SwiperSlide key={i}>
 									<Image
 										src={screenshot}
-										layout="fixed"
-										width="376px"
-										height="936px"
+										alt={`${title} Screenshot ${leadingZero(i + 1)}`}
+										layout="intrinsic"
+										width="384px"
+										height="682px"
+										objectFit="cover"
 									/>
 								</SwiperSlide>
 							);
@@ -68,7 +71,7 @@ const Category = ({
 				</div>
 			)}
 			<div>
-				<h1 className="text-8xl font-bold">{title}</h1>
+				<h1 className="text-6xl lg:text-8xl font-bold">{title}</h1>
 				<ul className="flex gap-2 text-2xl justify-center my-4">
 					{includedTags.map((skill, i) => {
 						return <Skill skill={skill} includeName={true} key={i} />;

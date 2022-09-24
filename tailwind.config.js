@@ -30,6 +30,9 @@ module.exports = {
 			screens: {
 				md: "768px",
 			},
+			aspectRatio: {
+				mobile: "9 / 16",
+			},
 			boxShadow: {
 				l: "-10px 0px 10px 1px #252422",
 			},

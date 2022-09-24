@@ -1,11 +1,27 @@
-import { client } from "../../../utils/sanityClient";
-import Image from "next/image";
-import BlockBuilder from "../../../components/Block/BlockBuilder";
-import ReadMore from "../../../components/ReadMore";
-import dateToRealtime from "../../../utils/dateToRealtime";
-import Link from "next/link";
-import sanityImage from "../../../utils/sanityImage";
 import supabase from "../../../utils/supabaseClient";
+import GalleryItem from "../../../components/Gallery/GalleryItem";
+import { motion as m } from "framer-motion";
+
+const listVariants = {
+	hidden: {
+		opacity: 0,
+		transition: { staggerChildren: 0.1, delay: 0.4 },
+	},
+	show: {
+		opacity: 1,
+		transition: { staggerChildren: 0.1 },
+	},
+	exit: {
+		opacity: 0,
+		transition: { staggerChildren: 0.1, delay: 0.4 },
+	},
+};
+
+const projectVariants = {
+	hidden: { opacity: 0, y: -30 },
+	show: { opacity: 1, y: 0 },
+	exit: { opacity: 0, y: -30 },
+};
 
 const Gallery = ({ data }) => {
 	return (
@@ -14,38 +30,23 @@ const Gallery = ({ data }) => {
 			<p className="pb-10 pt-1.5 text-xl dark:text-silver text-blue-normal">
 				Collection of my photography work.
 			</p>
-			<ul className="grid grid-cols-1 md:grid-cols-2 gap-12">
-				{data.map(({ slug, title, description, images, taken }, i) => {
-					return (
-						<div key={i} className="relative flex flex-col">
-							<h2 className="text-4xl font-bold">{title}</h2>
-							<p className="text-sm mb-2">{dateToRealtime(taken)}</p>
-							<BlockBuilder block={description} />
-							<Link href={`/projects/gallery/${slug.current}`} passHref>
-								<a className="mx-auto mt-auto w-full lg:w-2/3">
-									<Image
-										src={sanityImage(images[0]).url()}
-										width={1920}
-										height={2880}
-										layout="responsive"
-										objectFit="cover"
-										alt={images[0].alt}
-										placeholder="blur"
-										className="rounded-sm shadow-md"
-										blurDataURL={sanityImage(images[0]).quality(10).url()}
-									/>
-								</a>
-							</Link>
-						</div>
-					);
-				})}
-			</ul>
+			<m.ul
+				variants={listVariants}
+				inital="hidden"
+				animate="show"
+				exit="exit"
+				className="grid grid-cols-1 md:grid-cols-2 gap-12"
+			>
+				{data.map((shoot, i) => (
+					<GalleryItem details={shoot} variants={projectVariants} key={i} />
+				))}
+			</m.ul>
 		</>
 	);
 };
 
 export async function getStaticProps() {
-	const data = await client.fetch(`*[_type == "gallery"]`);
+	let { data, error } = await supabase.from("gallery").select("*");
 	return {
 		props: { data },
 	};
