@@ -39,7 +39,7 @@ const post = ({
 					<h3 className="font-bold text-3xl md:text-4xl bg-gradient-to-br from-orange-light to-orange-normal text-clip">
 						{title}
 					</h3>
-					<h4 className="dark:text-silver text-blue-dark font-semibold text-sm sm:text-base">
+					<h4 className="dark:text-silver text-blue-dark font-bold text-sm sm:text-base">
 						{caption}
 					</h4>
 					{/* <Image src={`http://${_ref}`} width="1000" height="650" /> */}

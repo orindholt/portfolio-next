@@ -5,8 +5,6 @@ import SearchResult from "./SearchResult";
 
 const SearchResults = ({ searchValue }) => {
 	const deferredValue = useDeferredValue(searchValue);
-
-	
 	const data = useSearchResult(deferredValue);
 
 	console.log(data);

@@ -1,34 +1,26 @@
-import Project from "../../../components/Web/Project";
-import supabase from "../../../utils/supabaseClient";
-import PWAPrompt from "../../../components/PWAPrompt";
+import Project from "../../components/Work/Project";
+import supabase from "../../utils/supabaseClient";
+import PWAPrompt from "../../components/PWAPrompt";
 import { motion as m } from "framer-motion";
 
 const listVariants = {
 	hidden: {
 		opacity: 0,
-		transition: { staggerChildren: 0.1, delay: 0.4 },
+		transition: { delay: 0.4 },
 	},
 	show: {
 		opacity: 1,
-		transition: { staggerChildren: 0.1 },
 	},
 	exit: {
 		opacity: 0,
-		transition: { staggerChildren: 0.1, delay: 0.4 },
+		transition: { delay: 0.4 },
 	},
-};
-
-const projectVariants = {
-	hidden: { opacity: 0, y: -30 },
-	show: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -30 },
 };
 
 const Web = ({ data }) => {
 	return (
 		<>
 			<h1 className="text-6xl font-bold">Web</h1>
-			{/* <m.hr initial={{opacity: 0}} /> */}
 			<m.ul
 				variants={listVariants}
 				initial="hidden"
@@ -39,9 +31,7 @@ const Web = ({ data }) => {
 			>
 				{data &&
 					data.map((project, i) => {
-						return (
-							<Project data={project} variants={projectVariants} key={i} />
-						);
+						return <Project data={project} key={i} index={i} />;
 					})}
 			</m.ul>
 			<PWAPrompt />
@@ -50,7 +40,7 @@ const Web = ({ data }) => {
 };
 
 export async function getStaticProps() {
-	const { data } = await supabase.from("web").select("*");
+	const { data } = await supabase.from("coding").select("*").eq("is_web", true);
 	return {
 		props: { data },
 	};

@@ -85,7 +85,7 @@ const skills = [
 	{
 		name: "Github",
 		nameColor: "white",
-		bg: "#000000",
+		bg: "#333333",
 		icon: <IoLogoGithub />,
 		iconColor: "white",
 	},

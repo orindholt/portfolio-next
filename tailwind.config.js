@@ -25,6 +25,7 @@ module.exports = {
 			},
 			green: "#74c69d",
 			red: "#e63946",
+			inherit: "inherit",
 		},
 		extend: {
 			screens: {
@@ -37,7 +38,9 @@ module.exports = {
 				l: "-10px 0px 10px 1px #252422",
 			},
 			fontFamily: {
-				inter: "'Inter', sans-serif",
+				roboto: "'Roboto', sans-serif",
+				"roboto-mono": "'Roboto Mono', monospace",
+				mali: "'Mali', cursive",
 			},
 			animation: {
 				magic: "magic 6s ease-out infinite",

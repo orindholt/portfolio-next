@@ -1,5 +1,5 @@
-import supabase from "../../../utils/supabaseClient";
-import GalleryItem from "../../../components/Gallery/GalleryItem";
+import supabase from "../../utils/supabaseClient";
+import GalleryItem from "../../components/Gallery/GalleryItem";
 import { motion as m } from "framer-motion";
 
 const listVariants = {
@@ -17,12 +17,6 @@ const listVariants = {
 	},
 };
 
-const projectVariants = {
-	hidden: { opacity: 0, y: -30 },
-	show: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -30 },
-};
-
 const Gallery = ({ data }) => {
 	return (
 		<>
@@ -38,7 +32,7 @@ const Gallery = ({ data }) => {
 				className="grid grid-cols-1 md:grid-cols-2 gap-12"
 			>
 				{data.map((shoot, i) => (
-					<GalleryItem details={shoot} variants={projectVariants} key={i} />
+					<GalleryItem details={shoot} key={i} index={i} />
 				))}
 			</m.ul>
 		</>

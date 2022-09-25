@@ -25,7 +25,7 @@ const WorkCategory = ({
 							<h3>{category}</h3>
 						</div>
 						{caption && (
-							<p className="text-sm font-semibold bg-gradient-to-br from-orange-dark to-orange-light text-clip">
+							<p className="text-sm font-bold bg-gradient-to-br from-orange-dark to-orange-light text-clip">
 								{caption}
 							</p>
 						)}

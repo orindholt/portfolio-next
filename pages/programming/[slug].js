@@ -1,16 +1,16 @@
 import Image from "next/image";
-import supabase from "../../../utils/supabaseClient";
-import skills from "../../../utils/skills";
+import supabase from "../../utils/supabaseClient";
+import skills from "../../utils/skills";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar, Autoplay } from "swiper";
 import "swiper/css";
 import "swiper/css/scrollbar";
 import "swiper/css/autoplay";
-import Skill from "../../../components/Web/Skill";
-import leadingZero from "../../../utils/leadingZero";
+import Skill from "../../components/Work/Skill";
+import leadingZero from "../../utils/leadingZero";
 
 export async function getStaticPaths() {
-	const { data } = await supabase.from("web").select("slug");
+	const { data } = await supabase.from("coding").select("slug");
 	const paths = data.map(({ slug }) => {
 		return { params: { slug } };
 	});
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 	const slug = context.params.slug;
 	const { data, error } = await supabase
-		.from("web")
+		.from("coding")
 		.select()
 		.eq("slug", slug)
 		.single();
@@ -41,7 +41,7 @@ const Category = ({
 	const includedTags = skills.filter(a => tags.includes(a.name));
 
 	return (
-		<div className="flex gap-10 justify-center ">
+		<div className="flex gap-10 justify-center">
 			{screenshots && (
 				<div className="cursor-grab active:cursor-grabbing max-w-xs lg:max-w-sm">
 					<Swiper
@@ -63,6 +63,7 @@ const Category = ({
 										width="384px"
 										height="682px"
 										objectFit="cover"
+										className="object-center"
 									/>
 								</SwiperSlide>
 							);
@@ -71,12 +72,12 @@ const Category = ({
 				</div>
 			)}
 			<div>
-				<h1 className="text-6xl lg:text-8xl font-bold">{title}</h1>
-				<ul className="flex gap-2 text-2xl justify-center my-4">
+				<ul className="flex gap-2 text-2xl justify-center">
 					{includedTags.map((skill, i) => {
 						return <Skill skill={skill} includeName={true} key={i} />;
 					})}
 				</ul>
+				<h1 className="text-6xl lg:text-8xl font-bold mb-5">{title}</h1>
 				<p className="text-lg dark:text-silver text-gray-normal">
 					{description}
 				</p>
@@ -96,9 +97,13 @@ const Category = ({
 							href={repo}
 							target="_blank"
 							rel="noreferrer"
-							className="text-xl font-bold hover:dark:text-silver hover:text-gray-normal"
+							className="hover:scale-105 transition-transform"
 						>
-							Source code
+							<Skill
+								skill={skills.find(a => a.name.toLowerCase() === "github")}
+								includeName={true}
+								className="text-2xl"
+							/>
 						</a>
 					)}
 				</div>

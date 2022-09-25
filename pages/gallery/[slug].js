@@ -1,9 +1,9 @@
-import Picture from "../../../components/Gallery/Picture";
-import { client } from "../../../utils/sanityClient";
+import Picture from "../../components/Gallery/Picture";
+import { client } from "../../utils/sanityClient";
 import { IoArrowBack } from "react-icons/io5";
 import { useRouter } from "next/router";
-import ReadMore from "../../../components/ReadMore";
-import BlockBuilder from "../../../components/Block/BlockBuilder";
+import ReadMore from "../../components/ReadMore";
+import BlockBuilder from "../../components/Block/BlockBuilder";
 
 export async function getStaticPaths() {
 	const data = await client.fetch(`*[_type == "gallery"]`);

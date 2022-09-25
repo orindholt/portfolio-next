@@ -1,6 +1,6 @@
 const FilterSelect = ({ filter, options }) => {
 	return (
-		<div className="text-lg font-semibold flex">
+		<div className="text-lg font-bold flex">
 			<p>{filter}:</p>
 			<select
 				className="bg-transparent font-light focus:outline-none"

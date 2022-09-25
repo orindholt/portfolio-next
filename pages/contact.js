@@ -49,7 +49,7 @@ const Contact = () => {
 		<>
 			{!isLoading && <PageLoader />}
 			<div className="my-auto pb-16">
-				<m.h2
+				<m.h1
 					initial={{ opacity: 0, y: -20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ type: "tween", duration: 1 }}
@@ -59,8 +59,8 @@ const Contact = () => {
 					<span className="md:hover:text-orange-normal">
 						<Link href="/about">me</Link>
 					</span>
-				</m.h2>
-				<m.p className="text-center font-light mb-14 dark:text-gray-normal text-black dark:opacity-20 opacity-50 select-none">
+				</m.h1>
+				<m.p className="text-center font-light mb-14 dark:text-gray-normal text-black dark:opacity-20 opacity-50 select-none font-mali">
 					(at your own risk..)
 				</m.p>
 				<form

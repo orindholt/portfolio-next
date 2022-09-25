@@ -33,7 +33,6 @@ const navElements = [
 	},
 	{
 		text: "Projects",
-		to: "/projects",
 		dropdown: [
 			{
 				to: "/web",
@@ -91,13 +90,7 @@ const Navbar = () => {
 											{obj.dropdown
 												.sort((a, b) => a.text.length - b.text.length)
 												.map((el, i) => {
-													return (
-														<NavItem
-															to={`${obj.to}${el.to}`}
-															text={el.text}
-															key={i}
-														/>
-													);
+													return <NavItem to={el.to} text={el.text} key={i} />;
 												})}
 										</Dropdown>
 									);
@@ -105,7 +98,6 @@ const Navbar = () => {
 									return <NavItem to={obj.to} text={obj.text} key={i} />;
 								}
 							})}
-
 							<Searchbar />
 							<div className="flex gap-5 justify-center md:gap-9 md:text-2xl text-4xl">
 								<ThemeSwitch />

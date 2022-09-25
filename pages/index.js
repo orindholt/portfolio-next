@@ -1,7 +1,6 @@
 import { formContext } from "../utils/Context";
 import { useContext, useEffect, useRef, useState } from "react";
 import { motion as m } from "framer-motion";
-import Typewriter from "typewriter-effect";
 import GenericButton from "../components/GenericButton";
 
 const welcomeMessages = [
@@ -27,7 +26,6 @@ const Home = () => {
 	const { formData } = useContext(formContext);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [username, setUsername] = useState("");
-	const typewriterRef = useRef(null);
 
 	useEffect(() => {
 		if (Object.keys(formData).length) {
@@ -38,54 +36,42 @@ const Home = () => {
 	}, [formData]);
 
 	return (
-		<div className="my-auto md:text-4xl text-2xl justify-self-stretch flex flex-col gap-4">
-			<h1
-				className="font-semibold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2"
-				ref={typewriterRef}
-			>
-				<Typewriter
-					options={{
-						strings: `${
-							formSubmitted
-								? welcomeMessages[randomNum(0, welcomeMessages.length)] + " "
-								: "Hey, "
-						} ${formSubmitted ? capitalizeString(username) : "I'm Oliver"}.`,
-						autoStart: true,
-						cursorClassName: "hidden",
-					}}
-				/>
-			</h1>
-			<m.h2
-				initial={{ opacity: 0, y: 20 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{
-					type: "tween",
-					ease: "easeInOut",
-					duration: 1,
-					delay: 1.5,
-				}}
-				className="md:text-3xl text-2xl bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip mt-2"
-			>
-				{formSubmitted ? "Good to see you yet again!" : "Frontend Developer"}
-			</m.h2>
+		<div className="my-auto md:text-4xl text-2xl justify-self-stretch">
 			<m.div
-				initial={{ opacity: 0, y: 30 }}
-				animate={{ opacity: 1, y: 0 }}
-				transition={{ delay: 3, duration: 1.5 }}
-				className="md:px-24"
+				initial={{ opacity: 0, x: 30 }}
+				animate={{ opacity: 1, x: 0 }}
+				transition={{ duration: 1, delay: 0.5, type: "tween" }}
 			>
-				<p className="text-lg">
-					I&apos;m a Junior Frontend Developer and,{" "}
-					<span className="font-semibold dark:text-white text-black">
-						🪄 CSS <span className="animate-magic">magician</span>
+				<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
+					Hello.
+				</h1>
+				<h2 className="md:text-5xl text-4xl dark:text-white text-black mt-2 font-medium">
+					I'm Oliver
+				</h2>
+				<p className="text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
+					I&apos;m a Junior Frontend Developer,
+					<br />
+					<span className="font-bold dark:text-white text-black">
+						{" "}
+						CSS <span className="animate-magic">magician </span>🪄
 					</span>{" "}
-					based in the outskirts of Copenhagen.
+					, based in the outskirts of Copenhagen.
 				</p>
+			</m.div>
+			<m.div
+				initial={{ opacity: 0, x: 30 }}
+				animate={{ opacity: 1, x: 0 }}
+				transition={{ duration: 1, delay: 1.5, type: "tween" }}
+			>
+				<h2 className="md:text-3xl text-2xl dark:text-white text-black font-medium">
+					{formSubmitted ? "Good to see you yet again!" : "Frontend Developer"}
+				</h2>
 				<GenericButton
 					anchor="/projects/web"
-					className="max-w-fit text-base mx-auto mt-4"
+					className="max-w-fit text-2xl mx-auto mt-6"
+					arrow
 				>
-					My Work
+					Projects
 				</GenericButton>
 			</m.div>
 		</div>

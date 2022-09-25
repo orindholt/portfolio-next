@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
-import { client } from "../utils/sanityClient";
+import supabase from "../utils/supabaseClient";
 
 const useSearchResult = searchValue => {
 	const [data, setData] = useState(null);
 	useEffect(() => {
 		const fetchData = async () => {
 			if (searchValue) {
-				const posts = await client.fetch(`*[title match "${searchValue}*"]`);
+				let { data: posts, error } = await supabase.from("*").select("*");
+				console.log(posts, error);
 				if (posts !== null) setData(posts);
 			} else setData(null);
 		};
