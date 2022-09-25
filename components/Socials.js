@@ -36,15 +36,6 @@ const Socials = () => {
 					<IoLogoStackoverflow />
 				</a>
 			</li>
-			<li className="md:hover:scale-110 transition-transform">
-				<a
-					target="_blank"
-					rel="noreferrer"
-					href="https://www.instagram.com/rindholtfoto"
-				>
-					<IoLogoInstagram />
-				</a>
-			</li>
 		</ul>
 	);
 };

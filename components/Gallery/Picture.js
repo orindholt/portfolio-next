@@ -1,41 +1,39 @@
 import { useState } from "react";
 import { motion as m } from "framer-motion";
 import Image from "next/image";
-import sanityImage from "../../utils/sanityImage";
-import Loader from "../Loader";
 import LightBox from "./LightBox";
-import PageLoader from "../PageLoader";
+import ImageLoader from "./ImageLoader";
 
 const imageVariant = {
 	hidden: { opacity: 0, y: -20 },
 	shown: { opacity: 1, y: 0 },
 };
 
-const Picture = ({ image }) => {
-	const [complete, setComplete] = useState(false);
+const Picture = ({ image, alt }) => {
+	const [isLoaded, setIsLoaded] = useState(false);
 
 	return (
-		<li>
+		<li className="relative">
 			<m.div
 				variants={imageVariant}
 				initial="hidden"
-				animate={complete && "shown"}
+				animate={isLoaded ? "shown" : "hidden"}
 				className="relative overflow-hidden"
 			>
-				<LightBox>
+				<LightBox condition={isLoaded}>
 					<Image
-						src={sanityImage(image).url()}
+						src={image}
 						width={1920}
 						height={2880}
 						layout="responsive"
 						objectFit="cover"
-						alt={image.alt}
+						alt={alt}
 						className="rounded-sm shadow-md cursor-pointer"
-						onLoadingComplete={() => setComplete(true)}
+						onLoadingComplete={() => setIsLoaded(true)}
 					/>
 				</LightBox>
-				{!complete && <PageLoader />}
 			</m.div>
+			{!isLoaded && <ImageLoader />}
 		</li>
 	);
 };

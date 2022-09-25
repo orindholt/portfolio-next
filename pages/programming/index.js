@@ -41,7 +41,7 @@ const Web = ({ data }) => {
 
 export async function getStaticProps() {
 	const { data } = await supabase
-		.from("coding")
+		.from("projects")
 		.select("*")
 		.eq("is_web", false);
 	return {

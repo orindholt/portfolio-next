@@ -47,7 +47,7 @@ const Contact = () => {
 
 	return (
 		<>
-			{!isLoading && <PageLoader />}
+			{isLoading && <PageLoader />}
 			<div className="my-auto pb-16">
 				<m.h1
 					initial={{ opacity: 0, y: -20 }}

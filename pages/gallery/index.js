@@ -1,5 +1,5 @@
 import supabase from "../../utils/supabaseClient";
-import GalleryItem from "../../components/Gallery/GalleryItem";
+import Shoot from "../../components/Gallery/Shoot";
 import { motion as m } from "framer-motion";
 
 const listVariants = {
@@ -17,6 +17,13 @@ const listVariants = {
 	},
 };
 
+export async function getStaticProps() {
+	let { data, error } = await supabase.from("gallery").select("*");
+	return {
+		props: { data },
+	};
+}
+
 const Gallery = ({ data }) => {
 	return (
 		<>
@@ -32,18 +39,11 @@ const Gallery = ({ data }) => {
 				className="grid grid-cols-1 md:grid-cols-2 gap-12"
 			>
 				{data.map((shoot, i) => (
-					<GalleryItem details={shoot} key={i} index={i} />
+					<Shoot details={shoot} key={i} index={i} />
 				))}
 			</m.ul>
 		</>
 	);
 };
-
-export async function getStaticProps() {
-	let { data, error } = await supabase.from("gallery").select("*");
-	return {
-		props: { data },
-	};
-}
 
 export default Gallery;

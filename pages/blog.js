@@ -1,10 +1,21 @@
 import Post from "../components/Post";
-import { client } from "../utils/sanityClient";
+import supabase from "../utils/supabaseClient";
 import FilterChoice from "../components/Filters/FilterChoice";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-const Blog = ({ posts }) => {
+export const getStaticProps = async () => {
+	const { data, error } = await supabase.from("blog").select("*");
+
+	return {
+		props: {
+			data,
+			error,
+		},
+	};
+};
+
+const Blog = ({ data: posts, error }) => {
 	const [activeChoices, setActiveChoices] = useState([]);
 	const [allTags, setAllTags] = useState([]);
 
@@ -32,7 +43,7 @@ const Blog = ({ posts }) => {
 				<br /> Here you can find all of my projects in detail, aswell as tips
 				and tricks!
 			</p>
-			{posts.length ? (
+			{posts && !error ? (
 				<>
 					<p className="dark:text-blue-normal text-silver">
 						Please pick a post to get started!
@@ -67,16 +78,6 @@ const Blog = ({ posts }) => {
 			)}
 		</>
 	);
-};
-
-export const getStaticProps = async () => {
-	const posts = await client.fetch(`*[_type == "blog"]`);
-
-	return {
-		props: {
-			posts,
-		},
-	};
 };
 
 export default Blog;

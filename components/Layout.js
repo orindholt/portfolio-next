@@ -1,8 +1,8 @@
 import Navbar from "./Nav/Navbar";
-import Footerbar from ".//Footer/Footer";
+import Footerbar from "./Footer";
 import { AnimatePresence, motion as m } from "framer-motion";
 import Head from "next/head";
-import PageLoader from "./PageLoader";
+import RouteLoader from "./RouteLoader";
 import { useRouter } from "next/router";
 import pathTitle from "../utils/pathTitle";
 
@@ -42,7 +42,7 @@ const Layout = ({ children, router }) => {
 					</m.main>
 				</AnimatePresence>
 				<Footerbar />
-				<PageLoader />
+				<RouteLoader />
 			</div>
 		</>
 	);

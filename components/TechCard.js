@@ -37,7 +37,7 @@ const TechCard = ({ tech, index }) => {
 			}}
 		>
 			{icon}
-			<h4 className="font-medium" style={{ color: nameColor }}>
+			<h4 className="font-medium -mt-1" style={{ color: nameColor }}>
 				{name}
 			</h4>
 		</m.li>

@@ -5,26 +5,26 @@ import Skill from "./Skill";
 import { motion as m } from "framer-motion";
 import { useState } from "react";
 
-const projectVariants = {
-	hidden: { opacity: 0, y: -30 },
-	show: { opacity: 1, y: 0 },
-	exit: { opacity: 0, y: -30 },
-};
-
 const Project = ({ data, index }) => {
+	const staggerDelay = 5;
+	const projectVariants = {
+		hidden: { opacity: 0, y: -30 },
+		show: {
+			opacity: 1,
+			y: 0,
+			delay: parseInt(`0.${index + 1 + staggerDelay}`),
+		},
+		exit: { opacity: 0, y: -30 },
+	};
 	const { title, slug, repo, image, tags, is_web: isWeb } = data;
 	const [isLoaded, setIsLoaded] = useState(false);
 
-	const staggerDelay = 5;
-
-	const includedTags = skills.filter(a => tags.includes(a.name));
 	return (
 		<m.li
 			className="flex flex-col gap-2 relative"
 			variants={projectVariants}
 			initial="hidden"
 			animate={isLoaded ? "show" : "hidden"}
-			transition={{ delay: parseInt(`0.${index + 1 + staggerDelay}`) }}
 			exit="exit"
 		>
 			<Link href={`${isWeb ? "web" : "programming"}/${slug}`} passHref>
@@ -41,21 +41,25 @@ const Project = ({ data, index }) => {
 					</h2>
 				</a>
 			</Link>
-			<ul className="flex gap-2 overflow-auto absolute bottom-2 left-2 text-2xl">
-				{includedTags.map((tag, i) => {
-					return <Skill skill={tag} key={i} />;
-				})}
-			</ul>
-			<a
-				href={repo}
-				className="hover:scale-110 transition-transform ml-auto text-white text-3xl absolute bottom-2 right-2"
-				target="_blank"
-				rel="noreferrer"
-			>
-				{skills.find(a => a.name.toLowerCase() === "github").icon}
-			</a>
-			{/* <div className="flex gap-2 items-center text-2xl p-2">
-			</div> */}
+			{tags && tags.length && (
+				<ul className="flex gap-2 overflow-auto absolute bottom-2 left-2 text-2xl">
+					{skills
+						.filter(a => tags.includes(a.name))
+						.map((tag, i) => {
+							return <Skill skill={tag} key={i} />;
+						})}
+				</ul>
+			)}
+			{repo && (
+				<a
+					href={repo}
+					className="hover:scale-110 transition-transform ml-auto text-white text-3xl absolute bottom-2 right-2"
+					target="_blank"
+					rel="noreferrer"
+				>
+					{skills.find(a => a.name.toLowerCase() === "github").icon}
+				</a>
+			)}
 		</m.li>
 	);
 };
