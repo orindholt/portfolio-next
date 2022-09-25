@@ -40,20 +40,22 @@ const Shoot = ({
 			>
 				<h2 className="text-4xl font-black pb-3">{title}</h2>
 				<Link href={`gallery/${slug}`} passHref>
-					<a className="aspect-[3/4] group relative cursor-pointer">
-						<Image
-							src={images[randomImage]}
-							quality={70}
-							layout="fill"
-							objectFit="cover"
-							alt={`${title} Cover`}
-							className="rounded-sm shadow-md object-top group-hover:brightness-50 transition-all"
-							onLoadingComplete={() => setIsLoaded(true)}
-						/>
+					<a>
+						<div className="aspect-[3/4] group relative cursor-pointer">
+							<Image
+								src={images[randomImage]}
+								quality={50}
+								layout="fill"
+								objectFit="cover"
+								alt={`${title} Cover`}
+								className="rounded-sm shadow-md object-top group-hover:brightness-50 transition-all"
+								onLoadingComplete={() => setIsLoaded(true)}
+							/>
 
-						<div className="absolute p-1 top-0 bottom-0 grid place-content-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-							<ShootDate rawDate={taken} />
-							<p className="px-4">{description}</p>
+							<div className="absolute p-1 top-0 bottom-0 grid place-content-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+								<ShootDate rawDate={taken} />
+								<p className="px-4">{description}</p>
+							</div>
 						</div>
 					</a>
 				</Link>
