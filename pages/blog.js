@@ -1,12 +1,21 @@
-import Head from "next/head";
 import Post from "../components/Post";
-import { createClient } from "next-sanity";
-import Searchbar from "../components/Searchbar";
+import supabase from "../utils/supabaseClient";
 import FilterChoice from "../components/Filters/FilterChoice";
 import { useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
 
-const Blog = ({ posts }) => {
+export const getStaticProps = async () => {
+	const { data, error } = await supabase.from("blog").select("*");
+
+	return {
+		props: {
+			data,
+			error,
+		},
+	};
+};
+
+const Blog = ({ data: posts, error }) => {
 	const [activeChoices, setActiveChoices] = useState([]);
 	const [allTags, setAllTags] = useState([]);
 
@@ -24,58 +33,51 @@ const Blog = ({ posts }) => {
 		}
 	}, [posts]);
 
+	console.log(posts);
+
 	return (
 		<>
-			<Head>
-				<title>Oliver - Blog</title>
-			</Head>
-			<h2 className="text-4xl font-bold">Welcome to my blog</h2>
+			<h2 className="text-6xl font-bold">Blog</h2>
 			<p className="dark:text-silver text-blue-normal py-2">
 				This is where I keep all of the newest updates about me.
 				<br /> Here you can find all of my projects in detail, aswell as tips
-				&#38; tricks!
+				and tricks!
 			</p>
-			<p className="dark:text-blue-normal text-silver">
-				Please pick a post to get started!
-			</p>
-			<FilterChoice
-				choices={allTags}
-				activeChoices={activeChoices}
-				setActiveChoices={setActiveChoices}
-			/>
-			<ul className="flex flex-col items-center sm:my-4 relative">
-				<AnimatePresence>
-					{posts &&
-						posts.map((post, i) => {
-							return activeChoices.length ? (
-								Boolean(post.tags.some(tag => tag.includes(activeChoices))) && (
+			{posts && !error ? (
+				<>
+					<p className="dark:text-blue-normal text-silver">
+						Please pick a post to get started!
+					</p>
+					<FilterChoice
+						choices={allTags}
+						activeChoices={activeChoices}
+						setActiveChoices={setActiveChoices}
+					/>
+					<ul className="flex flex-col items-center sm:my-4 relative">
+						<AnimatePresence>
+							{posts.map((post, i) => {
+								return activeChoices.length ? (
+									Boolean(
+										post.tags.some(tag => tag.includes(activeChoices))
+									) && <Post key={i} content={post} />
+								) : (
 									<Post key={i} content={post} />
-								)
-							) : (
-								<Post key={i} content={post} />
-							);
-						})}
-				</AnimatePresence>
-			</ul>
+								);
+							})}
+						</AnimatePresence>
+					</ul>
+				</>
+			) : (
+				<p className="my-auto pb-16 text-xl leading-7">
+					<span className="bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark text-clip text-3xl font-bold">
+						Whoops!
+					</span>
+					<br />
+					There doesn&apos;t seem to be any posts yet
+				</p>
+			)}
 		</>
 	);
-};
-
-const client = createClient({
-	projectId: "94ov5h9s",
-	dataset: "production",
-	apiVersion: "2022-05-23",
-	useCdn: false,
-});
-
-export const getStaticProps = async () => {
-	const posts = await client.fetch(`*[_type == "blog-post"]`);
-
-	return {
-		props: {
-			posts,
-		},
-	};
 };
 
 export default Blog;

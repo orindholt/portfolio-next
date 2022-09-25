@@ -10,25 +10,23 @@ const Custom404 = () => {
 			<Head>
 				<title>Oliver - 404</title>
 			</Head>
-			<div className="mt-20 flex flex-col items-center">
-				<h1 className="text-6xl font-bold mb-2">
+			<div className="flex flex-col items-center my-auto pb-16">
+				<p className="text-6xl font-bold mb-2">
 					Whoops!{" "}
 					<span className="font-extrabold bg-gradient-to-r from-orange-light to-orange-normal text-clip">
 						404
 					</span>
-				</h1>
+				</p>
 				<p className="dark:text-gray-normal text-gray-dark">
 					Seems that you have stumbled onto a page that doesn&apos;t exist.
 					<br />
-					<span className="font-semibold">
-						That means I messed up somewhere.
-					</span>
+					<span className="font-bold">That means I messed up somewhere.</span>
 				</p>
 				{/* <p className="dark:text-gray-normal text-gray-dark my-2">
 					You getting this error, means that I'm already fixing it.
 					<br />
 					This happens with the help from{" "}
-					<span className="font-semibold">Sentry</span>
+					<span className="font-bold">Sentry</span>
 				</p> */}
 				<div className="flex flex-col gap-2 mt-4">
 					<button

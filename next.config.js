@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
+const withPWA = require("next-pwa")({
+	dest: "public",
+	register: true,
+	skipWaiting: true,
+	disable: process.env.NODE_ENV === "development",
+});
 const nextConfig = {
 	reactStrictMode: true,
 	i18n: {
@@ -6,9 +12,15 @@ const nextConfig = {
 		defaultLocale: "en",
 	},
 	env: {
-		EMAIL: process.env.EMAIL,
-		PASSWORD: process.env.PASSWORD,
+		EMAIL_SERVICE_ID: process.env.EMAIL_SERVICE_ID,
+		EMAIL_TEMPLATE_ID: process.env.EMAIL_TEMPLATE_ID,
+		EMAIL_USER_ID: process.env.EMAIL_USER_ID,
+		SUPABASE_KEY: process.env.SUPABASE_KEY,
 	},
+	images: {
+		domains: ["cdn.sanity.io", "nfbblgowothfxotksqty.supabase.co"],
+	},
+	output: "standalone",
 };
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);

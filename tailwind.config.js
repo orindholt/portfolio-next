@@ -5,35 +5,61 @@ module.exports = {
 		"./components/**/*.{js,ts,jsx,tsx}",
 	],
 	theme: {
+		colors: {
+			gray: {
+				light: "#bfbfbf",
+				normal: "#8c8c8c",
+				dark: "#363330",
+			},
+			silver: "#b7b7c7",
+			blue: {
+				normal: "#575766",
+				dark: "#35333D",
+			},
+			white: "#ffffff",
+			black: "#1c1b1a",
+			orange: {
+				light: "#f48c06",
+				normal: "#f85032",
+				dark: "#e73827",
+			},
+			green: "#74c69d",
+			red: "#e63946",
+			inherit: "inherit",
+		},
 		extend: {
 			screens: {
 				md: "768px",
+			},
+			aspectRatio: {
+				mobile: "9 / 16",
 			},
 			boxShadow: {
 				l: "-10px 0px 10px 1px #252422",
 			},
 			fontFamily: {
-				inter: "'Inter', sans-serif",
+				roboto: "'Roboto', sans-serif",
+				"roboto-mono": "'Roboto Mono', monospace",
+				mali: "'Mali', cursive",
 			},
-			colors: {
-				gray: {
-					light: "#dedede",
-					normal: "#B6B5B6",
-					dark: "#403D39",
+			animation: {
+				magic: "magic 6s ease-out infinite",
+			},
+			keyframes: {
+				magic: {
+					"0%, 100%": { color: "#C7305D" },
+					"25%": { color: "#DF5446" },
+					"50%": { color: "#642D87" },
+					"75%": { color: "#A94CAA" },
 				},
-				silver: "#b7b7c7",
-				blue: {
-					normal: "#575766",
-					dark: "#35333D",
-				},
-				black: "#252422",
-				orange: {
-					light: "#f48c06",
-					normal: "#f85032",
-					dark: "#e73827",
-				},
-				green: "#74c69d",
-				red: "#e63946",
+			},
+
+			flex: {
+				2: "2 2 0%",
+				3: "3 3 0%",
+				4: "4 4 0%",
+				5: "5 5 0%",
+				6: "6 6 0%",
 			},
 		},
 	},

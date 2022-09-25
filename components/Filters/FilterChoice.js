@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
 import { IoCloseSharp } from "react-icons/io5";
 import Choice from "./Choice";
@@ -21,7 +21,12 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 	};
 
 	return (
-		<aside className="static sm:fixed sm:top-1/4 z-10">
+		<m.aside
+			initial={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			transition={{ delay: 1 }}
+			className="static sm:fixed sm:top-1/4 z-10"
+		>
 			<div className="relative flex justify-center sm:block sm:justify-start mt-4 sm:mt-0">
 				<button
 					type="button"
@@ -34,7 +39,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 				</button>
 				<AnimatePresence>
 					{active && (
-						<div className="dark:bg-black bg-white backdrop-blur-sm !bg-opacity-50 md:bg-transparent rounded-sm fixed sm:absolute sm:w-auto sm:h-full w-full h-full sm:top-auto sm:left-auto top-0 left-0 z-20 sm:p-0 px-16 pb-20 flex flex-col justify-center">
+						<div className="dark:bg-black bg-white backdrop-blur-sm !bg-opacity-50 md:bg-transparent rounded-sm fixed sm:absolute sm:w-auto w-full h-full sm:top-auto sm:left-auto top-0 left-0 z-20 sm:p-0 px-16 pb-20 flex flex-col justify-center">
 							<m.ul
 								variants={listVariant}
 								initial="hidden"
@@ -55,7 +60,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 								})}
 							</m.ul>
 							<GenericButton
-								classes="mx-auto mt-10 font-normal sm:hidden"
+								className="mx-auto mt-10 font-normal sm:hidden"
 								click={() => setActive(false)}
 							>
 								Close <IoCloseSharp />
@@ -64,7 +69,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 					)}
 				</AnimatePresence>
 			</div>
-		</aside>
+		</m.aside>
 	);
 };
 

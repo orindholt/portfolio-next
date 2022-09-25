@@ -1,25 +1,43 @@
-import { motion as m } from "framer-motion";
+import Link from "next/link";
+import { CgArrowLongRight as Arrow } from "react-icons/cg";
 
-const buttonVariant = {
-	shown: { opacity: 1 },
-	hidden: { opacity: 0 },
-};
+const GenericButton = ({
+	children,
+	type = "button",
+	className = "",
+	click = () => {},
+	anchor = "",
+	arrow = false,
+}) => {
+	const CustomTag = ({ children, className = "" }) => {
+		return anchor ? (
+			<Link href={anchor} passHref>
+				<a className={className}>{children}</a>
+			</Link>
+		) : (
+			<button type={type} onClick={click} className={className}>
+				<>{children}</>
+			</button>
+		);
+	};
 
-const GenericButton = ({ children, type = "button", classes, click }) => {
 	return (
-		<m.button
-			variants={buttonVariant}
-			initial="hidden"
-			animate="shown"
-			exit="hidden"
-			type={type}
-			className={`px-2 py-1 font-semibold bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark text-white rounded-sm inline-block md:hover:scale-105 active:scale-95 transition-all ${classes} ${
-				children.length >= 2 && "flex items-center"
-			}`}
-			onClick={click}
+		<CustomTag
+			className={`px-4 pt-1 pb-1.5 font-bold bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark dark:text-white text-black rounded-sm inline-block md:hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer relative group ${className} `}
 		>
-			{children}
-		</m.button>
+			<p
+				className={`leading-normal ${
+					typeof children !== "string" && children.length > 1
+						? "flex items-center"
+						: ""
+				}`}
+			>
+				{children}
+			</p>
+			{arrow && (
+				<Arrow className="absolute top-0 bottom-0 -right-5 text-3xl group-hover:translate-x-4 duration-300 transition-transform my-auto text-inherit" />
+			)}
+		</CustomTag>
 	);
 };
 

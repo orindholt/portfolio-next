@@ -1,21 +1,9 @@
-import ReadMore from "../components/ReadMore";
 import { formContext } from "../utils/Context";
 import { useContext, useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
-import {
-	IoLogoReact,
-	IoCodeSlash,
-	IoCamera,
-	IoSend,
-	IoAccessibility,
-	IoBook,
-	IoDice,
-} from "react-icons/io5";
-import Head from "next/head";
-import Link from "next/link";
-import CareerTree from "../components/CareerTree/Tree";
-import MapLoaction from "../components/MapLocation";
-import StartLink from "../components/StartLink";
+import Typewriter from "typewriter-effect";
+import supabase from "../utils/supabaseClient";
+import ProjectSlider from "../components/Work/ProjectSlider";
 
 const welcomeMessages = [
 	"Welcome back",
@@ -24,33 +12,6 @@ const welcomeMessages = [
 	"Thanks for visiting",
 	"Greetings",
 	"Good, you're back",
-];
-
-const pages = [
-	{
-		icon: <IoLogoReact />,
-		name: "web",
-	},
-	{
-		icon: <IoCodeSlash />,
-		name: "programming",
-	},
-	{
-		icon: <IoCamera />,
-		name: "photography",
-	},
-	{
-		icon: <IoAccessibility />,
-		name: "about",
-	},
-	{
-		icon: <IoBook />,
-		name: "blog",
-	},
-	{
-		icon: <IoSend />,
-		name: "contact",
-	},
 ];
 
 const capitalizeString = text => {
@@ -63,12 +24,35 @@ const randomNum = (min, max) => {
 	return Math.floor(Math.random() * (max - min) + min);
 };
 
-export default function Home() {
+export async function getStaticProps() {
+	const { data, error } = await supabase
+		.from("projects")
+		.select()
+		.eq("can_be_featured", true);
+	return {
+		props: { data, error },
+	};
+}
+
+const featuredPostLimit = 3;
+
+const Home = ({ data: projects, error }) => {
 	const { formData } = useContext(formContext);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [username, setUsername] = useState("");
-	const [mapView, setMapView] = useState(false);
-	const [randomPage, setRandomPage] = useState("");
+	const [newestProjects, setNewestProjects] = useState(null);
+
+	const sortArray = arr =>
+		arr
+			.splice(0, featuredPostLimit)
+			.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+	useEffect(() => {
+		if (projects.length > 1) {
+			console.log(projects);
+			setNewestProjects(sortArray(projects));
+		}
+	}, [projects]);
 
 	useEffect(() => {
 		if (Object.keys(formData).length) {
@@ -78,109 +62,57 @@ export default function Home() {
 		}
 	}, [formData]);
 
-	useEffect(() => {
-		setRandomPage(pages[randomNum(0, pages.length)].name);
-	}, []);
-
 	return (
-		<>
-			<Head>
-				<title>Oliver - Home</title>
-			</Head>
-			<div className="md:mt-12">
-				<m.h1
-					initial={{ x: -20, opacity: 0 }}
-					animate={{ x: 0, opacity: 1 }}
-					transition={{ type: "tween", ease: "easeInOut", duration: 1 }}
-					className="font-extralight"
-				>
-					<span className="md:text-4xl text-2xl">
-						{formSubmitted
-							? welcomeMessages[randomNum(0, welcomeMessages.length)] + " "
-							: "Hey, "}
-					</span>
-					<br className="md:hidden" />
-					<span className="font-semibold text-8xl">
-						{formSubmitted ? capitalizeString(username) : "I'm Oliver"}.
-					</span>
-				</m.h1>
-				<m.h2
-					initial={{ opacity: 0, y: "50%" }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{
-						type: "tween",
-						ease: "easeInOut",
-						duration: 1,
-						delay: 0.75,
-					}}
-					className="md:text-3xl text-2xl bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip"
-				>
+		<div className="my-auto md:text-4xl text-2xl justify-self-stretch">
+			<m.div
+				initial={{ opacity: 0, x: 30 }}
+				animate={{ opacity: 1, x: 0 }}
+				transition={{ duration: 1, type: "tween" }}
+			>
+				<p>
+					{Boolean(Object.keys(formData).length) && (
+						<Typewriter
+							options={{
+								strings: `${
+									welcomeMessages[randomNum(0, welcomeMessages.length)]
+								} ${capitalizeString(username)}}.`,
+								autoStart: true,
+								cursorClassName: "hidden",
+							}}
+						/>
+					)}
+				</p>
+				<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
+					Hello!
+				</h1>
+				<h2 className="md:text-5xl text-4xl dark:text-white text-black mt-2 font-medium">
+					I&apos;m Oliver
+				</h2>
+				<h3 className="md:text-3xl text-2xl dark:text-white text-black font-medium mt-4">
 					{formSubmitted ? "Good to see you yet again!" : "Frontend Developer"}
-				</m.h2>
-				{mapView && <MapLoaction />}
-				<div className="md:px-24">
-					<ReadMore
-						text={
-							<>
-								I&apos;m a Junior Frontend Developer, based in{" "}
-								<span className="font-semibold dark:text-white text-black">
-									Copenhagen.
-								</span>{" "}
-								Currently studying web development at{" "}
-								<span
-									type="button"
-									className="font-semibold dark:text-white text-black"
-								>
-									Roskilde Technical School.
-								</span>
-							</>
-						}
-						more="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut risus
-							erat, porttitor vitae leo sit amet, iaculis aliquet elit. Etiam
-							sollicitudin egestas imperdiet. In sed blandit neque, ut dignissim
-							massa."
-					/>
-				</div>
-				{/* <CareerTree /> */}
-				<section className="my-6 flex flex-col items-center">
-					<p className="mb-4 font-bold text-xl border-b-2 border-white border-solid">
-						This page is still heavily under construction!
-						<br />
-						This means some pages aren&apos;t available.
-					</p>
-					<h2 className="font-bold text-2xl">Get Started</h2>
-					<p className="text-silver text-base">
-						Where to{" "}
-						{Boolean(Object.keys(formData).length) ? "this time" : "first"}?
-					</p>
-					<nav className="flex flex-col gap-2 items-center">
-						<ul className="flex gap-3 mt-4 justify-center flex-wrap">
-							{pages.map((page, i) => {
-								return (
-									<StartLink key={i} anchor={page.name} icon={page.icon} />
-								);
-							})}
-						</ul>
-						<Link href={`/${randomPage}`} passHref>
-							<m.a
-								className="font-medium flex items-center text-3xl gap-1"
-								initial={{ rotate: 0 }}
-								whileHover={{
-									rotate: [0, -45, 45],
-									transition: {
-										repeat: Infinity,
-										repeatType: "mirror",
-										repeatDelay: 0,
-										duration: 0.5,
-									},
-								}}
-							>
-								<IoDice />
-							</m.a>
-						</Link>
-					</nav>
-				</section>
-			</div>
-		</>
+				</h3>
+				<p className="text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
+					I&apos;m a Junior Frontend Developer,
+					<br />
+					<span className="font-bold dark:text-white text-black">
+						{" "}
+						CSS <span className="animate-magic">magician </span>🪄
+					</span>{" "}
+					, based in the outskirts of Copenhagen.
+				</p>
+			</m.div>
+			{newestProjects && !error && (
+				<m.section
+					initial={{ opacity: 0, y: 30 }}
+					animate={{ opacity: 1, y: 0 }}
+					transition={{ duration: 1, delay: 0.5, type: "tween" }}
+					className="p-4"
+				>
+					<ProjectSlider data={newestProjects} />
+				</m.section>
+			)}
+		</div>
 	);
-}
+};
+
+export default Home;
