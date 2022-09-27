@@ -64,12 +64,12 @@ const About = ({ data: { publicURL: imageURL }, error }) => {
 							}
 						>
 							<p className="py-2">
-								My roots are stem in Denmark. Originally from "Næstved", a small
-								city in south Zealand, and now operating in the capital. Since
-								my brothers introduced me to video games as a child, I've had a
-								burning passion for computers. Now I want to help create them,
-								and program them, so other people may have the same experience
-								with computers I did.
+								My roots are stem in Denmark. Originally from
+								&quot;Næstved&quot;, a small city in south Zealand, and now
+								operating in the capital. Since my brothers introduced me to
+								video games as a child, I&apos;ve had a burning passion for
+								computers. Now I want to help create them, and program them, so
+								other people may have the same experience with computers I did.
 							</p>
 						</ReadMore>
 					</div>
