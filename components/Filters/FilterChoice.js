@@ -25,7 +25,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			transition={{ delay: 1 }}
-			className="static sm:fixed sm:top-1/4 z-10"
+			className="z-10 mr-auto"
 		>
 			<div className="relative flex justify-center sm:block sm:justify-start mt-4 sm:mt-0">
 				<button
@@ -33,13 +33,14 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 					className="text-4xl"
 					onClick={() => setActive(!active)}
 				>
-					<div className="px-5">
+					<div className="px-5 flex gap-2 items-center">
+						<p className="text-2xl font-bold -mt-2">Filters</p>{" "}
 						<FilterIcon state={active} size="40" />
 					</div>
 				</button>
 				<AnimatePresence>
 					{active && (
-						<div className="dark:bg-black bg-white backdrop-blur-sm !bg-opacity-50 md:bg-transparent rounded-sm fixed sm:absolute sm:w-auto w-full h-full sm:top-auto sm:left-auto top-0 left-0 z-20 sm:p-0 px-16 pb-20 flex flex-col justify-center">
+						<div className="absolute top-10 -ml-4">
 							<m.ul
 								variants={listVariant}
 								initial="hidden"

@@ -15,11 +15,11 @@ const ProjectSlider = ({ data: projects }) => {
 			}}
 			modules={[Scrollbar, Autoplay]}
 			scrollbar={{ draggable: true }}
-			className="bg-gray-dark rounded-lg"
+			className="rounded-lg"
 		>
 			{projects.map((project, i) => {
 				return (
-					<SwiperSlide key={i}>
+					<SwiperSlide key={i} className="!h-auto md:!h-full">
 						<ProjectSlide project={project} />
 					</SwiperSlide>
 				);

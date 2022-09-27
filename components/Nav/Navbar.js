@@ -32,19 +32,15 @@ const navElements = [
 		text: "Home",
 	},
 	{
-		text: "Projects",
+		text: "Work",
 		dropdown: [
 			{
-				to: "/web",
-				text: "Web",
+				to: "/projects",
+				text: "Code",
 			},
 			{
 				to: "/gallery",
 				text: "Photography",
-			},
-			{
-				to: "/programming",
-				text: "Programming",
 			},
 		],
 	},
