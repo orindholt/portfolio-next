@@ -17,7 +17,7 @@ const Searchbar = () => {
 	return (
 		<>
 			<li
-				className={`flex transition-all rounded-sm md:justify-start justify-center md:ml-auto md:text-2xl text-4xl z-50 ${
+				className={`flex transition-all rounded-sm md:justify-start justify-center md:ml-auto md:text-2xl text-4xl z-50 py-0.5 pr-1 ${
 					searchActive
 						? "dark:bg-gray-dark bg-black text-white fixed top-0 left-0 right-0 md:static border-x-[6px] border-b-4 border-t-[6px] border-solid border-black md:border-0"
 						: "bg-transparent"
@@ -37,8 +37,7 @@ const Searchbar = () => {
 							}
 							exit={{ width: 0, opacity: 0 }}
 							transition={{ type: "tween" }}
-							className={`bg-transparent font-normal text-lg md:text-base sm:w-auto w-full
-							}`}
+							className="bg-transparent font-normal text-lg md:text-base sm:w-auto w-full pl-1"
 							value={searchValue}
 							ref={searchEl}
 							onInput={e => setSearchValue(e.target.value)}

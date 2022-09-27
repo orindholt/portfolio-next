@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { motion as m } from "framer-motion";
 import supabase from "../../utils/supabaseClient";
 import PWAPrompt from "../../components/PWAPrompt";
@@ -16,15 +16,18 @@ export async function getStaticProps() {
 
 const Web = ({ data }) => {
 	const [activeFilters, setActiveFilters] = useState([]);
+	const allProjectTags = Array.from(new Set(data.map(val => val.tags).flat()));
+
 	const sortedData = [...data].sort(
 		(a, b) => new Date(a.created_at) - new Date(b.created_at)
 	);
-	const allProjectTags = Array.from(new Set(data.map(val => val.tags).flat()));
-
-	useEffect(() => {
-		if (activeFilters.length)
-			console.log([...data].filter(a => activeFilters.includes(a.tags)));
-	}, [activeFilters]);
+	const filteredData = sortedData.map(project => {
+		return (
+			(!activeFilters.length ||
+				activeFilters.every(a => project.tags.includes(a))) &&
+			project
+		);
+	});
 
 	return (
 		<>
@@ -41,36 +44,36 @@ const Web = ({ data }) => {
 					activeChoices={activeFilters}
 					setActiveChoices={setActiveFilters}
 				/>
-				<m.ul
-					initial={{
-						opacity: 0,
-						transition: { delay: 0.4 },
-					}}
-					animate={{
-						opacity: 1,
-					}}
-					exit={{
-						opacity: 0,
-						transition: { delay: 0.4 },
-					}}
-					className="grid grid-flow-row sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12 mt-6"
-				>
-					{sortedData.map((project, i) => {
-						console.log(activeFilters, project.tags);
-						return !activeFilters.length ||
-							activeFilters.includes(project.tag) ? (
-							<Project data={project} key={i} index={i} />
-						) : (
-							<p className="my-auto pb-16 text-xl leading-7">
-								<span className="bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark text-clip text-3xl font-bold">
-									Whoops!
-								</span>
-								<br />
-								There doesn&apos;t seem to be any posts
-							</p>
-						);
-					})}
-				</m.ul>
+				<div className="mt-6">
+					{!filteredData.every(a => a === false) ? (
+						<m.ul
+							initial={{
+								opacity: 0,
+								transition: { delay: 0.4 },
+							}}
+							animate={{
+								opacity: 1,
+							}}
+							exit={{
+								opacity: 0,
+								transition: { delay: 0.4 },
+							}}
+							className="grid grid-flow-row sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-12"
+						>
+							{filteredData.map((project, i) => {
+								return project && <Project data={project} key={i} index={i} />;
+							})}
+						</m.ul>
+					) : (
+						<p className="my-auto pb-16 text-xl leading-7">
+							<span className="bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark text-clip text-3xl font-bold">
+								Whoops!
+							</span>
+							<br />
+							There doesn&apos;t seem to be any projects with those filters
+						</p>
+					)}
+				</div>
 			</Section>
 			<PWAPrompt />
 		</>

@@ -87,13 +87,13 @@ const Home = ({ data: projects, error }) => {
 							/>
 						)}
 					</p>
-					<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
+					<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
 						Hello!
 					</h1>
-					<h2 className="md:text-5xl text-4xl dark:text-white text-black mt-2 font-medium">
+					<h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl dark:text-white text-black mt-2 font-medium">
 						I&apos;m Oliver
 					</h2>
-					<p className="text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
+					<p className="lg:text-xl xl:text-2xl text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
 						I&apos;m a Junior Frontend Developer, and
 						<span className="font-bold">
 							{" "}
@@ -103,7 +103,10 @@ const Home = ({ data: projects, error }) => {
 						<br />
 						based in the outskirts of Copenhagen.
 					</p>
-					<GenericButton className="max-w-fit text-lg mx-auto">
+					<GenericButton
+						className="max-w-fit lg:text-xl xl:text-2xl text-lg text-lg mx-auto"
+						anchor="/projects"
+					>
 						Explore
 					</GenericButton>
 				</m.div>

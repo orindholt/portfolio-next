@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { IoCloseSharp } from "react-icons/io5";
 import Choice from "./Choice";
 import FilterIcon from "../Icons/FilterIcon";
-import GenericButton from "../GenericButton";
 
 const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 	const [active, setActive] = useState(false);
@@ -40,33 +38,25 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 				</button>
 				<AnimatePresence>
 					{active && (
-						<div className="absolute top-10 -ml-4">
-							<m.ul
-								variants={listVariant}
-								initial="hidden"
-								animate="shown"
-								exit="hidden"
-								transition={{ type: "tween" }}
-								className="flex flex-col justify-center gap-4 sm:gap-1"
-							>
-								{choices.map((choice, i) => {
-									return (
-										<Choice
-											key={i}
-											label={choice}
-											setter={pushChoice}
-											activeChoices={activeChoices}
-										/>
-									);
-								})}
-							</m.ul>
-							<GenericButton
-								className="mx-auto mt-10 font-normal sm:hidden"
-								click={() => setActive(false)}
-							>
-								Close <IoCloseSharp />
-							</GenericButton>
-						</div>
+						<m.ul
+							variants={listVariant}
+							initial="hidden"
+							animate="shown"
+							exit="hidden"
+							transition={{ type: "tween" }}
+							className="flex flex-col justify-center gap-4 sm:gap-1 absolute top-10 left-0 right-0 bg-black rounded-lg bg-opacity-80 backdrop-blur-sm"
+						>
+							{choices.map((choice, i) => {
+								return (
+									<Choice
+										key={i}
+										label={choice}
+										setter={pushChoice}
+										activeChoices={activeChoices}
+									/>
+								);
+							})}
+						</m.ul>
 					)}
 				</AnimatePresence>
 			</div>

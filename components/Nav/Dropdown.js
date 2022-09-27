@@ -1,5 +1,5 @@
 import { useState, Children, cloneElement } from "react";
-import { IoCaretUp } from "react-icons/io5";
+import { IoCaretUp as DropdownIcon } from "react-icons/io5";
 import { motion as m, AnimatePresence } from "framer-motion";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
@@ -33,19 +33,19 @@ const Dropdown = ({ children, subject }) => {
 
 	return (
 		<li
-			className={`nav-item md:cursor-pointer flex flex-col items-center relative w-full md:w-auto font-bold select-none md:hover:text-orange-normal ${
+			className={`nav-item cursor-pointer flex flex-col items-center relative w-full md:w-auto select-none md:hover:text-orange-normal ${
 				open ? "!text-orange-normal" : "text-inherit"
 			}`}
 			onClick={() => setOpen(!open)}
 		>
 			<div className="relative md:flex md:items-center md:gap-1 mb-2 md:mb-0">
-				{subject}
-				<m.button
-					className="absolute md:static -right-8 md:-right-5 top-1"
+				<p>{subject}</p>
+				<m.div
+					className="absolute md:static -right-8 top-1 bottom-0 -mb-1"
 					animate={open ? { rotate: 180 } : { rotate: 0 }}
 				>
-					<IoCaretUp />
-				</m.button>
+					<DropdownIcon />
+				</m.div>
 			</div>
 			<AnimatePresence>
 				{open && (
