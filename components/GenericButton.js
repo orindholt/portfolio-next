@@ -23,7 +23,7 @@ const GenericButton = ({
 
 	return (
 		<CustomTag
-			className={`px-4 pt-1 pb-1.5 font-bold bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark dark:text-white text-black rounded-sm inline-block md:hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer relative group ${className} `}
+			className={`px-4 pt-1 pb-1.5 font-bold bg-gradient-to-br from-orange-light via-orange-normal to-orange-dark text-white rounded-sm inline-block md:hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer relative group ${className} `}
 		>
 			<p
 				className={`leading-normal ${

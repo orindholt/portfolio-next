@@ -26,6 +26,7 @@ module.exports = {
 			green: "#74c69d",
 			red: "#e63946",
 			inherit: "inherit",
+			transparent: "transparent",
 		},
 		extend: {
 			screens: {
@@ -44,8 +45,13 @@ module.exports = {
 			},
 			animation: {
 				magic: "magic 6s ease-out infinite",
+				indicator: "indicator 6s ease-out infinite",
 			},
 			keyframes: {
+				indicator: {
+					"0%, 100%": { transform: "translateY(0)" },
+					"50%": { transform: "translateY(20px)" },
+				},
 				magic: {
 					"0%, 100%": { color: "#C7305D" },
 					"25%": { color: "#DF5446" },

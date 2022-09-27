@@ -14,9 +14,8 @@ const Project = ({ data, index }) => {
 			y: 0,
 			delay: parseInt(`0.${index + 1 + staggerDelay}`),
 		},
-		exit: { opacity: 0, y: -30 },
 	};
-	const { title, slug, repo, image, tags, is_web: isWeb } = data;
+	const { title, slug, repo, image, tags } = data;
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	return (
@@ -27,7 +26,7 @@ const Project = ({ data, index }) => {
 			animate={isLoaded ? "show" : "hidden"}
 			exit="exit"
 		>
-			<Link href={`${isWeb ? "web" : "programming"}/${slug}`} passHref>
+			<Link href={`/projects/${slug}`} passHref>
 				<a className="relative group aspect-square overflow-hidden cursor-pointer rounded-lg">
 					<Image
 						src={image}

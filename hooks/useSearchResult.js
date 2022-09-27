@@ -6,7 +6,10 @@ const useSearchResult = searchValue => {
 	useEffect(() => {
 		const fetchData = async () => {
 			if (searchValue) {
-				let { data: posts, error } = await supabase.from("*").select("*");
+				let { data: posts, error } = await supabase
+					.from("projects")
+					.select("title")
+					.textSearch("title", searchValue);
 				console.log(posts, error);
 				if (posts !== null) setData(posts);
 			} else setData(null);

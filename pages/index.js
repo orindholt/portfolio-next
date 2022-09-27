@@ -4,6 +4,9 @@ import { motion as m } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import supabase from "../utils/supabaseClient";
 import ProjectSlider from "../components/Work/ProjectSlider";
+import GenericButton from "../components/GenericButton";
+import Section from "../components/Section";
+import ScrollIndicator from "../components/ScrollIndicator";
 
 const welcomeMessages = [
 	"Welcome back",
@@ -40,7 +43,7 @@ const Home = ({ data: projects, error }) => {
 	const { formData } = useContext(formContext);
 	const [formSubmitted, setFormSubmitted] = useState(false);
 	const [username, setUsername] = useState("");
-	const [newestProjects, setNewestProjects] = useState(null);
+	/* const [newestProjects, setNewestProjects] = useState(null);
 
 	const sortArray = arr =>
 		arr
@@ -52,7 +55,7 @@ const Home = ({ data: projects, error }) => {
 			console.log(projects);
 			setNewestProjects(sortArray(projects));
 		}
-	}, [projects]);
+	}, [projects]); */
 
 	useEffect(() => {
 		if (Object.keys(formData).length) {
@@ -63,55 +66,52 @@ const Home = ({ data: projects, error }) => {
 	}, [formData]);
 
 	return (
-		<div className="my-auto md:text-4xl text-2xl justify-self-stretch">
-			<m.div
-				initial={{ opacity: 0, x: 30 }}
-				animate={{ opacity: 1, x: 0 }}
-				transition={{ duration: 1, type: "tween" }}
-			>
-				<p>
-					{Boolean(Object.keys(formData).length) && (
-						<Typewriter
-							options={{
-								strings: `${
-									welcomeMessages[randomNum(0, welcomeMessages.length)]
-								} ${capitalizeString(username)}}.`,
-								autoStart: true,
-								cursorClassName: "hidden",
-							}}
-						/>
-					)}
-				</p>
-				<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
-					Hello!
-				</h1>
-				<h2 className="md:text-5xl text-4xl dark:text-white text-black mt-2 font-medium">
-					I&apos;m Oliver
-				</h2>
-				<h3 className="md:text-3xl text-2xl dark:text-white text-black font-medium mt-4">
-					{formSubmitted ? "Good to see you yet again!" : "Frontend Developer"}
-				</h3>
-				<p className="text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
-					I&apos;m a Junior Frontend Developer,
-					<br />
-					<span className="font-bold dark:text-white text-black">
-						{" "}
-						CSS <span className="animate-magic">magician </span>🪄
-					</span>{" "}
-					, based in the outskirts of Copenhagen.
-				</p>
-			</m.div>
-			{newestProjects && !error && (
-				<m.section
-					initial={{ opacity: 0, y: 30 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 1, delay: 0.5, type: "tween" }}
-					className="p-4"
+		<>
+			<Section>
+				<m.div
+					initial={{ opacity: 0, x: 30 }}
+					animate={{ opacity: 1, x: 0 }}
+					transition={{ duration: 1, type: "tween" }}
+					className="md:text-4xl text-2xl"
 				>
-					<ProjectSlider data={newestProjects} />
-				</m.section>
-			)}
-		</div>
+					<p>
+						{Boolean(Object.keys(formData).length) && (
+							<Typewriter
+								options={{
+									strings: `${
+										welcomeMessages[randomNum(0, welcomeMessages.length)]
+									} ${capitalizeString(username)}}.`,
+									autoStart: true,
+									cursorClassName: "hidden",
+								}}
+							/>
+						)}
+					</p>
+					<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
+						Hello!
+					</h1>
+					<h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl dark:text-white text-black mt-2 font-medium">
+						I&apos;m Oliver
+					</h2>
+					<p className="lg:text-xl xl:text-2xl text-lg dark:text-silver text-gray-dark font-roboto-mono italic my-8">
+						I&apos;m a Junior Frontend Developer, and
+						<span className="font-bold">
+							{" "}
+							CSS <span className="animate-magic">magician</span>
+						</span>
+						,
+						<br />
+						based in the outskirts of Copenhagen.
+					</p>
+					<GenericButton
+						className="max-w-fit lg:text-xl xl:text-2xl text-lg text-lg mx-auto"
+						anchor="/projects"
+					>
+						Explore
+					</GenericButton>
+				</m.div>
+			</Section>
+		</>
 	);
 };
 

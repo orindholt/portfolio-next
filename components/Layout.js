@@ -36,7 +36,7 @@ const Layout = ({ children, router }) => {
 						animate="enter"
 						exit="exit"
 						transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-						className="py-16 md:py-20 px-[5%] text-center max-w-7xl mx-auto w-full relative flex flex-col min-h-screen"
+						className="md:pt-12 text-center w-full relative flex flex-col min-h-screen"
 					>
 						{children}
 					</m.main>

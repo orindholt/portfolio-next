@@ -5,7 +5,7 @@ const Loader = () => {
 		<m.aside
 			className="pointer-events-none select-none text-orange-normal"
 			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
+			animate={{ opacity: 1, delay: 0.2 }}
 			exit={{ opacity: 0 }}
 		>
 			<svg

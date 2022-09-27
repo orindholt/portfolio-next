@@ -32,29 +32,21 @@ const navElements = [
 		text: "Home",
 	},
 	{
-		text: "Projects",
+		text: "Work",
 		dropdown: [
 			{
-				to: "/web",
-				text: "Web",
+				to: "/projects",
+				text: "Code",
 			},
 			{
 				to: "/gallery",
 				text: "Photography",
-			},
-			{
-				to: "/programming",
-				text: "Programming",
 			},
 		],
 	},
 	{
 		to: "/about",
 		text: "About",
-	},
-	{
-		to: "/blog",
-		text: "Blog",
 	},
 	{
 		to: "/contact",
@@ -82,7 +74,7 @@ const Navbar = () => {
 						exit="hidden"
 						className="fixed right-0 top-0 z-30 md:h-12 dark:bg-black bg-white !bg-opacity-90 backdrop-blur-md md:backdrop-blur-sm h-full py-8 md:py-0 w-full sm:w-64 md:w-full md:!translate-x-0 md:!opacity-100"
 					>
-						<ul className="flex flex-col text-3xl md:text-lg items-center justify-center md:justify-starti h-full md:flex-row gap-9 md:px-10 font-bold">
+						<ul className="flex flex-col text-3xl md:text-lg lg:text-xl items-center justify-center md:justify-starti h-full md:flex-row gap-9 md:px-10 md:font-bold font-semibold">
 							{navElements.map((obj, i) => {
 								if (obj?.dropdown) {
 									return (
@@ -98,8 +90,8 @@ const Navbar = () => {
 									return <NavItem to={obj.to} text={obj.text} key={i} />;
 								}
 							})}
-							<Searchbar />
-							<div className="flex gap-5 justify-center md:gap-9 md:text-2xl text-4xl">
+							{/* <Searchbar /> */}
+							<div className="flex gap-5 justify-center md:gap-9 md:text-2xl lg:text-3xl text-4xl md:ml-auto">
 								<ThemeSwitch />
 								<m.li
 									variants={buttonVariants}

@@ -12,6 +12,7 @@ import sendMail from "../utils/sendMail";
 import PageLoader from "../components/PageLoader";
 import MessageInput from "../components/Contact/MessageInput";
 import capitalizeString from "../utils/capitalizeString";
+import Section from "../components/Section";
 
 const Contact = () => {
 	const { setFormData } = useContext(formContext);
@@ -46,7 +47,7 @@ const Contact = () => {
 	};
 
 	return (
-		<>
+		<Section>
 			{isLoading && <PageLoader />}
 			<div className="my-auto pb-16">
 				<m.h1
@@ -133,7 +134,7 @@ const Contact = () => {
 					</m.div>
 				)}
 			</AnimatePresence>
-		</>
+		</Section>
 	);
 };
 
