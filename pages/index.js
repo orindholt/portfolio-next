@@ -1,4 +1,4 @@
-import { formContext } from "../utils/Context";
+import { formContext } from "../utils/formContext";
 import { useContext, useEffect, useState } from "react";
 import { motion as m } from "framer-motion";
 import Typewriter from "typewriter-effect";
@@ -14,7 +14,7 @@ const welcomeMessages = [
 	"Hope you're doing well",
 	"Thanks for visiting",
 	"Greetings",
-	"Good, you're back",
+	"Good to see you again",
 ];
 
 const capitalizeString = text => {
@@ -27,43 +27,10 @@ const randomNum = (min, max) => {
 	return Math.floor(Math.random() * (max - min) + min);
 };
 
-export async function getStaticProps() {
-	const { data, error } = await supabase
-		.from("projects")
-		.select()
-		.eq("can_be_featured", true);
-	return {
-		props: { data, error },
-	};
-}
-
-const featuredPostLimit = 3;
-
-const Home = ({ data: projects, error }) => {
-	const { formData } = useContext(formContext);
-	const [formSubmitted, setFormSubmitted] = useState(false);
-	const [username, setUsername] = useState("");
-	/* const [newestProjects, setNewestProjects] = useState(null);
-
-	const sortArray = arr =>
-		arr
-			.splice(0, featuredPostLimit)
-			.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
-
-	useEffect(() => {
-		if (projects.length > 1) {
-			console.log(projects);
-			setNewestProjects(sortArray(projects));
-		}
-	}, [projects]); */
-
-	useEffect(() => {
-		if (Object.keys(formData).length) {
-			const { firstName } = formData;
-			setFormSubmitted(true);
-			setUsername(firstName);
-		}
-	}, [formData]);
+const Home = () => {
+	const {
+		formData: { formData },
+	} = useContext(formContext);
 
 	return (
 		<>
@@ -72,22 +39,22 @@ const Home = ({ data: projects, error }) => {
 					initial={{ opacity: 0, x: 30 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 1, type: "tween" }}
-					className="md:text-4xl text-2xl"
+					className="md:text-4xl text-2xl flex flex-col"
 				>
-					<p>
-						{Boolean(Object.keys(formData).length) && (
+					<div className="text-xl dark:text-silver text-gray-dark">
+						{formData && (
 							<Typewriter
 								options={{
 									strings: `${
 										welcomeMessages[randomNum(0, welcomeMessages.length)]
-									} ${capitalizeString(username)}}.`,
+									}, ${capitalizeString(formData.firstName)}.`,
 									autoStart: true,
 									cursorClassName: "hidden",
 								}}
 							/>
 						)}
-					</p>
-					<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-light via-orange-normal to-orange-dark text-clip">
+					</div>
+					<h1 className="font-bold text-6xl md:text-7xl lg:text-8xl xl:text-9xl tracking-wide leading-tight -mb-2 bg-gradient-to-r from-orange-normal to-orange-dark text-clip max-w-fit mx-auto">
 						Hello!
 					</h1>
 					<h2 className="xl:text-6xl lg:text-5xl md:text-4xl text-3xl dark:text-white text-black mt-2 font-medium">
@@ -104,7 +71,7 @@ const Home = ({ data: projects, error }) => {
 						based in the outskirts of Copenhagen.
 					</p>
 					<GenericButton
-						className="max-w-fit lg:text-xl xl:text-2xl text-lg text-lg mx-auto"
+						className="max-w-fit lg:text-xl xl:text-2xl text-lg  mx-auto"
 						anchor="/projects"
 					>
 						Explore

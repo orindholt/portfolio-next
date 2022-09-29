@@ -1,11 +1,14 @@
 import { useState, useContext } from "react";
-import { useForm } from "react-hook-form";
 import { AnimatePresence, motion as m } from "framer-motion";
+import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import schema, { maxTxtAreaLength } from "../utils/validationSchema";
+import {
+	maxTxtAreaLength,
+	contactSchema as schema,
+} from "../utils/validationSchema";
 import Party from "../utils/Party";
 import Link from "next/link";
-import { formContext } from "../utils/Context";
+import { formContext } from "../utils/formContext";
 import GenericButton from "../components/GenericButton";
 import ContactInput from "../components/Contact/ContactInput";
 import sendMail from "../utils/sendMail";
@@ -15,7 +18,9 @@ import capitalizeString from "../utils/capitalizeString";
 import Section from "../components/Section";
 
 const Contact = () => {
-	const { setFormData } = useContext(formContext);
+	const {
+		formData: { formData, setFormData },
+	} = useContext(formContext);
 	const [name, setName] = useState("");
 	const [submitted, setSubmitted] = useState(false);
 	const [error, setError] = useState(true);
@@ -85,12 +90,14 @@ const Contact = () => {
 						autoComplete="given-name"
 						placeholder="First Name"
 						error={errors.firstName}
+						defaultValue={formData?.firstName || ""}
 					/>
 					<ContactInput
 						register={{ ...register("lastName") }}
 						autoComplete="family-name"
 						placeholder="Last name"
 						error={errors.lastName}
+						defaultValue={formData?.lastName || ""}
 					/>
 					<ContactInput
 						register={{ ...register("email") }}
@@ -98,6 +105,7 @@ const Contact = () => {
 						placeholder="Email"
 						error={errors.email}
 						className="col-span-2"
+						defaultValue={formData?.email || ""}
 					/>
 					<ContactInput
 						register={{ ...register("phone") }}
@@ -105,6 +113,7 @@ const Contact = () => {
 						placeholder="Phone"
 						error={errors.phone}
 						required={false}
+						defaultValue={formData?.phone || ""}
 					/>
 					<ContactInput
 						register={{ ...register("subject") }}
@@ -126,6 +135,11 @@ const Contact = () => {
 						Send
 					</GenericButton>
 				</form>
+				{formData && !submitted && (
+					<p className="text-base pt-2 opacity-50">
+						Form data was imported from your last visit.
+					</p>
+				)}
 			</div>
 			<AnimatePresence>
 				{!error && (

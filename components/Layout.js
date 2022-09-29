@@ -28,7 +28,7 @@ const Layout = ({ children, router }) => {
 					</Head>
 				)}
 				<Navbar />
-				<AnimatePresence exitBeforeEnter>
+				<AnimatePresence mode="wait">
 					<m.main
 						key={router.route}
 						variants={variants}

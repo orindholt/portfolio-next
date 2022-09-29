@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import leadingZero from "../../utils/leadingZero";
 import ReadMore from "../../components/ReadMore";
 import ShootDate from "../../components/Gallery/ShootDate";
+import Section from "../../components/Section";
 
 export async function getStaticPaths() {
 	const { data } = await supabase.from("gallery").select("slug");
@@ -37,7 +38,7 @@ const Category = ({
 	console.log(images);
 	const router = useRouter();
 	return !error && images ? (
-		<>
+		<Section>
 			<button
 				type="button"
 				className=" mb-2 text-4xl hover:text-orange-normal"
@@ -60,7 +61,7 @@ const Category = ({
 					);
 				})}
 			</ul>
-		</>
+		</Section>
 	) : (
 		<p>Error! {error}</p>
 	);
