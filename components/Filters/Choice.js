@@ -5,7 +5,7 @@ const Choice = ({ setter, label, activeChoices }) => {
 
 	return (
 		<li
-			className={`cursor-pointer transition-colors py-1 px-2 select-none rounded-sm flex items-center justify-between gap-1 dark:md:hover:bg-gray-dark md:hover:bg-gray-light text-4xl font-bold sm:font-normal sm:text-base ${
+			className={`cursor-pointer transition-colors py-1 px-2 select-none rounded-sm flex items-center justify-between gap-1 dark:md:hover:bg-gray-dark md:hover:bg-gray-light sm:text-base text-2xl ${
 				isActive ? "dark:!bg-white dark:!text-black !bg-black !text-white" : ""
 			}`}
 			onClick={() => setter(label)}

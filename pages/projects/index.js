@@ -8,14 +8,15 @@ import ProjectSlider from "../../components/Work/ProjectSlider";
 import FilterChoice from "../../components/Filters/FilterChoice";
 
 export async function getStaticProps() {
-	const { data } = await supabase.from("projects").select("*");
+	const { data, error } = await supabase.from("projects").select("*");
 	return {
-		props: { data },
+		props: { data, error },
 	};
 }
 
-const Web = ({ data }) => {
+const Web = ({ data, error }) => {
 	const [activeFilters, setActiveFilters] = useState([]);
+
 	const allProjectTags = Array.from(new Set(data.map(val => val.tags).flat()));
 
 	const sortedData = [...data].sort(
@@ -31,7 +32,7 @@ const Web = ({ data }) => {
 
 	return (
 		<>
-			<Section className="py-10">
+			<Section className="py-10 hidden lg:block">
 				<h2 className="text-5xl font-bold pb-2">Featured</h2>
 				<div className="max-w-4xl mx-auto">
 					<ProjectSlider data={[...sortedData].splice(0, 3)} />

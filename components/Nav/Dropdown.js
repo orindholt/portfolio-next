@@ -41,7 +41,7 @@ const Dropdown = ({ children, subject }) => {
 			<div className="relative md:flex md:items-center md:gap-1 mb-2 md:mb-0">
 				<p>{subject}</p>
 				<m.div
-					className="absolute md:static -right-8 top-1 bottom-0 -mb-1"
+					className="absolute md:static -right-9 top-0 bottom-0 -mb-1 flex items-center"
 					animate={open ? { rotate: 180 } : { rotate: 0 }}
 				>
 					<DropdownIcon />

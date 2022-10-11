@@ -15,7 +15,6 @@ const ProjectSlider = ({ data: projects }) => {
 			}}
 			modules={[Scrollbar, Autoplay]}
 			scrollbar={{ draggable: true }}
-			className="rounded-lg"
 		>
 			{projects.map((project, i) => {
 				return (
