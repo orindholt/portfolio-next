@@ -44,7 +44,7 @@ const FilterChoice = ({ choices, activeChoices, setActiveChoices }) => {
 							animate="shown"
 							exit="hidden"
 							transition={{ type: "tween" }}
-							className="flex flex-col justify-center gap-4 sm:gap-1 absolute top-10 left-0 right-0 bg-black rounded-lg bg-opacity-80 backdrop-blur-sm"
+							className="flex flex-col justify-center gap-1 absolute top-10 left-0 right-0 bg-black rounded-lg bg-opacity-80 backdrop-blur-sm"
 						>
 							{choices.map((choice, i) => {
 								return (

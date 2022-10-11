@@ -1,6 +1,7 @@
 import supabase from "../../utils/supabaseClient";
 import Shoot from "../../components/Gallery/Shoot";
 import { motion as m } from "framer-motion";
+import Section from "../../components/Section";
 
 const listVariants = {
 	hidden: {
@@ -26,7 +27,7 @@ export async function getStaticProps() {
 
 const Gallery = ({ data }) => {
 	return (
-		<>
+		<Section>
 			<h1 className="text-6xl font-bold">Gallery</h1>
 			<p className="pb-10 pt-1.5 text-xl dark:text-silver text-blue-normal">
 				Collection of my photography work.
@@ -42,7 +43,7 @@ const Gallery = ({ data }) => {
 					<Shoot details={shoot} key={i} index={i} />
 				))}
 			</m.ul>
-		</>
+		</Section>
 	);
 };
 

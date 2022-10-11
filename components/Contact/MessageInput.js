@@ -1,12 +1,13 @@
 import ErrorMsg from "./ErrorMsg";
 
 const MessageInput = ({
-	register,
+	register = {},
 	error,
-	maxLength,
+	maxLength = 400,
 	watch,
-	className,
+	className = "",
 	required = true,
+	placeholder = "Message",
 }) => {
 	return (
 		<div
@@ -21,11 +22,11 @@ const MessageInput = ({
 				}`}
 				id="msg"
 				maxLength={maxLength}
-				placeholder="Message"
+				placeholder={placeholder}
 			></textarea>
 			<label
 				htmlFor="msg"
-				className="absolute bottom-3 right-2 font-light text-sm text-gray-normal select-none"
+				className="absolute bottom-3 right-2 font-light text-sm text-gray-normal select-none font-roboto-mono"
 			>
 				{watch?.length || 0}/{maxLength}
 			</label>

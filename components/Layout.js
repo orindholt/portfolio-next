@@ -28,7 +28,7 @@ const Layout = ({ children, router }) => {
 					</Head>
 				)}
 				<Navbar />
-				<AnimatePresence exitBeforeEnter>
+				<AnimatePresence mode="wait">
 					<m.main
 						key={router.route}
 						variants={variants}
@@ -36,7 +36,7 @@ const Layout = ({ children, router }) => {
 						animate="enter"
 						exit="exit"
 						transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-						className="md:pt-12 text-center w-full relative flex flex-col min-h-screen"
+						className="md:pt-12 py-6 text-center w-full relative flex flex-col min-h-screen"
 					>
 						{children}
 					</m.main>

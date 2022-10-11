@@ -1,20 +1,9 @@
 import Image from "next/image";
 import GenericButton from "../GenericButton";
-import Demo from "./Demo";
-import Repo from "./Repo";
 import SkillList from "./SkillList";
 
 const ProjectSlide = ({
-	project: {
-		title,
-		description,
-		image,
-		slug,
-		tags,
-		repo,
-		website,
-		is_web: isWeb,
-	},
+	project: { title, description, image, slug, tags },
 }) => {
 	return (
 		<li className="flex flex-col md:flex-row px-4 pt-3 pb-4 cursor-default relative h-full">
@@ -34,7 +23,7 @@ const ProjectSlide = ({
 				<SkillList skills={tags} />
 				<p className="text-lg pb-2">{description}</p>
 				<GenericButton
-					anchor={`${isWeb ? "web" : "programming"}/${slug}`}
+					anchor={`/projects/${slug}`}
 					className="text-lg max-w-fit ml-auto mr-auto mt-auto md:mt-0 md:mr-0 md:!absolute md:bottom-6 md:right-8"
 				>
 					Details
