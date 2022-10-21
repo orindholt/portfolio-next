@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { motion as m } from "framer-motion";
 import supabase from "../../utils/supabaseClient";
 import PWAPrompt from "../../components/PWAPrompt";
 import Project from "../../components/Work/Project";
 import Section from "../../components/Section";
 import ProjectSlider from "../../components/Work/ProjectSlider";
+import useFilter from "../../hooks/useFilter";
 import FilterChoice from "../../components/Filters/FilterChoice";
 
 export async function getStaticProps() {
@@ -15,20 +15,12 @@ export async function getStaticProps() {
 }
 
 const Web = ({ data, error }) => {
-	const [activeFilters, setActiveFilters] = useState([]);
-
-	const allProjectTags = Array.from(new Set(data.map(val => val.tags).flat()));
-
-	const sortedData = [...data].sort(
-		(a, b) => new Date(a.created_at) - new Date(b.created_at)
-	);
-	const filteredData = sortedData.map(project => {
-		return (
-			(!activeFilters.length ||
-				activeFilters.every(a => project.tags.includes(a))) &&
-			project
-		);
-	});
+	const {
+		filteredData,
+		sortedData,
+		uniqueTags,
+		state: { get: activeFilters, set: setActiveFilters },
+	} = useFilter({ data: data });
 
 	return (
 		<>
@@ -41,7 +33,7 @@ const Web = ({ data, error }) => {
 			<Section className="py-10">
 				<h2 className="text-5xl font-bold pb-2">All Projects</h2>
 				<FilterChoice
-					choices={allProjectTags}
+					choices={uniqueTags}
 					activeChoices={activeFilters}
 					setActiveChoices={setActiveFilters}
 				/>

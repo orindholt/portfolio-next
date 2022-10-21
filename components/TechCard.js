@@ -48,7 +48,10 @@ const TechCard = ({
 						</h4>
 					</div>
 					<div className="opacity-0 group-hover:opacity-100 transition-opacity absolute top-0 left-0 right-0 bottom-0 grid place-content-center bg-black bg-opacity-50 backdrop-blur-sm text-base font-roboto-mono">
-						View {shorthand || name} projects
+						<p>
+							View <span className="font-bold">{shorthand || name}</span>{" "}
+							projects
+						</p>
 					</div>
 				</a>
 			</Link>

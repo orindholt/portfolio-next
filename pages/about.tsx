@@ -107,8 +107,8 @@ const About = ({ data: { publicURL: imageURL }, error }) => {
 				</article>
 			</Section>
 			<Section className="pb-8">
-				<h2 className="text-2xl font-bold mb-2">What are some of my skills?</h2>
-				<ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+				<h2 className="text-2xl font-bold">What are some of my skills?</h2>
+				<ul className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
 					{skills.map((skill, i) => {
 						return <TechCard key={i} index={i} tech={skill} />;
 					})}

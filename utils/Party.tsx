@@ -16,8 +16,8 @@ const Party = () => {
 	return (
 		<Confetti
 			colors={confettiColors}
-			width={`${window.width}px`}
-			height={`${window.height}px`}
+			width={window.width}
+			height={window.height}
 		/>
 	);
 };

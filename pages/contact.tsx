@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AnimatePresence, motion as m } from "framer-motion";
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import {
 	maxTxtAreaLength,
@@ -17,6 +17,15 @@ import MessageInput from "../components/Contact/MessageInput";
 import capitalizeString from "../utils/capitalizeString";
 import Section from "../components/Section";
 
+type FormValues = {
+	firstName: string;
+	lastName: string;
+	email: string;
+	subject: string;
+	msg: string;
+	phone?: number;
+};
+
 const Contact = () => {
 	const {
 		formData: { formData, setFormData },
@@ -32,11 +41,11 @@ const Contact = () => {
 		watch,
 		reset,
 		formState: { errors },
-	} = useForm({
+	} = useForm<FormValues>({
 		resolver: yupResolver(schema),
 	});
 
-	const submitHandler = async data => {
+	const submitHandler: SubmitHandler<FormValues> = async data => {
 		setIsLoading(true);
 		await sendMail(data);
 

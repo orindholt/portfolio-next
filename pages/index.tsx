@@ -1,14 +1,11 @@
 import { formContext } from "../utils/formContext";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { motion as m } from "framer-motion";
 import Typewriter from "typewriter-effect";
-import supabase from "../utils/supabaseClient";
-import ProjectSlider from "../components/Work/ProjectSlider";
 import GenericButton from "../components/GenericButton";
 import Section from "../components/Section";
-import ScrollIndicator from "../components/ScrollIndicator";
 
-const welcomeMessages = [
+const welcomeMessages: Array<string> = [
 	"Welcome back",
 	"What's up",
 	"Hope you're doing well",
@@ -17,13 +14,12 @@ const welcomeMessages = [
 	"Good to see you again",
 ];
 
-const capitalizeString = text => {
-	if (typeof text === "string" && text.length >= 1) {
-		return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
-	} else return null;
+const capitalizeString = (text: string) => {
+	if (typeof text !== "string" || text.length < 1) return null;
+	return `${text.charAt(0).toUpperCase()}${text.substring(1)}`;
 };
 
-const randomNum = (min, max) => {
+const randomNum = (min: number, max: number) => {
 	return Math.floor(Math.random() * (max - min) + min);
 };
 

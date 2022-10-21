@@ -2,13 +2,21 @@ import axios from "axios";
 
 const url = "https://api.emailjs.com/api/v1.0/email/send";
 
+type FormValues = {
+	firstName: string;
+	lastName: string;
+	email: string;
+	subject: string;
+	msg: string;
+};
+
 const sendMail = async ({
 	firstName,
 	lastName,
 	email: user_email,
 	subject,
 	msg: message,
-}) => {
+}: FormValues) => {
 	const reqData = {
 		service_id: `service_${process.env.EMAIL_SERVICE_ID}`,
 		template_id: `template_${process.env.EMAIL_TEMPLATE_ID}`,

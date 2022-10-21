@@ -1,20 +1,31 @@
 import ErrorMsg from "./ErrorMsg";
+import { HTMLInputTypeAttribute } from "react";
+import { FieldError } from "react-hook-form";
+
+type Props = {
+	register: object;
+	autoComplete?: string;
+	type?: HTMLInputTypeAttribute;
+	placeholder?: string;
+	error?: FieldError;
+	className?: string;
+	required?: boolean;
+	defaultValue?: string;
+};
 
 const ContactInput = ({
 	register = {},
-	autoComplete = "",
+	autoComplete = "none",
 	type = "text",
-	placeholder = "Default",
+	placeholder,
 	error,
-	className,
+	className = "",
 	required = true,
 	defaultValue = "",
-}) => {
+}: Props) => {
 	return (
 		<div
-			className={`relative ${required ? "required" : ""} ${
-				className || ""
-			}`.trim()}
+			className={`relative ${required ? "required" : ""} ${className}`.trim()}
 		>
 			<input
 				{...register}

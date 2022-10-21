@@ -3,8 +3,17 @@ import FormContextProvider from "../utils/formContext";
 import Layout from "../components/Layout";
 import "../styles/globals.css";
 import Head from "next/head";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
+import type { AppProps } from "next/app";
 
-const MyApp = ({ Component, pageProps, router }) => {
+Sentry.init({
+	dsn: "https://94b7e60e831a4088ac11d6a9eb11a48f@o1140329.ingest.sentry.io/6197396",
+	integrations: [new BrowserTracing()],
+	tracesSampleRate: 1.0,
+});
+
+const MyApp = ({ Component, pageProps, router }: AppProps) => {
 	return (
 		<>
 			<Head>
@@ -38,7 +47,7 @@ const MyApp = ({ Component, pageProps, router }) => {
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
-					enableSystem="true"
+					enableSystem={true}
 					themes={["dark", "light"]}
 				>
 					<Layout router={router}>

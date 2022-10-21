@@ -1,14 +1,12 @@
-const capitalize = str => {
-	return (
-		typeof str === "string" && str.charAt(0).toUpperCase() + str.substring(1)
-	);
+const capitalize = (str: string) => {
+	return str.charAt(0).toUpperCase() + str.substring(1);
 };
 
-const pathTitle = path => {
+const pathTitle = (path: string) => {
 	if (!path.substring(1)) path = "/home";
 	const splitPath = path.split("/");
 	let result = capitalize(splitPath[splitPath.length - 1]);
-	if (result.includes("-", " "))
+	if (result.includes("-"))
 		result = result
 			.split("-")
 			.map(word => capitalize(word))

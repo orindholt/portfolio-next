@@ -10,7 +10,6 @@ const Shoot = ({
 	details: { title, taken, description, slug, images },
 	index,
 }) => {
-	const [randomImage, setRandomImage] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	const staggerDelay = 5;
@@ -20,13 +19,6 @@ const Shoot = ({
 		show: { opacity: 1, y: 0, delay: `0.${index + 1 + staggerDelay}` },
 		exit: { opacity: 0, y: -30 },
 	};
-
-	useEffect(() => {
-		if (randomImage === null)
-			setRandomImage(Math.floor(Math.random() * images.length));
-	}, [randomImage, images.length]);
-
-	if (randomImage === null) return null;
 
 	console.log(isLoaded);
 	return (
@@ -38,12 +30,14 @@ const Shoot = ({
 				animate={isLoaded ? "show" : "hidden"}
 				exit="exit"
 			>
-				<h2 className="text-4xl font-black pb-3">{title}</h2>
+				<h3 className="text-4xl md:text-2xl lg:text-xl font-black pb-3 font-roboto-mono">
+					{title}
+				</h3>
 				<Link href={`gallery/${slug}`} passHref>
 					<a>
-						<div className="aspect-[3/4] group relative cursor-pointer">
+						<div className="aspect-[3/4] group relative cursor-pointer rounded-md overflow-hidden">
 							<Image
-								src={images[randomImage]}
+								src={images[0]}
 								quality={50}
 								layout="fill"
 								objectFit="cover"
@@ -52,7 +46,7 @@ const Shoot = ({
 								onLoadingComplete={() => setIsLoaded(true)}
 							/>
 
-							<div className="absolute p-1 top-0 bottom-0 grid place-content-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+							<div className="absolute p-1 top-0 bottom-0 grid place-content-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity text-white">
 								<ShootDate rawDate={taken} />
 								<p className="px-4">{description}</p>
 							</div>

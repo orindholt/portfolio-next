@@ -18,7 +18,11 @@ const nextConfig = {
 		SUPABASE_KEY: process.env.SUPABASE_KEY,
 	},
 	images: {
-		domains: ["cdn.sanity.io", "nfbblgowothfxotksqty.supabase.co"],
+		domains: [
+			"cdn.sanity.io",
+			"nfbblgowothfxotksqty.supabase.co",
+			"94b7e60e831a4088ac11d6a9eb11a48f@o1140329.ingest.sentry.io",
+		],
 	},
 	output: "standalone",
 };
