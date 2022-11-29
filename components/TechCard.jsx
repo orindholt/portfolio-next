@@ -14,8 +14,8 @@ const cardVariant = {
 	hidden: { y: -20, opacity: 0 },
 };
 
-const TechCard = ({
-	tech: {
+const TechCard = ({ tech, index }) => {
+	const {
 		bg = "blue",
 		icon = <IoAlert />,
 		iconColor = "white",
@@ -23,9 +23,7 @@ const TechCard = ({
 		nameColor = "yellow",
 		outlined = false,
 		shorthand,
-	},
-	index,
-}) => {
+	} = tech;
 	return (
 		<m.li
 			variants={cardVariant}

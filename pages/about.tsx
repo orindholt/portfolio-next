@@ -1,3 +1,4 @@
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import TechCard from "../components/TechCard";
 import skills from "../utils/skills";
@@ -5,16 +6,21 @@ import ReadMore from "../components/ReadMore";
 import supabase from "../utils/supabaseClient";
 import Section from "../components/Section";
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
 	const { data, error } = supabase.storage
 		.from("project-assets")
 		.getPublicUrl("me.jpg");
 	return {
 		props: { data, error },
 	};
-}
+};
 
-const About = ({ data: { publicURL: imageURL }, error }) => {
+type DataType = {
+	data: { publicURL?: string; error?: Error };
+	error: Error | null;
+};
+
+const About = ({ data: { publicURL: imageURL }, error }: DataType) => {
 	return (
 		<>
 			<Section className="py-5">
@@ -33,7 +39,7 @@ const About = ({ data: { publicURL: imageURL }, error }) => {
 							understand.
 						</p>
 					</div>
-					{!error && (
+					{!error && imageURL && (
 						<div className="rounded-full overflow-hidden shadow-lg flex">
 							<Image
 								src={imageURL}

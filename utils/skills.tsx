@@ -1,3 +1,4 @@
+import { FC, ReactElement } from "react";
 import {
 	IoLogoReact,
 	IoLogoHtml5,
@@ -26,7 +27,23 @@ import {
 	SiGit,
 } from "react-icons/si";
 
-const skills = [
+type RGB = `rgb(${number}, ${number}, ${number})`;
+type RGBA = `rgba(${number}, ${number}, ${number}, ${number})`;
+type HEX = `#${string}`;
+
+type Color = RGB | RGBA | HEX;
+
+type Skill = {
+	name: string;
+	shorthand?: string;
+	nameColor: Color;
+	bg: Color;
+	icon: ReactElement;
+	iconColor: Color;
+	outlined?: boolean;
+};
+
+const skills: Skill[] = [
 	{
 		name: "HTML5",
 		shorthand: "HTML",
